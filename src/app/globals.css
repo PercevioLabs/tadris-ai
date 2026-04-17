@@ -380,3 +380,80 @@ section[id] {
 .body-locked {
   overflow: hidden;
 }
+
+/* Velocity Section Animations */
+
+@keyframes infinite-scroll-y {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+.animate-scroll-infinite {
+  animation: infinite-scroll-y 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes button-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.35); }
+  50%       { box-shadow: 0 0 22px 6px rgba(79, 70, 229, 0.15); }
+}
+.animate-glow-pulse {
+  animation: button-glow-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes progress-fill-fast {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+.animate-progress-fast {
+  animation: progress-fill-fast 2s ease-in-out forwards;
+}
+
+/* Processing: loading strip */
+@keyframes bounce-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(100%); }
+}
+.animate-bounce-x {
+  animation: bounce-x 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Processing: checklist items tick in sequentially */
+@keyframes check-pop {
+  0%   { opacity: 0; transform: scale(0.4); }
+  70%  { transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-check-1 { animation: check-pop .35s cubic-bezier(.22, 1, .36, 1) 0.4s  both; }
+.animate-check-2 { animation: check-pop .35s cubic-bezier(.22, 1, .36, 1) 0.9s  both; }
+.animate-check-3 { animation: check-pop .35s cubic-bezier(.22, 1, .36, 1) 1.4s  both; }
+
+/* Completed: cards slide up staggered */
+@keyframes card-up {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.card-reveal-1 { animation: card-up .5s cubic-bezier(.22, 1, .36, 1) 0.05s both; }
+.card-reveal-2 { animation: card-up .5s cubic-bezier(.22, 1, .36, 1) 0.18s both; }
+.card-reveal-3 { animation: card-up .5s cubic-bezier(.22, 1, .36, 1) 0.31s both; }
+.card-reveal-4 { animation: card-up .5s cubic-bezier(.22, 1, .36, 1) 0.44s both; }
+
+/* Completed: CLO bars fill to their target widths */
+@keyframes fill-82 { from { width: 0%; } to { width: 82%; } }
+@keyframes fill-75 { from { width: 0%; } to { width: 75%; } }
+@keyframes fill-91 { from { width: 0%; } to { width: 91%; } }
+.bar-fill-82 { animation: fill-82 1s cubic-bezier(.22, 1, .36, 1) 0.3s both; }
+.bar-fill-75 { animation: fill-75 1s cubic-bezier(.22, 1, .36, 1) 0.5s both; }
+.bar-fill-91 { animation: fill-91 1s cubic-bezier(.22, 1, .36, 1) 0.7s both; }
+
+/* Completed: grade chart bars grow up staggered */
+@keyframes bar-grow-15 { from { height: 0%; } to { height: 15%; } }
+@keyframes bar-grow-45 { from { height: 0%; } to { height: 45%; } }
+@keyframes bar-grow-80 { from { height: 0%; } to { height: 80%; } }
+@keyframes bar-grow-60 { from { height: 0%; } to { height: 60%; } }
+@keyframes bar-grow-30 { from { height: 0%; } to { height: 30%; } }
+.chart-bar-1 { animation: bar-grow-15 .5s ease-out 0.55s both; }
+.chart-bar-2 { animation: bar-grow-45 .5s ease-out 0.65s both; }
+.chart-bar-3 { animation: bar-grow-80 .5s ease-out 0.75s both; }
+.chart-bar-4 { animation: bar-grow-60 .5s ease-out 0.85s both; }
+.chart-bar-5 { animation: bar-grow-30 .5s ease-out 0.95s both; }
+

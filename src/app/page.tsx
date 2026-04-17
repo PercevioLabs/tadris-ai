@@ -42,6 +42,303 @@ export default function Page() {
     return <span>{displayedText}</span>;
   }
 
+  function VelocityComparison() {
+    const [state, setState] = useState<"syncing" | "processing" | "ready">("syncing");
+
+    useEffect(() => {
+      let t1: NodeJS.Timeout, t2: NodeJS.Timeout, tReset: NodeJS.Timeout;
+      
+      const cycle = () => {
+        setState("syncing");
+        t1 = setTimeout(() => setState("processing"), 1200);
+        t2 = setTimeout(() => setState("ready"), 2500);
+        tReset = setTimeout(() => cycle(), 8000);
+      };
+      
+      cycle();
+      return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(tReset); };
+    }, []);
+
+    const scrollRows = [
+      ["Abdullah Al-Qahtani", "61/80", "78/100", "B+"],
+      ["Sara Al-Mutairi", "74/80", "92/100", "A"],
+      ["Fahad Bin Salman", "48/80", "64/100", "C"],
+      ["Noura Al-Zahrani", "68/80", "85/100", "A-"],
+    ];
+
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-indigo-100 shadow-2xl max-w-5xl mx-auto md:h-[480px]">
+        {/* ══ LEFT: The Old Way ══ */}
+        <div className="bg-[#F1F5F9] border-b md:border-b-0 md:border-r border-indigo-100 relative overflow-hidden">
+          <div className="p-4 sm:p-6 h-full flex flex-col relative z-10 w-full max-w-full">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <p className="text-slate-500 font-bold text-[10px] uppercase tracking-widest mb-0.5">
+                  The Old Way
+                </p>
+                <p className="text-2xl sm:text-3xl font-black text-slate-400 font-headline leading-none">
+                  5 Hours
+                </p>
+              </div>
+              <span className="bg-slate-200 text-slate-500 px-2.5 py-1 rounded text-[9px] font-bold tracking-wide flex-shrink-0">
+                LEGACY
+              </span>
+            </div>
+
+            <div className="relative flex-1 min-h-[300px] bg-white rounded-xl border border-slate-200 overflow-hidden shadow-inner grayscale opacity-80">
+              {/* 2 identical copies → translateY(-50%) loops seamlessly */}
+              <div className="animate-scroll-infinite">
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="p-3 space-y-3">
+                    <div className="border border-slate-200 rounded overflow-hidden text-[8px]">
+                      <div className="bg-slate-100 grid grid-cols-4 font-bold text-slate-500 border-b border-slate-200">
+                        {["Student Name", "Midterm", "Final Exam", "Grade"].map((h) => (
+                          <div key={h} className="p-1 px-1.5 border-r border-slate-200 last:border-0">{h}</div>
+                        ))}
+                      </div>
+                      {scrollRows.map((row, i) => (
+                        <div key={i} className="grid grid-cols-4 border-b border-slate-100 last:border-0">
+                          <div className="p-1 px-1.5 border-r border-slate-100 max-w-[70px] truncate">{row[0]}</div>
+                          <div className="p-1 px-1.5 border-r border-slate-100">{row[1]}</div>
+                          <div className="p-1 px-1.5 border-r border-slate-100">{row[2]}</div>
+                          <div className="p-1 px-1.5 border-r border-slate-100">{row[3]}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="h-4 bg-slate-100 rounded text-[7px] font-bold flex items-center px-2 text-slate-400 uppercase">
+                        Section 3 · CLO Analysis (manually entered)
+                      </div>
+                      <div className="p-2 border border-slate-100 rounded bg-slate-50 space-y-1.5">
+                        <div className="flex gap-1.5 mb-1">
+                          <div className="h-2 w-full bg-slate-200 rounded"></div>
+                        </div>
+                        <div className="flex gap-1.5 mb-1">
+                          <div className="h-2 w-5/6 bg-slate-100 rounded"></div>
+                        </div>
+                        <div className="flex gap-1.5 mb-1">
+                          <div className="h-2 w-4/6 bg-slate-100 rounded"></div>
+                        </div>
+                        <div className="h-7 w-full bg-white border border-slate-200 rounded flex items-center px-2 text-[7px] text-slate-300 italic">
+                          Type improvement plan here…
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-3 gap-1.5 pb-2">
+                        {["CLO 1", "CLO 2", "CLO 3"].map((l) => (
+                          <div key={l} className="bg-slate-50 border border-slate-100 rounded p-1.5">
+                            <p className="text-[7px] font-bold text-slate-400 mb-1">{l}</p>
+                            <div className="h-1 w-full bg-slate-200 rounded mb-1"></div>
+                            <div className="h-1 w-2/3 bg-slate-100 rounded"></div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1 pb-4">
+                      {[
+                        "Exporting Excel manually",
+                        "Calculating CLO % by hand",
+                        "Writing improvement plans",
+                      ].map((t) => (
+                        <div key={t} className="flex items-center gap-1.5 text-[7.5px] text-slate-400">
+                          <span className="w-1 h-1 rounded-full bg-slate-300 flex-shrink-0"></span>
+                          {t}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white/80 to-transparent pointer-events-none"></div>
+            </div>
+          </div>
+          <div className="absolute inset-0 bg-[radial-gradient(#CBD5E1_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none"></div>
+        </div>
+
+        {/* ══ RIGHT: The Tadris Way ══ */}
+        <div className="bg-white flex flex-col relative">
+          {/* subtle loading gradient overlay */}
+          <div className={`absolute inset-0 bg-indigo-50/50 z-20 pointer-events-none transition-opacity duration-1000 ${state === 'syncing' ? 'opacity-100' : 'opacity-0'}`}></div>
+
+          <div className="p-4 sm:p-6 flex-1 flex flex-col w-full max-w-full relative z-10">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <p className="text-indigo-600 font-bold text-[10px] uppercase tracking-widest mb-0.5 transition-colors">
+                  The Tadris Way
+                </p>
+                <p className="text-2xl sm:text-3xl font-black text-indigo-600 font-headline leading-none">
+                  45 Seconds
+                </p>
+              </div>
+              <span className="bg-indigo-50 text-indigo-600 border border-indigo-100 px-2.5 py-1 rounded text-[9px] font-bold tracking-wide flex-shrink-0">
+                AI POWERED
+              </span>
+            </div>
+
+            <div className="flex-1 bg-indigo-50/40 rounded-xl border border-indigo-100 p-3 flex flex-col pt-3 min-h-[300px]">
+              <div className="flex flex-col gap-2.5 overflow-hidden">
+                <div className="flex items-center justify-between bg-white rounded border border-indigo-100/50 px-2.5 py-1.5 shadow-sm">
+                  <div className={`flex items-center gap-1.5 text-[9px] font-bold transition-colors ${state === 'syncing' ? 'text-indigo-400' : 'text-indigo-700'}`}>
+                    {state === 'syncing' ? (
+                      <span className="material-symbols-outlined text-[12px] animate-spin text-indigo-400">sync</span>
+                    ) : (
+                      <span className="material-symbols-outlined text-[12px] text-indigo-500" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    )}
+                    {state === 'syncing' ? 'Pulling data from Canvas LMS...' : (state === 'processing' ? 'Generating Report...' : 'TP-153 Ready · BIOL 302')}
+                  </div>
+                  {/* Visual processing indicator */}
+                  <div className="w-16 h-1 bg-slate-100 rounded-full overflow-hidden flex-shrink-0">
+                    {state !== 'ready' && <div className="h-full bg-indigo-400 w-1/2 rounded-full animate-bounce-x"></div>}
+                    {state === 'ready' && <div className="h-full bg-indigo-500 w-full rounded-full transition-all duration-300"></div>}
+                  </div>
+                </div>
+
+                {/* CLO bars */}
+                <div className="bg-white rounded-lg border border-indigo-100 p-2.5 shadow-sm">
+                  <p className="text-[8px] font-bold text-indigo-600 uppercase tracking-wider mb-2">
+                    CLO Mapping
+                  </p>
+                  <div className="space-y-1.5">
+                    {[
+                      {
+                        label: "CLO 1 · Design",
+                        pct: "82%",
+                        textCls: "text-indigo-600",
+                        bgCls: "bg-indigo-500",
+                        w: "82%",
+                        delay: "0ms"
+                      },
+                      {
+                        label: "CLO 2 · Research",
+                        pct: "75%",
+                        textCls: "text-indigo-600",
+                        bgCls: "bg-indigo-400",
+                        w: "75%",
+                        delay: "150ms"
+                      },
+                      {
+                        label: "CLO 3 · Comm.",
+                        pct: "91%",
+                        textCls: "text-indigo-600",
+                        bgCls: "bg-indigo-600",
+                        w: "91%",
+                        delay: "300ms"
+                      },
+                    ].map(({ label, pct, textCls, bgCls, w, delay }) => (
+                      <div key={label}>
+                        <div className="flex justify-between text-[8px] font-medium text-slate-700 mb-0.5">
+                          <span>{label}</span>
+                          <span className={`font-bold transition-opacity duration-500 ${state === 'syncing' ? 'opacity-0' : 'opacity-100'} ${textCls}`}>{pct}</span>
+                        </div>
+                        <div className="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full rounded-full ${bgCls} transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)]`}
+                            style={{ 
+                              width: state === "syncing" ? "0%" : w,
+                              transitionDelay: state === "syncing" ? "0ms" : delay
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Chart + Alert */}
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div className="bg-white rounded-lg border border-indigo-100 p-2 shadow-sm">
+                    <p className="text-[8px] font-bold text-slate-600 mb-1.5">Grades</p>
+                    <div className="flex items-end gap-0.5 h-7">
+                      {[
+                        { h: "15%", bg: "bg-indigo-200" },
+                        { h: "45%", bg: "bg-indigo-300" },
+                        { h: "80%", bg: "bg-indigo-600" },
+                        { h: "60%", bg: "bg-indigo-400" },
+                        { h: "30%", bg: "bg-indigo-200" },
+                      ].map((col, i) => (
+                        <div
+                          key={i}
+                          className={`flex-1 rounded-t-[1px] ${col.bg} transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)]`}
+                          style={{ 
+                            height: state === "syncing" ? "0%" : col.h, 
+                            transitionDelay: state === "syncing" ? "0ms" : `${200 + i * 100}ms` 
+                          }}
+                        ></div>
+                      ))}
+                    </div>
+                    <div className="flex justify-between text-[6px] text-slate-400 font-bold mt-1 pt-0.5 border-t border-slate-100">
+                      <span>F</span><span>C</span><span>B</span><span>A</span><span>A+</span>
+                    </div>
+                  </div>
+                  
+                  <div className={`bg-indigo-50 rounded-lg border border-indigo-100 p-2 shadow-sm flex flex-col justify-center transition-all duration-700 ease-out ${state === 'syncing' ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'} delay-[600ms]`}>
+                    <span
+                      className="material-symbols-outlined text-indigo-500 text-[12px] mb-0.5"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      lightbulb
+                    </span>
+                    <p className="text-[8px] font-bold text-indigo-700 mb-0.5">CLO 2 Insight</p>
+                    <p className="text-[7.5px] leading-snug text-indigo-800">
+                      Targeting research methodology closes gap.
+                    </p>
+                  </div>
+                </div>
+
+                {/* AI Improvement plan */}
+                <div className={`bg-primary-gradient text-white rounded-lg p-2.5 shadow-sm shadow-indigo-200/50 transition-all duration-700 ${state === 'syncing' ? 'opacity-40 grayscale blur-sm scale-[0.98]' : 'opacity-100 grayscale-0 blur-0 scale-100'}`}>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span
+                      className={`material-symbols-outlined text-indigo-200 text-[10px] ${state === 'processing' ? 'animate-pulse' : ''}`}
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      auto_awesome
+                    </span>
+                    <p className="text-[8px] font-bold uppercase tracking-wider text-indigo-100">
+                      AI Plan
+                    </p>
+                  </div>
+                  <div className="text-[8px] leading-tight text-indigo-50 min-h-[20px]">
+                    {(state === "processing" || state === "ready") ? (
+                      <Typewriter 
+                        key={state} 
+                        text="Add peer-review in Week 10 for research methodology. Align rubric with PLO-2 to fix the CLO 2 achievement gap." 
+                        speed={15} 
+                      />
+                    ) : (
+                      <div className="flex gap-1 pt-1 opacity-50">
+                        <div className="w-1 h-1 bg-white rounded-full animate-bounce"></div>
+                        <div className="w-1 h-1 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                        <div className="w-1 h-1 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature badges */}
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {["NCAAA Compliant", "LMS Auto-Sync", "Instant CLO Mapping", "AI Action Plans"].map(
+                (l, i) => (
+                  <span
+                    key={l}
+                    className={`px-2.5 py-1 bg-indigo-100 text-indigo-700 rounded-full text-[8.5px] font-bold whitespace-nowrap transition-all duration-500 ease-out ${state === 'syncing' ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}
+                    style={{ transitionDelay: state === 'syncing' ? '0ms' : `${800 + i * 100}ms` }}
+                  >
+                    {l}
+                  </span>
+                ),
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+
   const navLinks = [
     { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
@@ -584,90 +881,24 @@ export default function Page() {
         {/* ── Demo / How It Works ── */}
         <section
           id="how-it-works"
-          className="bg-indigo-50/50 py-14 sm:py-20 lg:py-32 border-y border-indigo-100/30"
+          className="bg-indigo-50/30 py-10 sm:py-16 lg:py-20 border-y border-indigo-100/50"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
-            <div className="text-center mb-10 sm:mb-16">
+            <div className="text-center mb-10 sm:mb-14">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline mb-4">
                 Experience the Velocity
               </h2>
-              <p className="text-on-surface-variant text-sm sm:text-base">
-                NCAAA TP-153 Course Report Drafting
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 text-indigo-700 text-xs sm:text-sm font-bold shadow-sm mb-4">
+                <span className="material-symbols-outlined text-lg">upload_file</span>
+                Upload course data → AI generates complete NCAAA report instantly
+              </div>
+              <p className="max-w-2xl mx-auto text-on-surface-variant text-sm sm:text-base">
+                Stop wasting weeks on accreditation paperwork. Transform your raw LMS data into
+                structured, compliant course reports in under a minute.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-indigo-100 shadow-2xl">
-              <div className="bg-white p-7 sm:p-12">
-                <div className="text-on-surface-variant font-bold text-xs uppercase tracking-widest mb-4 sm:mb-6">
-                  The Old Way
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-headline mb-6 sm:mb-8">
-                  5 Hours of Manual Entry
-                </h3>
-                <ul className="space-y-4 sm:space-y-6">
-                  <li className="flex items-start gap-3 sm:gap-4">
-                    <span className="material-symbols-outlined text-outline flex-shrink-0">
-                      close
-                    </span>
-                    <span className="text-on-surface-variant text-sm sm:text-base">
-                      Exporting grades from multiple Excel sheets
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3 sm:gap-4">
-                    <span className="material-symbols-outlined text-outline flex-shrink-0">
-                      close
-                    </span>
-                    <span className="text-on-surface-variant text-sm sm:text-base">
-                      Manually calculating CLO achievement percentages
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3 sm:gap-4">
-                    <span className="material-symbols-outlined text-outline flex-shrink-0">
-                      close
-                    </span>
-                    <span className="text-on-surface-variant text-sm sm:text-base">
-                      Writing qualitative improvement plans from scratch
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-primary-gradient text-white p-7 sm:p-12 relative overflow-hidden">
-                <div className="absolute -top-10 -right-10 p-8 opacity-10">
-                  <span className="material-symbols-outlined text-[200px]">bolt</span>
-                </div>
-                <div className="text-indigo-100 font-bold text-xs uppercase tracking-widest mb-4 sm:mb-6">
-                  The Tadris Way
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-headline mb-6 sm:mb-8">
-                  Generated in 45 Seconds
-                </h3>
-                <ul className="space-y-4 sm:space-y-6">
-                  <li className="flex items-start gap-3 sm:gap-4">
-                    <span className="material-symbols-outlined text-indigo-200 flex-shrink-0">
-                      check_circle
-                    </span>
-                    <span className="text-white text-sm sm:text-base">
-                      Direct LMS integration pulls all student data automatically
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3 sm:gap-4">
-                    <span className="material-symbols-outlined text-indigo-200 flex-shrink-0">
-                      check_circle
-                    </span>
-                    <span className="text-white text-sm sm:text-base">
-                      Real-time CLO mapping with visualized performance gaps
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3 sm:gap-4">
-                    <span className="material-symbols-outlined text-indigo-200 flex-shrink-0">
-                      check_circle
-                    </span>
-                    <span className="text-white text-sm sm:text-base">
-                      AI-suggested corrective actions based on historical data
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+
+            <VelocityComparison />
           </div>
         </section>
 
