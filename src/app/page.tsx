@@ -57,8 +57,7 @@ const CapabilityExplorer = () => {
       id: "slides",
       navTitle: "Slide Deck Generator",
       outcome: "Turn any document into a presentation",
-      description:
-        "Choose your tone, set your language, add speaker notes — done in seconds.",
+      description: "Choose your tone, set your language, add speaker notes — done in seconds.",
       icon: "present_to_all",
       color: "cyan",
     },
@@ -241,7 +240,7 @@ const CapabilityExplorer = () => {
                 href="#waitlist"
                 className="bg-primary-gradient text-white px-8 py-4 rounded-full font-bold text-sm shadow-xl shadow-indigo-600/20 hover:scale-105 transition-all"
               >
-                Get Early Access
+                Join the Waitlist
               </a>
               <div className="flex items-center gap-2 text-on-surface-variant font-medium text-sm">
                 <span className="material-symbols-outlined text-[18px]">verified_user</span>
@@ -302,7 +301,7 @@ export default function Page() {
 
   const navLinks = [
     { label: "Features", href: "#features" },
-    { label: "How It Works", href: "#how-it-works" },
+    { label: "The Impact", href: "#the-impact" },
     { label: "Compare", href: "#compare" },
     { label: "Testimonials", href: "#testimonials" },
   ];
@@ -338,7 +337,7 @@ export default function Page() {
             href="#waitlist"
             className="hidden md:inline-flex bg-primary-gradient text-white px-6 py-2.5 rounded-full font-medium text-sm hover:opacity-90 transition-all shadow-lg shadow-indigo-500/10"
           >
-            Get Early Access
+            Join the Waitlist
           </a>
 
           {/* Mobile hamburger */}
@@ -403,7 +402,7 @@ export default function Page() {
             onClick={closeMenu}
             className="block bg-primary-gradient text-white text-center py-3 rounded-2xl font-bold text-sm shadow-xl shadow-indigo-500/20 hover:opacity-90 transition-opacity"
           >
-            Get Early Access
+            Join the Waitlist
           </a>
         </div>
       </div>
@@ -435,14 +434,14 @@ export default function Page() {
                 href="#waitlist"
                 className="bg-primary-gradient text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base shadow-2xl shadow-indigo-600/30 hover:scale-[1.02] hover:shadow-indigo-600/40 transition-all text-center flex items-center justify-center"
               >
-                Get Early Access
+                Join the Waitlist
               </a>
               <a
-                href="#how-it-works"
+                href="#the-impact"
                 className="bg-white text-indigo-600 border border-indigo-100 px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-indigo-50/50 transition-all flex items-center justify-center gap-2"
               >
-                <span className="material-symbols-outlined text-xl">play_circle</span>
-                Watch Demo
+                <span className="material-symbols-outlined text-xl">speed</span>
+                See the Impact
               </a>
             </div>
           </div>
@@ -853,15 +852,15 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ── Demo / How It Works ── */}
+        {/* ── Impact Section ── */}
         <section
-          id="how-it-works"
+          id="the-impact"
           className="bg-indigo-50/50 py-14 sm:py-20 lg:py-32 border-y border-indigo-100/30"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline mb-4">
-                Experience the Velocity
+                What Changes When You Use Tadris
               </h2>
               <p className="text-on-surface-variant text-sm sm:text-base">
                 NCAAA TP-153 Course Report Drafting
@@ -1193,7 +1192,7 @@ export default function Page() {
                 href="#waitlist"
                 className="bg-primary-gradient text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-xl shadow-indigo-500/10 hover:opacity-90 transition-all inline-flex items-center gap-2 min-h-[48px]"
               >
-                Start Saving Time Today{" "}
+                Join the Waitlist{" "}
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </a>
             </div>
@@ -1270,8 +1269,8 @@ export default function Page() {
                 Ready to Focus on What Matters?
               </h2>
               <p className="text-indigo-100 text-sm sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Join 500+ faculty members already using Tadris AI to reclaim their time. Early
-                access members get 50% off for life.
+                Currently in private beta with faculty at Saudi universities. Early access spots are
+                limited.
               </p>
             </div>
             <div className="lg:w-1/2 w-full bg-glass p-6 sm:p-8 rounded-xl sm:rounded-2xl text-on-surface border border-white/40">
@@ -1291,12 +1290,11 @@ export default function Page() {
                     Primary Role
                   </label>
                   <select className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]">
-                    <option>Professor</option>
-                    <option>Assistant Professor</option>
-                    <option>Adjunct</option>
-                    <option>Researcher</option>
+                    <option>Professor (Full / Associate / Assistant)</option>
+                    <option>Lecturer</option>
+                    <option>Course Coordinator</option>
                     <option>Department Head</option>
-                    <option>Dean / Administrator</option>
+                    <option>Dean / Vice Dean of Academic Affairs</option>
                   </select>
                 </div>
                 <button
