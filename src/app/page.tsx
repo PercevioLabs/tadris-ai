@@ -371,54 +371,138 @@ export default function Page() {
         </section>
 
         {/* ── Problem Section ── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-8 py-14 sm:py-20 lg:py-32">
-          <div className="text-center mb-10 sm:mb-16 lg:mb-20">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline mb-4">
-              The Administrative Burden is Real
-            </h2>
-            <div className="w-16 h-1 bg-primary-gradient mx-auto rounded-full"></div>
+        <section className="relative overflow-hidden py-20 sm:py-28 lg:py-36">
+          {/* Background decorative elements */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none -z-10">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-100/40 blur-[100px] rounded-full animate-pulse-soft" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-100/30 blur-[100px] rounded-full animate-pulse-soft [animation-delay:1s]" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-outline-variant/30 transition-all hover:shadow-lg hover:border-indigo-100">
-              <span className="material-symbols-outlined text-indigo-500 text-4xl mb-4">timer</span>
-              <h3 className="font-headline font-bold text-lg sm:text-xl mb-3">20+ Hours Grading</h3>
-              <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                Professors spend nearly half their working week grading assignments instead of
-                engaging with students.
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-8">
+            <div className="text-center mb-16 lg:mb-24">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold tracking-widest uppercase border border-indigo-100 mb-4">
+                The Reality
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-6 tracking-tight text-on-surface">
+                The Administrative Burden is Real
+              </h2>
+              <p className="text-on-surface-variant text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                Academic excellence is often buried under hours of manual documentation and routine
+                grading. Reclaim your time for what matters most: your students.
               </p>
             </div>
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-outline-variant/30 transition-all hover:shadow-lg hover:border-indigo-100">
-              <span className="material-symbols-outlined text-indigo-500 text-4xl mb-4">
-                description
-              </span>
-              <h3 className="font-headline font-bold text-lg sm:text-xl mb-3">Report Fatigue</h3>
-              <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                Manually drafting TP-153 and TP-154 compliance reports takes days of tedious
-                cross-referencing data.
-              </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {/* Scenario 1 */}
+              <div className="group relative p-8 sm:p-10 rounded-[2rem] bg-white/60 backdrop-blur-md border border-indigo-100/50 hover:border-indigo-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-50 rounded-full blur-2xl group-hover:bg-indigo-100 transition-colors" />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <span
+                      className="material-symbols-outlined text-indigo-600 text-3xl"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      history_toggle_off
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
+                    The Sunday Night <br />
+                    Grading Mountain
+                  </h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
+                    Sunday night, 11:30 PM. 80+ research essays left for BIOL-302. You want to give
+                    meaningful feedback, but the deadline is tomorrow morning and the exhaustion is
+                    setting in.
+                  </p>
+                </div>
+              </div>
+
+              {/* Scenario 2 */}
+              <div className="group relative p-8 sm:p-10 rounded-[2rem] bg-white/60 backdrop-blur-md border border-indigo-100/50 hover:border-indigo-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-purple-50 rounded-full blur-2xl group-hover:bg-purple-100 transition-colors" />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <span
+                      className="material-symbols-outlined text-purple-600 text-3xl"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      pending_actions
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
+                    The Accreditation <br />
+                    Shadow
+                  </h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
+                    Final grades are in. While your colleagues are already on break, you&apos;re
+                    still trapped in the office with TP-153 and TP-154 reports, manually mapping
+                    every CLO for NCAAA compliance.
+                  </p>
+                </div>
+              </div>
+
+              {/* Scenario 3 */}
+              <div className="group relative p-8 sm:p-10 rounded-[2rem] bg-white/60 backdrop-blur-md border border-indigo-100/50 hover:border-indigo-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-pink-50 rounded-full blur-2xl group-hover:bg-pink-100 transition-colors" />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-2xl bg-pink-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <span
+                      className="material-symbols-outlined text-pink-600 text-3xl"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      chat_error
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
+                    The Feedback <br />
+                    Black Hole
+                  </h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
+                    Your students submitted their projects last Monday. They need your guidance to
+                    succeed on the final exam, but your calendar is packed with administrative
+                    meetings until next week.
+                  </p>
+                </div>
+              </div>
+
+              {/* Scenario 4 */}
+              <div className="group relative p-8 sm:p-10 rounded-[2rem] bg-white/60 backdrop-blur-md border border-indigo-100/50 hover:border-indigo-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-amber-50 rounded-full blur-2xl group-hover:bg-amber-100 transition-colors" />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <span
+                      className="material-symbols-outlined text-amber-600 text-3xl"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      video_stable
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
+                    The Hidden <br />
+                    Academic Vault
+                  </h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
+                    You recorded a brilliant 60-minute lecture. Now it&apos;s a dormant 2GB file in
+                    LMS. No transcripts, no summaries, and no easy way for your students to search
+                    or interact with your insights.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-outline-variant/30 transition-all hover:shadow-lg hover:border-indigo-100 sm:col-span-2 lg:col-span-1">
-              <span className="material-symbols-outlined text-indigo-500 text-4xl mb-4">
-                feedback
-              </span>
-              <h3 className="font-headline font-bold text-lg sm:text-xl mb-3">Delayed Feedback</h3>
-              <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                The administrative backlog means students often wait weeks for meaningful guidance
-                on their work.
-              </p>
+
+            <div className="mt-16 text-center">
+              <a
+                href="#waitlist"
+                className="inline-flex items-center gap-2 text-indigo-600 font-bold hover:gap-3 transition-all group"
+              >
+                Ready to focus on what matters?
+                <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
+                  arrow_forward
+                </span>
+              </a>
             </div>
-          </div>
-          <div className="mt-10 sm:mt-14 text-center">
-            <a
-              href="#waitlist"
-              className="bg-primary-gradient text-white px-5 py-2 sm:px-8 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-xl shadow-indigo-500/10 hover:opacity-90 transition-all inline-flex items-center gap-2"
-            >
-              Get Early Access{" "}
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
-            </a>
           </div>
         </section>
-
         {/* ── Features (Bento Grid) ── */}
         <section id="features" className="bg-surface py-14 sm:py-20 lg:py-32 relative">
           <div className="absolute inset-0 bg-indigo-50/30 -skew-y-2 pointer-events-none"></div>
