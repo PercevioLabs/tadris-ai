@@ -1,6 +1,264 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+const CapabilityExplorer = () => {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const capabilities = [
+    {
+      id: "grading",
+      navTitle: "Essay Grading",
+      outcome: "Grade 80 essays in 2 hours instead of 20",
+      description:
+        "The AI drafts the feedback; you review and send. Reclaim your weekends with high-precision automated rubric mapping.",
+      icon: "reviews",
+      color: "indigo",
+    },
+    {
+      id: "ncaaa",
+      navTitle: "NCAAA Reports",
+      outcome: "TP-153 & TP-154 drafts in 5 minutes",
+      description:
+        "Upload your grades and get a complete accreditation report draft—including the action plan—instantly.",
+      icon: "assignment_turned_in",
+      color: "purple",
+    },
+    {
+      id: "lecture",
+      navTitle: "Session Processing",
+      outcome: "From Lecture to Study Guide in seconds",
+      description:
+        "Upload a recording. Get a study guide, flashcards, a quiz, and a mind map—ready to share with students.",
+      icon: "auto_mode",
+      color: "blue",
+    },
+    {
+      id: "exams",
+      navTitle: "Assessment Builder",
+      outcome: "Exam Mapping, Solved",
+      description:
+        "Build a full exam from course material—every question automatically mapped to your CLOs across any format.",
+      icon: "fact_check",
+      color: "emerald",
+    },
+    {
+      id: "assistant",
+      navTitle: "Teaching Assistant",
+      outcome: "24/7 Support for Every Student",
+      description:
+        "Students get answers at any hour. You see what they're struggling with in your dashboard in real-time.",
+      icon: "support_agent",
+      color: "amber",
+    },
+    {
+      id: "planner",
+      navTitle: "Lesson Planner",
+      outcome: "Complete Lesson Plans in Seconds",
+      description:
+        "Just type your topic. Get a full plan built on evidence-based strategies that work for your specific subject.",
+      icon: "architecture",
+      color: "rose",
+    },
+    {
+      id: "slides",
+      navTitle: "Slide Generator",
+      outcome: "Instant Multi-Language Presentations",
+      description:
+        "Turn any document into a professional deck. Choose your tone, set your language, and add speaker notes.",
+      icon: "present_to_all",
+      color: "cyan",
+    },
+    {
+      id: "collaborative",
+      navTitle: "Peer Intelligence",
+      outcome: "Adapt Proven Teaching Strategies",
+      description:
+        "See what top-performing instructors in your subject are doing and adapt their best practices for your class.",
+      icon: "hub",
+      color: "violet",
+    },
+    {
+      id: "labs",
+      navTitle: "Lab Builder",
+      outcome: "Structured Labs in Minutes",
+      description:
+        "Generate problem statements, instructions, hints, solutions, and rubrics for Science & CS labs instantly.",
+      icon: "science",
+      color: "orange",
+    },
+    {
+      id: "pedagogy",
+      navTitle: "Pedagogy Rec.",
+      outcome: "Evidence-Based Delivery Guides",
+      description:
+        "Get suggestions on how to teach complex topics based on how similar high-performing instructors approached them.",
+      icon: "tips_and_updates",
+      color: "fuchsia",
+    },
+  ];
+
+  const handleSwitch = (idx: number) => {
+    if (idx === activeIdx) return;
+    setIsTransitioning(true);
+
+    // Wait for the exit animation to almost complete (assuming duration-500)
+    setTimeout(() => {
+      setActiveIdx(idx);
+
+      // Brief pause to ensure state change is processed before starting enter animation
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 350);
+  };
+
+  const nextIdx = (activeIdx + 1) % capabilities.length;
+  const prevIdx = (activeIdx - 1 + capabilities.length) % capabilities.length;
+
+  // Auto-play Logic
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      handleSwitch(nextIdx);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [activeIdx, isPaused, nextIdx]);
+
+  const current = capabilities[activeIdx];
+
+  return (
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+      {/* Sidebar Navigation */}
+      <div className="w-full lg:w-[320px] lg:sticky lg:top-32 space-y-1">
+        <div className="mb-4 px-4 py-2 border-b border-indigo-100 flex items-center justify-between">
+          <span className="text-[10px] font-bold text-indigo-900/40 uppercase tracking-widest">
+            Outcome Index
+          </span>
+          <span className="text-[10px] font-mono text-indigo-400">
+            {activeIdx + 1} / {capabilities.length}
+          </span>
+        </div>
+        <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-1 scrollbar-hide no-scrollbar">
+          {capabilities.map((cap, idx) => (
+            <button
+              key={cap.id}
+              onClick={() => handleSwitch(idx)}
+              className={`flex-shrink-0 group relative w-full text-left px-5 py-4 rounded-xl transition-all duration-300 flex items-center gap-4 ${
+                activeIdx === idx
+                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
+                  : "text-on-surface-variant hover:bg-indigo-50 hover:text-indigo-600"
+              }`}
+            >
+              <span
+                className={`material-symbols-outlined text-[20px] ${
+                  activeIdx === idx ? "text-white" : "text-indigo-400"
+                }`}
+                style={{ fontVariationSettings: "'FILL' 1" }}
+              >
+                {cap.icon}
+              </span>
+              <span className="font-bold text-sm tracking-tight whitespace-nowrap lg:whitespace-normal leading-tight">
+                {cap.navTitle}
+              </span>
+              {activeIdx === idx && (
+                <div className="absolute right-4 w-1.5 h-1.5 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]" />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Main Viewport */}
+      <div
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="flex-1 w-full relative min-h-[500px]"
+      >
+        <div
+          className={`w-full bg-white/60 backdrop-blur-2xl border border-white/50 rounded-[2.5rem] p-8 sm:p-12 lg:p-16 shadow-2xl shadow-indigo-500/5 transition-all duration-500 flex flex-col justify-between h-full group hover:bg-white/80 ${
+            isTransitioning ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <div className="relative z-10">
+            {/* Pause indicator (subtle) */}
+            {/* {isPaused && (
+              <div className="absolute -top-4 -right-4 bg-indigo-600 text-white text-[8px] font-bold px-2 py-1 rounded-full animate-pulse shadow-lg z-50">
+                AUTOPLAY PAUSED
+              </div>
+            )} */}
+            <div className="flex items-start justify-between mb-10">
+              <div
+                className={`w-16 h-16 rounded-2xl bg-${current.color}-50 flex items-center justify-center text-${current.color}-600 transition-transform group-hover:scale-110 duration-500 shadow-sm`}
+              >
+                <span
+                  className="material-symbols-outlined text-4xl"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  {current.icon}
+                </span>
+              </div>
+
+              {/* Navigation Chevrons */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleSwitch(prevIdx)}
+                  className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
+                  aria-label="Previous Outcome"
+                >
+                  <span className="material-symbols-outlined text-lg">chevron_left</span>
+                </button>
+                <button
+                  onClick={() => handleSwitch(nextIdx)}
+                  className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
+                  aria-label="Next Outcome"
+                >
+                  <span className="material-symbols-outlined text-lg">chevron_right</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <span
+                className={`text-[10px] font-bold uppercase tracking-widest text-${current.color}-600/60 mb-4 block`}
+              >
+                Capability: {current.navTitle}
+              </span>
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline text-on-surface leading-[1.1] tracking-tight mb-8">
+                {current.outcome}
+              </h3>
+              <p className="text-on-surface-variant text-lg sm:text-xl leading-relaxed max-w-2xl">
+                {current.description}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 relative">
+            <div className="mt-12 flex items-center gap-6">
+              <a
+                href="#waitlist"
+                className="bg-primary-gradient text-white px-8 py-4 rounded-full font-bold text-sm shadow-xl shadow-indigo-600/20 hover:scale-105 transition-all"
+              >
+                Get Early Access
+              </a>
+              <div className="flex items-center gap-2 text-on-surface-variant font-medium text-sm">
+                <span className="material-symbols-outlined text-[18px]">verified_user</span>
+                Verified for Saudi Higher Ed
+              </div>
+            </div>
+          </div>
+
+          {/* Background Decorative Shape */}
+          <div
+            className={`absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-${current.color}-50/30 to-transparent pointer-events-none -z-10 rounded-r-[2.5rem]`}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -503,102 +761,32 @@ export default function Page() {
             </div>
           </div>
         </section>
-        {/* ── Features (Bento Grid) ── */}
-        <section id="features" className="bg-surface py-14 sm:py-20 lg:py-32 relative">
-          <div className="absolute inset-0 bg-indigo-50/30 -skew-y-2 pointer-events-none"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-            <div className="mb-10 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline mb-3 sm:mb-4">
-                Powerful Features for Modern Faculty
+        {/* ── Features (The Interactive Capability Explorer) ── */}
+        <section
+          id="features"
+          className="bg-surface py-24 sm:py-32 lg:py-48 relative overflow-hidden"
+        >
+          {/* Spatial background elements */}
+          <div className="absolute inset-0 pointer-events-none -z-10">
+            <div className="absolute top-[10%] left-[5%] w-[40%] h-[40%] bg-indigo-50/30 blur-[120px] rounded-full" />
+            <div className="absolute bottom-[10%] right-[5%] w-[35%] h-[35%] bg-purple-50/25 blur-[100px] rounded-full" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+            <div className="mb-20 sm:mb-28 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50/80 text-indigo-600 text-[10px] font-bold tracking-widest uppercase border border-indigo-100/50 mb-6 font-mono">
+                System Capabilities v2.0
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-headline tracking-tighter text-on-surface leading-[0.95] mb-8">
+                Outcomes Over Features.
               </h2>
-              <p className="text-on-surface-variant text-base sm:text-lg">
-                Intelligent automation that understands academic context.
+              <p className="text-on-surface-variant text-lg sm:text-xl max-w-2xl leading-relaxed">
+                Interact with our core workflows to see how we transform the academic burden into
+                teaching momentum.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5 sm:gap-6">
-              <div className="sm:col-span-2 lg:col-span-8 bg-indigo-900 text-white p-7 sm:p-10 rounded-2xl flex flex-col justify-end relative overflow-hidden group min-h-[260px] sm:min-h-[300px]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="Collaboration"
-                  className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKjOymSH2QeyEUyEWaGWyoiC1D6c6JRqeXnQCjyBvn0utgxch_bYkiiAmau0o42A3u0ES9VCU8cBtmtATu078Pna2SUiJj7Q-XIVy48_ynUjh-KUE1jN57LtlSOJADlGvM8iSR8Mbqi2Tt07BXbwBKYv4JOs5aodHyZ_l-KhYQZRKn3N_1UPpuMf6gCtEXPeYOGHMc0L0gxgwDbz3VAni4BZyvRLi55nXS4O5TG4hLttYCcvjE_XflBo5aS3uZtar00OCo3LfRu2Ai"
-                />
-                <div className="relative z-10">
-                  <span
-                    className="material-symbols-outlined text-3xl sm:text-4xl mb-3 sm:mb-4 text-indigo-400"
-                    style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    draw
-                  </span>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-headline mb-3 sm:mb-4">
-                    Automated Grading &amp; Feedback
-                  </h3>
-                  <p className="text-indigo-100/90 text-sm sm:text-base max-w-lg">
-                    Advanced LLMs provide preliminary scoring and personalized feedback based on
-                    your specific rubrics, ready for your final approval.
-                  </p>
-                </div>
-              </div>
 
-              <div className="lg:col-span-4 bg-white border border-outline-variant/50 p-7 sm:p-10 rounded-2xl flex flex-col justify-between shadow-sm">
-                <div>
-                  <span className="material-symbols-outlined text-indigo-600 text-4xl mb-4">
-                    auto_stories
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold font-headline mb-3 sm:mb-4">
-                    AI Lesson Plans
-                  </h3>
-                  <p className="text-on-surface-variant text-sm sm:text-base">
-                    Generate complete syllabus-aligned weekly modules, including reading lists and
-                    quiz questions, in seconds.
-                  </p>
-                </div>
-                <div className="mt-6 sm:mt-8 bg-surface-container p-4 rounded-xl text-xs font-mono text-indigo-600 border border-indigo-100">
-                  &gt; Generating module 4... <br />
-                  &gt; Syllabus alignment: 98.4%
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 bg-tertiary-container text-white p-7 sm:p-10 rounded-2xl flex flex-col justify-between shadow-xl shadow-purple-500/10">
-                <span className="material-symbols-outlined text-white text-4xl mb-4">
-                  analytics
-                </span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold font-headline mb-3 sm:mb-4">
-                    Auto NCAAA Reports
-                  </h3>
-                  <p className="text-white/80 text-sm sm:text-base">
-                    Instantly aggregate course performance data into compliant TP-153 and TP-154
-                    formats with one click.
-                  </p>
-                </div>
-              </div>
-
-              <div className="lg:col-span-7 bg-indigo-50 border border-indigo-100 p-7 sm:p-10 rounded-2xl relative overflow-hidden">
-                <div className="max-w-md">
-                  <span className="material-symbols-outlined text-4xl mb-4 text-indigo-600">
-                    search_insights
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold font-headline mb-3 sm:mb-4 text-indigo-950">
-                    Research Summarization
-                  </h3>
-                  <p className="text-indigo-900/70 text-sm sm:text-base">
-                    Keep up with thousands of journals. Our AI digests new research in your field
-                    and summarizes the findings into actionable teaching insights.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10 sm:mt-16 text-center">
-              <a
-                href="#waitlist"
-                className="bg-primary-gradient text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-xl shadow-indigo-500/10 hover:opacity-90 transition-all inline-flex items-center gap-2 min-h-[48px]"
-              >
-                Join the Future of Teaching{" "}
-                <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </a>
-            </div>
+            <CapabilityExplorer />
           </div>
         </section>
 
