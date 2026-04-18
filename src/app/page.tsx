@@ -9,94 +9,94 @@ const CapabilityExplorer = () => {
 
   const capabilities = [
     {
-      id: "grading",
-      navTitle: "Essay Grading",
-      outcome: "Grade 80 essays in 2 hours instead of 20",
-      description:
-        "The AI drafts the feedback; you review and send. Reclaim your weekends with high-precision automated rubric mapping.",
-      icon: "reviews",
-      color: "indigo",
-    },
-    {
-      id: "ncaaa",
-      navTitle: "NCAAA Reports",
-      outcome: "TP-153 & TP-154 drafts in 5 minutes",
-      description:
-        "Upload your grades and get a complete accreditation report draft—including the action plan—instantly.",
-      icon: "assignment_turned_in",
-      color: "purple",
-    },
-    {
       id: "lecture",
       navTitle: "Session Processing",
-      outcome: "From Lecture to Study Guide in seconds",
+      outcome: "Upload last week's lecture",
       description:
-        "Upload a recording. Get a study guide, flashcards, a quiz, and a mind map—ready to share with students.",
+        "Get a study guide, flashcards, a quiz, and a mind map — ready to share with students.",
       icon: "auto_mode",
       color: "blue",
     },
     {
       id: "exams",
       navTitle: "Assessment Builder",
-      outcome: "Exam Mapping, Solved",
+      outcome: "Build a full exam from your course material",
       description:
-        "Build a full exam from course material—every question automatically mapped to your CLOs across any format.",
+        "Every question mapped to your CLOs, across every format you need — automatically.",
       icon: "fact_check",
       color: "emerald",
     },
     {
+      id: "grading",
+      navTitle: "Essay Grading",
+      outcome: "Grade 80 essays in 2 hours instead of 20",
+      description:
+        "The AI drafts the feedback; you review and send. Reclaim your weekends with automated rubric mapping.",
+      icon: "reviews",
+      color: "indigo",
+    },
+    {
       id: "assistant",
-      navTitle: "Teaching Assistant",
+      navTitle: "AI Teaching Assistant",
       outcome: "24/7 Support for Every Student",
       description:
-        "Students get answers at any hour. You see what they're struggling with in your dashboard in real-time.",
+        "Students get answers at any hour. You see what they're struggling with in your dashboard.",
       icon: "support_agent",
       color: "amber",
     },
     {
       id: "planner",
       navTitle: "Lesson Planner",
-      outcome: "Complete Lesson Plans in Seconds",
+      outcome: "Type your topic and learning objective",
       description:
-        "Just type your topic. Get a full plan built on evidence-based strategies that work for your specific subject.",
+        "Get a complete lesson plan in seconds, built on what actually works for similar courses.",
       icon: "architecture",
       color: "rose",
     },
     {
       id: "slides",
-      navTitle: "Slide Generator",
-      outcome: "Instant Multi-Language Presentations",
+      navTitle: "Slide Deck Generator",
+      outcome: "Turn any document into a presentation",
       description:
-        "Turn any document into a professional deck. Choose your tone, set your language, and add speaker notes.",
+        "Choose your tone, set your language, add speaker notes — done in seconds.",
       icon: "present_to_all",
       color: "cyan",
     },
     {
       id: "collaborative",
-      navTitle: "Peer Intelligence",
-      outcome: "Adapt Proven Teaching Strategies",
+      navTitle: "Collaborative Intelligence",
+      outcome: "See what top instructors are doing",
       description:
-        "See what top-performing instructors in your subject are doing and adapt their best practices for your class.",
+        "Observe best practices in your subject area and adapt proven strategies for your own class.",
       icon: "hub",
       color: "violet",
     },
     {
       id: "labs",
       navTitle: "Lab Builder",
-      outcome: "Structured Labs in Minutes",
+      outcome: "Create a fully structured lab exercise",
       description:
-        "Generate problem statements, instructions, hints, solutions, and rubrics for Science & CS labs instantly.",
+        "Problem statements, instructions, hints, solution guides, and rubrics — in minutes.",
       icon: "science",
       color: "orange",
     },
     {
       id: "pedagogy",
-      navTitle: "Pedagogy Rec.",
-      outcome: "Evidence-Based Delivery Guides",
+      navTitle: "Pedagogy Recommender",
+      outcome: "Not sure how to teach a complex topic?",
       description:
-        "Get suggestions on how to teach complex topics based on how similar high-performing instructors approached them.",
+        "Get evidence-based delivery suggestions based on how similar instructors approached it.",
       icon: "tips_and_updates",
       color: "fuchsia",
+    },
+    {
+      id: "ncaaa",
+      navTitle: "NCAAA Report Assistant",
+      outcome: "TP-153 & TP-154 drafts in 5 minutes",
+      description:
+        "Upload your grades and get a complete accreditation report draft — including the action plan.",
+      icon: "assignment_turned_in",
+      color: "purple",
     },
   ];
 
