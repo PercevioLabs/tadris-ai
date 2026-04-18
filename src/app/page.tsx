@@ -1044,9 +1044,10 @@ export default function Page() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-indigo-50">
+                    {/* Row 1: NCAAA */}
                     <tr>
                       <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        NCAAA Compliance Reporting
+                        NCAAA Report Generation (TP-153/154)
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1060,9 +1061,61 @@ export default function Page() {
                         <span className="material-symbols-outlined text-outline/30">remove</span>
                       </td>
                     </tr>
+                    {/* Row 2: Arabic */}
                     <tr>
                       <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Rubric-Based Grading
+                        Arabic language outputs with I’rab accuracy
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-indigo-600">
+                          check_circle
+                        </span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                    </tr>
+                    {/* Row 3: CLO/PLO */}
+                    <tr>
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
+                        CLO/PLO mapped assessments
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-indigo-600">
+                          check_circle
+                        </span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                    </tr>
+                    {/* Row 4: Essay grading */}
+                    <tr>
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
+                        Essay grading with rubric alignment
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-indigo-600">
+                          check_circle
+                        </span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                    </tr>
+                    {/* Row 5: Session recordings */}
+                    <tr>
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
+                        Session recordings → study materials
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1075,14 +1128,30 @@ export default function Page() {
                         </span>
                       </td>
                       <td className="p-4 sm:p-6">
-                        <span className="material-symbols-outlined text-on-surface-variant/40">
-                          circle
-                        </span>
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
                       </td>
                     </tr>
+                    {/* Row 6: PDPL */}
                     <tr>
                       <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Research Summarization
+                        Data stays in Saudi Arabia (PDPL)
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-indigo-600">
+                          check_circle
+                        </span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                      <td className="p-4 sm:p-6">
+                        <span className="material-symbols-outlined text-outline/30">remove</span>
+                      </td>
+                    </tr>
+                    {/* Row 7: Human in the loop */}
+                    <tr>
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
+                        Instructor approves every AI output
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1098,27 +1167,10 @@ export default function Page() {
                         <span className="material-symbols-outlined text-outline/30">remove</span>
                       </td>
                     </tr>
+                    {/* Row 8: Peer benchmarking */}
                     <tr>
                       <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        LMS Deep Integration
-                      </td>
-                      <td className="p-4 sm:p-6">
-                        <span className="material-symbols-outlined text-indigo-600">
-                          check_circle
-                        </span>
-                      </td>
-                      <td className="p-4 sm:p-6">
-                        <span className="material-symbols-outlined text-outline/30">remove</span>
-                      </td>
-                      <td className="p-4 sm:p-6">
-                        <span className="material-symbols-outlined text-indigo-600">
-                          check_circle
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        AI Lesson Plan Generation
+                        Peer benchmarking across instructors
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
