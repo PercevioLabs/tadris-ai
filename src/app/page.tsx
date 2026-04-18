@@ -711,8 +711,8 @@ export default function Page() {
                     </span>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
-                    The Accreditation <br />
-                    Shadow
+                    Delayed <br />
+                    Report Submission
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
                     Final grades are in. While your colleagues are already on break, you&apos;re
