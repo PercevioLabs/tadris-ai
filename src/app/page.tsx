@@ -131,7 +131,7 @@ const CapabilityExplorer = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
       {/* Sidebar Navigation */}
-      <div className="w-full lg:w-[320px] lg:sticky lg:top-32 space-y-1">
+      <div className="w-full lg:w-[320px] lg:sticky lg:top-32 space-y-1 hidden sm:block">
         <div className="mb-4 px-4 py-2 border-b border-indigo-100 flex items-center justify-between">
           <span className="text-[10px] font-bold text-indigo-900/40 uppercase tracking-widest">
             Outcome Index
@@ -200,8 +200,8 @@ const CapabilityExplorer = () => {
                 </span>
               </div>
 
-              {/* Navigation Chevrons */}
-              <div className="flex items-center gap-2">
+              {/* Navigation Chevrons (Desktop Only) */}
+              <div className="hidden lg:flex items-center gap-2">
                 <button
                   onClick={() => handleSwitch(prevIdx)}
                   className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
@@ -234,17 +234,42 @@ const CapabilityExplorer = () => {
             </div>
           </div>
 
-          <div className="mt-12 relative">
-            <div className="mt-12 flex items-center gap-6">
-              <a
-                href="#waitlist"
-                className="bg-primary-gradient text-white px-8 py-4 rounded-full font-bold text-sm shadow-xl shadow-indigo-600/20 hover:scale-105 transition-all"
-              >
-                Join the Waitlist
-              </a>
-              <div className="flex items-center gap-2 text-on-surface-variant font-medium text-sm">
-                <span className="material-symbols-outlined text-[18px]">verified_user</span>
-                Verified for Saudi Higher Ed
+          <div className="mt-12 relative lg:mt-12">
+            <div className="flex sm:flex-row flex-col items-center justify-between gap-6">
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                <a
+                  href="#waitlist"
+                  className="bg-primary-gradient text-white px-8 py-4 rounded-full font-bold text-sm shadow-xl shadow-indigo-600/20 hover:scale-105 transition-all"
+                >
+                  Join the Waitlist
+                </a>
+                <div className="flex items-center gap-2 text-on-surface-variant font-medium text-sm">
+                  <span className="material-symbols-outlined text-[18px]">verified_user</span>
+                  Verified for Saudi Higher Ed
+                </div>
+              </div>
+
+              {/* Navigation Chevrons (Mobile Only) */}
+              <div className="lg:hidden flex items-center justify-between w-full sm:w-auto pt-6 border-t border-indigo-50 sm:border-t-0 sm:pt-0">
+                <div className="text-xs font-mono text-indigo-400">
+                  {activeIdx + 1} / {capabilities.length}
+                </div>
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => handleSwitch(prevIdx)}
+                    className="w-12 h-12 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
+                    aria-label="Previous Outcome"
+                  >
+                    <span className="material-symbols-outlined text-xl">chevron_left</span>
+                  </button>
+                  <button
+                    onClick={() => handleSwitch(nextIdx)}
+                    className="w-12 h-12 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
+                    aria-label="Next Outcome"
+                  >
+                    <span className="material-symbols-outlined text-xl">chevron_right</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -303,7 +328,6 @@ export default function Page() {
     { label: "Features", href: "#features" },
     { label: "The Impact", href: "#the-impact" },
     { label: "Compare", href: "#compare" },
-    { label: "Testimonials", href: "#testimonials" },
   ];
 
   return (
@@ -436,13 +460,13 @@ export default function Page() {
               >
                 Join the Waitlist
               </a>
-              <a
+              {/* <a
                 href="#the-impact"
                 className="bg-white text-indigo-600 border border-indigo-100 px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-indigo-50/50 transition-all flex items-center justify-center gap-2"
               >
                 <span className="material-symbols-outlined text-xl">speed</span>
                 See the Impact
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -746,18 +770,6 @@ export default function Page() {
                 </div>
               </div>
             </div>
-
-            <div className="mt-16 text-center">
-              <a
-                href="#waitlist"
-                className="inline-flex items-center gap-2 text-indigo-600 font-bold hover:gap-3 transition-all group"
-              >
-                Ready to focus on what matters?
-                <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
-              </a>
-            </div>
           </div>
         </section>
         {/* ── Features (The Interactive Capability Explorer) ── */}
@@ -776,7 +788,7 @@ export default function Page() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50/80 text-indigo-600 text-[10px] font-bold tracking-widest uppercase border border-indigo-100/50 mb-6 font-mono">
                 System Capabilities v2.0
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-headline tracking-tighter text-on-surface leading-[0.95] mb-8">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline tracking-tighter text-on-surface leading-[0.95] mb-8">
                 Outcomes Over Features.
               </h2>
               <p className="text-on-surface-variant text-lg sm:text-xl max-w-2xl leading-relaxed">
@@ -793,7 +805,7 @@ export default function Page() {
         <section className="max-w-7xl mx-auto px-4 sm:px-8 py-14 sm:py-20 lg:py-32">
           <div className="flex flex-col md:flex-row gap-10 lg:gap-16">
             <div className="md:w-1/3">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline tracking-tight leading-tight">
                 Why Choose Tadris AI?
               </h2>
               <p className="mt-4 sm:mt-6 text-on-surface-variant leading-relaxed text-sm sm:text-base">
@@ -859,7 +871,7 @@ export default function Page() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-10 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-4 tracking-tight">
                 What Changes When You Use Tadris
               </h2>
               <p className="text-on-surface-variant text-sm sm:text-base">
@@ -942,68 +954,64 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ── Benefits Section ── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-8 py-14 sm:py-20 lg:py-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
-            {/* Image — hidden on mobile to reduce clutter */}
-            <div className="relative hidden md:block">
-              <div className="absolute -inset-4 bg-primary-gradient blur-3xl opacity-10 rounded-full"></div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt="Happy Faculty"
-                className="rounded-2xl shadow-2xl relative z-10 w-full"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB89TpsLkNbT8dFDyBJKBThMY2-dJREL9BO1_CKUFslKrkrUbYRi9W7C7OD4w4fuukrnO7Sl675r9Uu5-KKtcOcjD0GXnRJb4K3n7gyBKBz8Nypn9OZUuUl1_qKJtN0zlwafTG-UXEJyEtQr4-8JqDh3aMtdlaDAG-5Lz-Pbig5X8xGmzhHY4FGtW3v6MFDrO7fsfKRrfUzRW9R9SRNPTgHX6yMfAFBZVDbRdzrE9qIXZ8rlY4VNH3b9Bfidkx231TistKMKhzhEQWG"
-              />
-            </div>
-            <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline mb-6 sm:mb-8 leading-tight">
-                Elevate Your Academic Impact
-              </h2>
-              <div className="space-y-6 sm:space-y-8">
-                <div className="flex gap-4">
-                  <div className="bg-indigo-100 p-3 h-fit rounded-xl flex-shrink-0">
-                    <span className="material-symbols-outlined text-indigo-600">schedule</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold font-headline text-base sm:text-xl mb-1 text-on-surface">
-                      Save 10+ Hours Weekly
-                    </h4>
-                    <p className="text-on-surface-variant text-sm sm:text-base">
-                      Automate the most time-consuming administrative tasks without sacrificing
-                      quality.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="bg-indigo-100 p-3 h-fit rounded-xl flex-shrink-0">
-                    <span className="material-symbols-outlined text-indigo-600">bolt</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold font-headline text-base sm:text-xl mb-1 text-on-surface">
-                      Faster Feedback Cycles
-                    </h4>
-                    <p className="text-on-surface-variant text-sm sm:text-base">
-                      Students learn better with timely interventions. Give feedback in hours, not
-                      weeks.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="bg-indigo-100 p-3 h-fit rounded-xl flex-shrink-0">
-                    <span className="material-symbols-outlined text-indigo-600">
-                      psychology_alt
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold font-headline text-base sm:text-xl mb-1 text-on-surface">
-                      Reduced Cognitive Burden
-                    </h4>
-                    <p className="text-on-surface-variant text-sm sm:text-base">
-                      Prevent burnout by letting AI handle the routine formatting and data entry.
-                    </p>
-                  </div>
-                </div>
+        {/* ── Benefits Section (Redesigned without image) ── */}
+        <section className="max-w-7xl mx-auto px-6 sm:px-8 py-24 sm:py-32 lg:py-48 relative overflow-hidden text-center">
+          {/* Background Decorative elements to fill space since image is removed */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-50/20 blur-[120px] rounded-full -z-10" />
+
+          <div className="max-w-3xl mx-auto mb-16 sm:mb-24">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline leading-[1.1] tracking-tight text-on-surface mb-6">
+              Elevate Your Academic Impact
+            </h2>
+            <p className="text-on-surface-variant text-lg sm:text-xl leading-relaxed">
+              Tadris AI handles the administrative heavy lifting, so you can focus on the core of
+              teaching: thinking, mentoring, and inspiring.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative z-10">
+            {/* Benefit Card 1 */}
+            <div className="group p-8 sm:p-10 rounded-[2.5rem] bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl shadow-indigo-500/5 hover:bg-white/80 transition-all duration-500 hover:-translate-y-2 text-left">
+              <div className="bg-indigo-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <span className="material-symbols-outlined text-indigo-600 text-3xl">schedule</span>
               </div>
+              <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
+                Save 10+ Hours Weekly
+              </h4>
+              <p className="text-on-surface-variant leading-relaxed">
+                Automate the most time-consuming administrative tasks—from report drafting to rubric
+                mapping—without sacrificing quality.
+              </p>
+            </div>
+
+            {/* Benefit Card 2 */}
+            <div className="group p-8 sm:p-10 rounded-[2.5rem] bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl shadow-indigo-500/5 hover:bg-white/80 transition-all duration-500 hover:-translate-y-2 text-left">
+              <div className="bg-purple-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <span className="material-symbols-outlined text-purple-600 text-3xl">bolt</span>
+              </div>
+              <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
+                Faster Feedback Cycles
+              </h4>
+              <p className="text-on-surface-variant leading-relaxed">
+                Students learn better with timely interventions. Give personalized, rubric-aligned
+                feedback in hours, not weeks.
+              </p>
+            </div>
+
+            {/* Benefit Card 3 */}
+            <div className="group p-8 sm:p-10 rounded-[2.5rem] bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl shadow-indigo-500/5 hover:bg-white/80 transition-all duration-500 hover:-translate-y-2 text-left">
+              <div className="bg-amber-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <span className="material-symbols-outlined text-amber-600 text-3xl">
+                  psychology_alt
+                </span>
+              </div>
+              <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
+                Reduced Cognitive Burden
+              </h4>
+              <p className="text-on-surface-variant leading-relaxed">
+                Prevent burnout by letting AI handle the routine formatting and data entry, keeping
+                your mental energy for high-level pedagogy.
+              </p>
             </div>
           </div>
         </section>
@@ -1011,11 +1019,11 @@ export default function Page() {
         {/* ── Comparison Table ── */}
         <section
           id="compare"
-          className="bg-indigo-50/40 py-14 sm:py-20 lg:py-32 border-t border-indigo-100/30"
+          className="bg-surface py-14 sm:py-20 lg:py-32 border-t border-indigo-100/30"
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-10 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline tracking-tight">
                 How We Compare
               </h2>
               <p className="text-on-surface-variant mt-3 sm:mt-4 text-sm sm:text-base">
@@ -1199,114 +1207,56 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ── Testimonials ── */}
         <section
-          id="testimonials"
-          className="max-w-7xl mx-auto px-4 sm:px-8 py-14 sm:py-20 lg:py-32"
+          id="waitlist"
+          className="bg-indigo-50/40 border-t border-indigo-100/30 py-14 sm:py-20 lg:py-32"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline text-center mb-10 sm:mb-16 lg:mb-20">
-            Voices from the Faculty
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-indigo-100 shadow-sm relative">
-              <div className="absolute top-4 right-8 opacity-5">
-                <span className="material-symbols-outlined text-6xl text-indigo-600">
-                  format_quote
-                </span>
+          <div className="max-w-7xl mx-auto px-4 sm:px-8">
+            <div className="bg-primary-gradient rounded-2xl sm:rounded-3xl p-7 sm:p-12 text-white flex flex-col lg:flex-row gap-8 sm:gap-12 items-center shadow-2xl shadow-indigo-500/30">
+              <div className="lg:w-1/2 text-center lg:text-left">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-6 leading-tight tracking-tight">
+                  Ready to Focus on What Matters?
+                </h2>
+                <p className="text-indigo-100 text-sm sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
+                  Currently in private beta with faculty at Saudi universities. Early access spots
+                  are limited.
+                </p>
               </div>
-              <p className="text-base sm:text-lg italic text-on-surface mb-6 sm:mb-8 leading-relaxed">
-                &quot;Tadris AI has fundamentally changed my workflow. The NCAAA reporting tool
-                alone saves me two full days of work every semester. It&apos;s the first AI tool
-                that actually understands the nuances of academic compliance.&quot;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-200 flex-shrink-0">
-                  DR
-                </div>
-                <div>
-                  <div className="font-bold font-headline text-on-surface text-sm sm:text-base">
-                    Dr. Ahmed Al-Zahrani
+              <div className="lg:w-1/2 w-full bg-glass p-6 sm:p-8 rounded-xl sm:rounded-2xl text-on-surface border border-white/40">
+                <form className="space-y-4 sm:space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-indigo-950 mb-2">
+                      University Email
+                    </label>
+                    <input
+                      className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]"
+                      placeholder="dr.smith@university.edu"
+                      type="email"
+                    />
                   </div>
-                  <div className="text-xs sm:text-sm text-on-surface-variant">
-                    Assistant Professor of Computer Science
+                  <div>
+                    <label className="block text-sm font-semibold text-indigo-950 mb-2">
+                      Primary Role
+                    </label>
+                    <select className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]">
+                      <option>Professor (Full / Associate / Assistant)</option>
+                      <option>Lecturer</option>
+                      <option>Course Coordinator</option>
+                      <option>Department Head</option>
+                      <option>Dean / Vice Dean of Academic Affairs</option>
+                    </select>
                   </div>
-                </div>
+                  <button
+                    className="w-full bg-primary-gradient text-white py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base hover:shadow-lg transition-all active:scale-[0.98]"
+                    type="submit"
+                  >
+                    Join the Waitlist
+                  </button>
+                </form>
+                <p className="text-center text-xs text-on-surface-variant mt-4 sm:mt-6">
+                  Enterprise-grade security. GDPR &amp; NCAAA compliant.
+                </p>
               </div>
-            </div>
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-indigo-100 shadow-sm relative">
-              <div className="absolute top-4 right-8 opacity-5">
-                <span className="material-symbols-outlined text-6xl text-indigo-600">
-                  format_quote
-                </span>
-              </div>
-              <p className="text-base sm:text-lg italic text-on-surface mb-6 sm:mb-8 leading-relaxed">
-                &quot;As an adjunct juggling multiple courses, the automated grading assistant is a
-                lifesaver. It provides a great first pass that helps me focus my attention on the
-                students who need it most.&quot;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-purple-600 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-200 flex-shrink-0">
-                  MS
-                </div>
-                <div>
-                  <div className="font-bold font-headline text-on-surface text-sm sm:text-base">
-                    Maria Santos
-                  </div>
-                  <div className="text-xs sm:text-sm text-on-surface-variant">
-                    Adjunct Professor, Humanities
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Final Signup / Waitlist ── */}
-        <section id="waitlist" className="max-w-7xl mx-auto px-4 sm:px-8 py-14 sm:py-20 lg:py-32">
-          <div className="bg-primary-gradient rounded-2xl sm:rounded-3xl p-7 sm:p-12 text-white flex flex-col lg:flex-row gap-8 sm:gap-12 items-center shadow-2xl shadow-indigo-500/30">
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-headline mb-4 sm:mb-6 leading-tight">
-                Ready to Focus on What Matters?
-              </h2>
-              <p className="text-indigo-100 text-sm sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Currently in private beta with faculty at Saudi universities. Early access spots are
-                limited.
-              </p>
-            </div>
-            <div className="lg:w-1/2 w-full bg-glass p-6 sm:p-8 rounded-xl sm:rounded-2xl text-on-surface border border-white/40">
-              <form className="space-y-4 sm:space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-indigo-950 mb-2">
-                    University Email
-                  </label>
-                  <input
-                    className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]"
-                    placeholder="dr.smith@university.edu"
-                    type="email"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-indigo-950 mb-2">
-                    Primary Role
-                  </label>
-                  <select className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]">
-                    <option>Professor (Full / Associate / Assistant)</option>
-                    <option>Lecturer</option>
-                    <option>Course Coordinator</option>
-                    <option>Department Head</option>
-                    <option>Dean / Vice Dean of Academic Affairs</option>
-                  </select>
-                </div>
-                <button
-                  className="w-full bg-primary-gradient text-white py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base hover:shadow-lg transition-all active:scale-[0.98]"
-                  type="submit"
-                >
-                  Join the Waitlist
-                </button>
-              </form>
-              <p className="text-center text-xs text-on-surface-variant mt-4 sm:mt-6">
-                Enterprise-grade security. GDPR &amp; NCAAA compliant.
-              </p>
             </div>
           </div>
         </section>
