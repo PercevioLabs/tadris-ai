@@ -325,6 +325,7 @@ export default function Page() {
   }
 
   const navLinks = [
+    { label: "How it Works", href: "#how-it-works" },
     { label: "Features", href: "#features" },
     { label: "The Impact", href: "#the-impact" },
     { label: "Compare", href: "#compare" },
@@ -764,6 +765,106 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        {/* ── How It Works ── */}
+        <section
+          id="how-it-works"
+          className="py-20 sm:py-28 lg:py-36 bg-surface relative overflow-hidden"
+        >
+          {/* Subtle background flow */}
+          <div className="absolute top-1/2 left-0 w-full h-full -translate-y-1/2 pointer-events-none -z-10">
+            <div className="absolute top-0 right-0 w-[50%] h-[100%] bg-indigo-50/20 blur-[120px] rounded-full" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-8">
+            <div className="text-center mb-16 sm:mb-24">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-6 tracking-tight">
+                A Simple 3-Step Workflow
+              </h2>
+              <p className="text-on-surface-variant text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+                Tadris AI fits seamlessly into your teaching routine. No complex training, no
+                reformatting—just results.
+              </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100/50 text-indigo-600 text-sm font-bold shadow-sm animate-pulse-soft">
+                <span className="material-symbols-outlined text-lg">verified_user</span>
+                Nothing goes anywhere without your approval.
+              </div>
+            </div>
+
+            <div className="relative">
+              {/* Desktop Connecting Line */}
+              <div className="hidden md:block absolute top-[110px] left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent z-0" />
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 relative z-10">
+                {/* Step 1 */}
+                <div className="group text-center">
+                  <div className="relative mx-auto mb-10 w-24 h-24 rounded-3xl bg-white border border-indigo-100 flex items-center justify-center shadow-xl shadow-indigo-500/5 group-hover:scale-105 transition-all duration-500">
+                    <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-primary-gradient text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      1
+                    </div>
+                    <span
+                      className="material-symbols-outlined text-indigo-600 text-4xl"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      cloud_upload
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold font-headline mb-4 text-on-surface tracking-tight">
+                    1. Upload
+                  </h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base px-2">
+                    Upload your existing course material. PDF, Word, PowerPoint, or just paste text.
+                    No reformatting needed.
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div className="group text-center">
+                  <div className="relative mx-auto mb-10 w-24 h-24 rounded-3xl bg-white border border-indigo-100 flex items-center justify-center shadow-xl shadow-indigo-500/5 group-hover:scale-105 transition-all duration-500">
+                    <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      2
+                    </div>
+                    <span
+                      className="material-symbols-outlined text-purple-600 text-4xl"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      auto_awesome_motion
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold font-headline mb-4 text-on-surface tracking-tight">
+                    2. Choose What You Need
+                  </h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base px-2">
+                    Select your output — quiz, slides, lesson plan, NCAAA report, lab exercise,
+                    grading, and more.
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="group text-center">
+                  <div className="relative mx-auto mb-10 w-24 h-24 rounded-3xl bg-indigo-50 border border-indigo-200 flex items-center justify-center shadow-xl shadow-indigo-600/10 group-hover:scale-105 transition-all duration-500 ring-4 ring-indigo-500/5">
+                    <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      3
+                    </div>
+                    <span
+                      className="material-symbols-outlined text-indigo-700 text-4xl"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      fact_check
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold font-headline mb-4 text-on-surface tracking-tight">
+                    3. Review and Use
+                  </h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base px-2">
+                    The AI generates a draft. You review it, edit anything you want, and use it.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Features (The Interactive Capability Explorer) ── */}
         <section
           id="features"
