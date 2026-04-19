@@ -450,8 +450,8 @@ export default function Page() {
               Back Every Week
             </h1>
             <p className="text-base sm:text-lg text-on-surface-variant max-w-xl leading-relaxed mx-auto lg:mx-0">
-              Your AI teaching companion that automates grading, generates NCAAA-compliant reports,
-              and plans lessons in seconds — while you stay fully in control.
+              Upload your course material. Get quizzes, slide decks, lesson plans, lab exercises,
+              NCAAA reports, and more — reviewed and approved by you, always.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1">
               <a
@@ -691,9 +691,7 @@ export default function Page() {
                     Grading Mountain
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    Sunday night, 11:30 PM. 80+ research essays left for BIOL-302. You want to give
-                    meaningful feedback, but the deadline is tomorrow morning and the exhaustion is
-                    setting in.
+                    It's Sunday night. You have 80 essays to grade by morning.
                   </p>
                 </div>
               </div>
@@ -715,9 +713,7 @@ export default function Page() {
                     Report Submission
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    Final grades are in. While your colleagues are already on break, you&apos;re
-                    still trapped in the office with TP-153 and TP-154 reports, manually mapping
-                    every CLO for NCAAA compliance.
+                    The semester ended two weeks ago. You're still writing the NCAAA report.
                   </p>
                 </div>
               </div>
@@ -739,9 +735,7 @@ export default function Page() {
                     Black Hole
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    Your students submitted their projects last Monday. They need your guidance to
-                    succeed on the final exam, but your calendar is packed with administrative
-                    meetings until next week.
+                    Your students submitted last week. You still haven't had time to respond.
                   </p>
                 </div>
               </div>
@@ -763,9 +757,7 @@ export default function Page() {
                     Academic Vault
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    You recorded a brilliant 60-minute lecture. Now it&apos;s a dormant 2GB file in
-                    LMS. No transcripts, no summaries, and no easy way for your students to search
-                    or interact with your insights.
+                    You recorded a great lecture last week. It's sitting in a folder, doing nothing.
                   </p>
                 </div>
               </div>
@@ -976,11 +968,11 @@ export default function Page() {
                 <span className="material-symbols-outlined text-indigo-600 text-3xl">schedule</span>
               </div>
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
-                Save 10+ Hours Weekly
+                6.7 Hours of Admin. Every Week. Gone
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
-                Automate the most time-consuming administrative tasks—from report drafting to rubric
-                mapping—without sacrificing quality.
+                That's the average time Saudi faculty lose to admin tasks Tadris handles. Time you
+                get back for research, mentoring, and actually teaching.
               </p>
             </div>
 
@@ -990,11 +982,11 @@ export default function Page() {
                 <span className="material-symbols-outlined text-purple-600 text-3xl">bolt</span>
               </div>
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
-                Faster Feedback Cycles
+                Grade 80 Essays in 2 Hours, Not 20
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
-                Students learn better with timely interventions. Give personalized, rubric-aligned
-                feedback in hours, not weeks.
+                The AI drafts rubric-aligned feedback for every student. You review, adjust if
+                needed, and send. Your students hear back before the next class.
               </p>
             </div>
 
@@ -1006,11 +998,11 @@ export default function Page() {
                 </span>
               </div>
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
-                Reduced Cognitive Burden
+                One Tool. No More Juggling
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
-                Prevent burnout by letting AI handle the routine formatting and data entry, keeping
-                your mental energy for high-level pedagogy.
+                Stop switching between Excel, Word, your LMS, and your notes just to write one NCAAA
+                report. Tadris pulls everything together in one place.
               </p>
             </div>
           </div>
