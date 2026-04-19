@@ -781,14 +781,10 @@ export default function Page() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-6 tracking-tight">
                 A Simple 3-Step Workflow
               </h2>
-              <p className="text-on-surface-variant text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+              <p className="text-on-surface-variant text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
                 Tadris AI fits seamlessly into your teaching routine. No complex training, no
                 reformatting—just results.
               </p>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100/50 text-indigo-600 text-sm font-bold shadow-sm animate-pulse-soft">
-                <span className="material-symbols-outlined text-lg">verified_user</span>
-                Nothing goes anywhere without your approval.
-              </div>
             </div>
 
             <div className="relative">
@@ -859,6 +855,19 @@ export default function Page() {
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base px-2">
                     The AI generates a draft. You review it, edit anything you want, and use it.
                   </p>
+                </div>
+              </div>
+
+              {/* Integrated Trust Marker */}
+              <div className="mt-16 sm:mt-24 text-center">
+                <div className="inline-flex items-center gap-2 text-indigo-600/70 font-bold text-sm tracking-tight border-t border-indigo-100/50 pt-8 px-12">
+                  <span
+                    className="material-symbols-outlined text-[18px]"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    verified_user
+                  </span>
+                  Nothing goes anywhere without your approval.
                 </div>
               </div>
             </div>
@@ -1069,7 +1078,7 @@ export default function Page() {
                 <span className="material-symbols-outlined text-indigo-600 text-3xl">schedule</span>
               </div>
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
-                6.7 Hours of Admin. Every Week. Gone
+                6-7 Hours of Admin. Every Week. Gone
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
                 That's the average time Saudi faculty lose to admin tasks Tadris handles. Time you
