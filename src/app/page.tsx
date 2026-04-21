@@ -307,6 +307,42 @@ export default function Page() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Waitlist Form State
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("Professor (Full / Associate / Assistant)");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === "loading") return;
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, role }),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setStatus("success");
+        setMessage(data.message);
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.message || "Failed to join waitlist");
+      }
+    } catch (err) {
+      console.error("Waitlist Error:", err);
+      setStatus("error");
+      setMessage("An unexpected error occurred. Please try again later.");
+    }
+  };
+
   function Typewriter({ text, speed = 40 }: { text: string; speed?: number }) {
     const [displayedText, setDisplayedText] = useState("");
     const [index, setIndex] = useState(0);
@@ -1325,22 +1361,31 @@ export default function Page() {
                 </p>
               </div>
               <div className="lg:w-1/2 w-full bg-glass p-6 sm:p-8 rounded-xl sm:rounded-2xl text-on-surface border border-white/40">
-                <form className="space-y-4 sm:space-y-6">
+                <form onSubmit={handleWaitlistSubmit} className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-sm font-semibold text-indigo-950 mb-2">
                       University Email
                     </label>
                     <input
+                      required
                       className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]"
                       placeholder="dr.smith@university.edu"
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={status === "loading"}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-indigo-950 mb-2">
                       Primary Role
                     </label>
-                    <select className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]">
+                    <select
+                      className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                      disabled={status === "loading"}
+                    >
                       <option>Professor (Full / Associate / Assistant)</option>
                       <option>Lecturer</option>
                       <option>Course Coordinator</option>
@@ -1349,11 +1394,35 @@ export default function Page() {
                     </select>
                   </div>
                   <button
-                    className="w-full bg-primary-gradient text-white py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base hover:shadow-lg transition-all active:scale-[0.98]"
+                    className={`w-full text-white py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base transition-all active:scale-[0.98] flex items-center justify-center gap-2 ${
+                      status === "loading"
+                        ? "bg-indigo-400 cursor-not-allowed"
+                        : "bg-primary-gradient hover:shadow-lg"
+                    }`}
                     type="submit"
+                    disabled={status === "loading"}
                   >
-                    Join the Waitlist
+                    {status === "loading" ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Joining...
+                      </>
+                    ) : (
+                      "Join the Waitlist"
+                    )}
                   </button>
+
+                  {message && (
+                    <div
+                      className={`p-4 rounded-xl text-sm font-medium animate-in fade-in slide-in-from-top-2 duration-300 ${
+                        status === "success"
+                          ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
+                          : "bg-rose-50 text-rose-700 border border-rose-100"
+                      }`}
+                    >
+                      {message}
+                    </div>
+                  )}
                 </form>
                 <p className="text-center text-xs text-on-surface-variant mt-4 sm:mt-6">
                   Enterprise-grade security. GDPR &amp; NCAAA compliant.
