@@ -668,7 +668,8 @@ export default function Page() {
 
         {/* ── Social Proof ── */}
         <section className="bg-indigo-50/40 py-10 sm:py-14 border-y border-indigo-100/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 sm:gap-12 md:gap-24 opacity-80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16 md:gap-24 opacity-80">
+            {/* Badge 1 */}
             <div className="flex items-center gap-3">
               <span className="material-symbols-outlined text-3xl sm:text-4xl text-indigo-600">
                 school
@@ -677,12 +678,17 @@ export default function Page() {
                 Built for Higher Education
               </span>
             </div>
-            <div className="flex items-center gap-3 sm:border-l sm:border-indigo-200/50 sm:pl-12 md:pl-24">
+
+            {/* Divider (Desktop Only) */}
+            <div className="hidden sm:block w-px h-8 bg-indigo-200/50" />
+
+            {/* Badge 2 */}
+            <div className="flex items-center gap-3">
               <span className="material-symbols-outlined text-3xl sm:text-4xl text-indigo-600">
-                verified_user
+                translate
               </span>
-              <span className="font-headline font-bold text-base sm:text-xl tracking-tight uppercase text-on-surface">
-                NCAAA Compliance Standards
+              <span className="font-headline font-bold text-base sm:text-xl tracking-tight text-on-surface">
+                Arabic & English Support
               </span>
             </div>
           </div>
@@ -972,12 +978,10 @@ export default function Page() {
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">security</span> Hallucination
-                  mitigation
+                  <span className="material-symbols-outlined">security</span> Stays grounded in your material
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Custom RAG architecture ensures the AI stays within the bounds of your provided
-                  context and data.
+                  Tadris only generates content based on what you have uploaded. It will not invent facts, add unsourced claims, or go off-script from your course content.
                 </p>
               </div>
               <div>
@@ -1012,9 +1016,7 @@ export default function Page() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-4 tracking-tight">
                 What Changes When You Use Tadris
               </h2>
-              <p className="text-on-surface-variant text-sm sm:text-base">
-                NCAAA TP-153 Course Report Drafting
-              </p>
+              <p className="text-on-surface-variant text-sm sm:text-base">Essay Grading</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-indigo-100 shadow-2xl">
               <div className="bg-white p-7 sm:p-12">
@@ -1022,7 +1024,7 @@ export default function Page() {
                   The Old Way
                 </div>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-headline mb-6 sm:mb-8">
-                  5 Hours of Manual Entry
+                  20 Hours of Manual Grading
                 </h3>
                 <ul className="space-y-4 sm:space-y-6">
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1030,7 +1032,7 @@ export default function Page() {
                       close
                     </span>
                     <span className="text-on-surface-variant text-sm sm:text-base">
-                      Exporting grades from multiple Excel sheets
+                      Reading 80 student essays one by one
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1038,7 +1040,7 @@ export default function Page() {
                       close
                     </span>
                     <span className="text-on-surface-variant text-sm sm:text-base">
-                      Manually calculating CLO achievement percentages
+                      Writing individual feedback from scratch for each student
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1046,7 +1048,7 @@ export default function Page() {
                       close
                     </span>
                     <span className="text-on-surface-variant text-sm sm:text-base">
-                      Writing qualitative improvement plans from scratch
+                      No visibility into what the whole class struggled with
                     </span>
                   </li>
                 </ul>
@@ -1059,7 +1061,7 @@ export default function Page() {
                   The Tadris Way
                 </div>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-headline mb-6 sm:mb-8">
-                  Generated in 45 Seconds
+                  Done in 2 Hours
                 </h3>
                 <ul className="space-y-4 sm:space-y-6">
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1067,7 +1069,7 @@ export default function Page() {
                       check_circle
                     </span>
                     <span className="text-white text-sm sm:text-base">
-                      Direct LMS integration pulls all student data automatically
+                      AI drafts rubric-aligned feedback for every student
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1075,7 +1077,7 @@ export default function Page() {
                       check_circle
                     </span>
                     <span className="text-white text-sm sm:text-base">
-                      Real-time CLO mapping with visualized performance gaps
+                      You review, adjust anything you want, approve and send
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1083,7 +1085,7 @@ export default function Page() {
                       check_circle
                     </span>
                     <span className="text-white text-sm sm:text-base">
-                      AI-suggested corrective actions based on historical data
+                      Dashboard shows exactly which topics the whole class struggled with
                     </span>
                   </li>
                 </ul>
@@ -1425,7 +1427,7 @@ export default function Page() {
                   )}
                 </form>
                 <p className="text-center text-xs text-on-surface-variant mt-4 sm:mt-6">
-                  Enterprise-grade security. GDPR &amp; NCAAA compliant.
+                  Enterprise-grade security. GDPR compliant. Data stays in Saudi Arabia.
                 </p>
               </div>
             </div>
