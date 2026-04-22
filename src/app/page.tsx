@@ -515,30 +515,28 @@ export default function Page() {
             </div>
 
             {/* Floating badge — top left */}
-            <div className="absolute -left-2 sm:-left-4 top-4 z-20 badge-slide-left bg-white border border-indigo-100 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl shadow-indigo-500/10 flex items-center gap-2 sm:gap-2.5">
-              <div className="w-2 h-2 rounded-full bg-indigo-500 animate-ping-ring flex-shrink-0" />
-              <div>
-                <div className="text-[10px] font-bold text-on-surface leading-none">28 Papers</div>
-                <div className="text-[9px] text-on-surface-variant mt-0.5">Being graded now</div>
+            <div className="absolute -left-2 sm:-left-4 top-4 z-20 badge-slide-left bg-white border border-emerald-100 rounded-full px-3 py-1.5 shadow-xl shadow-emerald-500/10 flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+              <div className="text-[10px] font-bold text-on-surface leading-none">
+                15 questions generated
               </div>
             </div>
 
             {/* Floating badge — bottom right */}
-            <div className="absolute -right-2 sm:-right-4 bottom-8 z-20 badge-slide-right bg-primary-gradient rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl shadow-indigo-500/20 flex items-center gap-2 sm:gap-2.5 text-white">
+            <div className="absolute -right-2 sm:-right-4 bottom-6 z-20 badge-slide-right bg-primary-gradient rounded-full px-3 py-1.5 shadow-xl shadow-indigo-500/20 flex items-center gap-2 text-white">
               <span
-                className="material-symbols-outlined text-base"
+                className="material-symbols-outlined text-sm"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
-                verified_user
+                check_circle
               </span>
-              <div>
-                <div className="text-[10px] font-bold leading-none">TP-153 Ready</div>
-                <div className="text-[9px] opacity-80 mt-0.5">NCAAA Compliant</div>
+              <div className="text-[10px] font-bold leading-none">
+                AI Draft · Reviewed by instructor
               </div>
             </div>
 
             {/* Main app window card */}
-            <div className="relative w-full max-w-[360px] sm:max-w-[420px] z-10 animate-float">
+            <div className="relative w-full max-w-[440px] lg:max-w-[500px] z-10 animate-float border border-outline-variant/80 rounded-2xl">
               {/* macOS chrome */}
               <div className="bg-surface-container-highest rounded-t-2xl px-4 py-3 flex items-center gap-2 border border-outline-variant/20 border-b-0">
                 <div className="w-3 h-3 rounded-full bg-red-400/70" />
@@ -546,117 +544,122 @@ export default function Page() {
                 <div className="w-3 h-3 rounded-full bg-green-400/70" />
                 <div className="flex-1 mx-4">
                   <div className="bg-white/60 rounded-md px-3 py-1 text-[10px] text-on-surface-variant text-center font-mono">
-                    tadris.ai / grade / biol-302
+                    tadris.ai / assess / cs-101
                   </div>
                 </div>
               </div>
 
               {/* Card body */}
-              <div className="bg-white rounded-b-2xl shadow-2xl shadow-indigo-500/10 border border-outline-variant/20 border-t-0 overflow-hidden">
-                {/* Submission row */}
-                <div className="px-5 pt-5 pb-4 flex items-center justify-between border-b border-outline-variant/10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary-gradient flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                      SA
+              <div className="bg-[#f7f7fc] p-3 rounded-b-2xl">
+                <div className="bg-white rounded-xl border border-outline-variant/80 overflow-hidden">
+                  {/* Top Row */}
+                  <div className="px-5 py-3 flex items-center justify-between border-b border-outline-variant/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
+                        SA
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-on-surface">Sara Al-Mutairi</span>
+                          <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold border border-indigo-100 uppercase tracking-tight">
+                            AI DRAFT
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-on-surface-variant">
+                          CS 101 · Midterm · Chapter 4
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <div className="text-xs font-semibold text-on-surface">Sara Al-Mutairi</div>
-                        <span className="text-[7px] px-1.5 py-px rounded-full bg-indigo-50 text-indigo-600 font-bold border border-indigo-100 uppercase tracking-tight">
-                          AI Draft
+                    <div className="text-right hero-score" style={{ animationDelay: "0.5s" }}>
+                      <div className="text-3xl font-extrabold font-headline text-transparent bg-clip-text bg-primary-gradient leading-none">
+                        15
+                      </div>
+                      <div className="text-[8px] font-bold text-indigo-500/50 uppercase tracking-widest mt-1">
+                        Questions
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Questions Container */}
+                  <div className="px-5 py-1 space-y-3">
+                    {/* Q1 */}
+                    <div className="space-y-2 bg-[#fafafa] p-2 rounded-lg border border-slate-200/50">
+                      <div className="flex items-center justify-between">
+                        <div className="flex gap-2">
+                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold uppercase tracking-tight">
+                            MCQ
+                          </span>
+                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
+                            Medium
+                          </span>
+                        </div>
+                        <span className="text-[9px] text-on-surface-variant font-medium">
+                          Q1 of 15
                         </span>
                       </div>
-                      <div className="text-[10px] text-on-surface-variant">
-                        BIOL 302 · Research Essay · Week 8
+                      <div className="text-[11px] font-bold text-on-surface leading-snug">
+                        Which data structure follows Last In, First Out (LIFO) ordering?
+                      </div>
+                      <div className="grid grid-cols-1 gap-1">
+                        {["Queue", "Stack", "Linked List", "Binary Tree"].map((opt) => (
+                          <div
+                            key={opt}
+                            className={`flex items-center gap-2 px-3 ${
+                              opt === "Stack" ? "border-indigo-200" : "border-outline-variant/30"
+                            }`}
+                          >
+                            <div
+                              className={`w-3 h-3 rounded-full flex items-center justify-center ${
+                                opt === "Stack"
+                                  ? "bg-indigo-600 shadow-[0_0_8px_rgba(79,70,229,0.4)]"
+                                  : "border border-outline-variant"
+                              }`}
+                            />
+                            <span
+                              className={`text-[9px] ${
+                                opt === "Stack"
+                                  ? "text-indigo-900 font-bold"
+                                  : "text-on-surface-variant font-medium"
+                              }`}
+                            >
+                              {opt}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Q2 */}
+                    <div className="space-y-2 bg-[#fafafa] p-2 rounded-lg border border-slate-200/50">
+                      <div className="flex items-center justify-between">
+                        <div className="flex gap-2">
+                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-bold uppercase tracking-tight">
+                            SHORT ANSWER
+                          </span>
+                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
+                            Hard
+                          </span>
+                        </div>
+                        <span className="text-[9px] text-on-surface-variant font-medium">
+                          Q2 of 15
+                        </span>
+                      </div>
+                      <div className="text-[11px] font-bold text-on-surface leading-snug">
+                        Compare the time complexity of Bubble Sort and Merge Sort. When would you
+                        choose one over the other?
+                      </div>
+                      <div className="px-3 py-2 rounded-md border border-dashed border-outline-variant/90 text-[10px] text-on-surface-variant italic">
+                        Student answer field
                       </div>
                     </div>
                   </div>
-                  <div className="hero-score text-right" style={{ animationDelay: "0.5s" }}>
-                    <div className="text-[8px] font-bold text-indigo-500/80 tracking-widest uppercase mb-1">
-                      AI Suggested Grade
-                    </div>
-                    <div className="flex items-baseline justify-end gap-1">
-                      <div className="text-2xl font-extrabold font-headline text-transparent bg-clip-text bg-primary-gradient leading-none">
-                        A+
-                      </div>
-                      <div className="text-[10px] text-indigo-500 font-semibold">97/100</div>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Rubric bars */}
-                <div className="px-5 py-4 space-y-3">
-                  <div className="flex items-center gap-3 row-1">
-                    <span className="text-[10px] text-on-surface-variant w-28 flex-shrink-0">
-                      Critical Thinking
-                    </span>
-                    <div className="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
-                      <div
-                        className="bar-94 h-full rounded-full bg-gradient-to-r from-indigo-500 to-indigo-400"
-                        style={{ width: "96%" }}
-                      />
-                    </div>
-                    <span className="text-[10px] font-bold text-on-surface w-7 text-right">
-                      96%
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3 row-2">
-                    <span className="text-[10px] text-on-surface-variant w-28 flex-shrink-0">
-                      Evidence Quality
-                    </span>
-                    <div className="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
-                      <div
-                        className="bar-94 h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"
-                        style={{ width: "98%" }}
-                      />
-                    </div>
-                    <span className="text-[10px] font-bold text-on-surface w-7 text-right">
-                      98%
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3 row-3">
-                    <span className="text-[10px] text-on-surface-variant w-28 flex-shrink-0">
-                      Citation Format
-                    </span>
-                    <div className="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
-                      <div
-                        className="bar-78 h-full rounded-full bg-gradient-to-r from-purple-400 to-purple-500"
-                        style={{ width: "97%" }}
-                      />
-                    </div>
-                    <span className="text-[10px] font-bold text-on-surface w-7 text-right">
-                      97%
-                    </span>
-                  </div>
-                </div>
-
-                {/* AI Feedback */}
-                <div className="mx-5 mb-5 rounded-xl bg-indigo-50 border border-indigo-100/60 p-4">
-                  <div className="flex items-center gap-1.5 mb-2">
-                    <span
-                      className="material-symbols-outlined text-indigo-500 text-sm"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      auto_awesome
-                    </span>
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-indigo-600">
-                      AI Feedback
-                    </span>
-                    <div className="ml-auto flex gap-1">
-                      <div className="w-1 h-1 rounded-full bg-indigo-400 animate-dot-1" />
-                      <div className="w-1 h-1 rounded-full bg-indigo-400 animate-dot-2" />
-                      <div className="w-1 h-1 rounded-full bg-indigo-400 animate-dot-3" />
-                    </div>
-                  </div>
-                  <p className="text-[10px] text-indigo-900/75 leading-relaxed line-clamp-2 h-8">
-                    <Typewriter text="Exceptional thesis and mastery of evidence. Analysis of Al-Zahrani (2026) is insightful. Citations are perfect." />
-                    <span className="animate-caret font-bold text-indigo-500 ml-px">|</span>
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <button className="flex-1 bg-primary-gradient text-white text-[10px] font-bold py-1.5 rounded-lg hover:opacity-90 transition-all">
-                      Approve &amp; Send
+                  {/* Actions */}
+                  <div className="px-5 pb-5 pt-1 flex gap-3">
+                    <button className="flex-1 bg-primary-gradient text-white text-[10px] font-bold py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 hover:scale-[1.02] transition-all">
+                      Approve & Export
                     </button>
-                    <button className="px-3 py-1.5 rounded-lg border border-indigo-100 text-[10px] font-semibold text-indigo-600 hover:bg-indigo-50/80 transition-all">
+                    <button className="px-4 py-2.5 rounded-xl border border-indigo-100 text-[10px] font-bold text-indigo-600 hover:bg-indigo-50/50 transition-all">
                       Edit
                     </button>
                   </div>
@@ -978,10 +981,12 @@ export default function Page() {
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">security</span> Stays grounded in your material
+                  <span className="material-symbols-outlined">security</span> Stays grounded in your
+                  material
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Tadris only generates content based on what you have uploaded. It will not invent facts, add unsourced claims, or go off-script from your course content.
+                  Tadris only generates content based on what you have uploaded. It will not invent
+                  facts, add unsourced claims, or go off-script from your course content.
                 </p>
               </div>
               <div>
