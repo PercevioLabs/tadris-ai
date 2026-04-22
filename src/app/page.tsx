@@ -517,7 +517,7 @@ export default function Page() {
             {/* Floating badge — top left */}
             <div className="absolute -left-2 sm:-left-4 top-4 z-20 badge-slide-left bg-white border border-emerald-100 rounded-full px-3 py-1.5 shadow-xl shadow-emerald-500/10 flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-              <div className="text-[10px] font-bold text-on-surface leading-none">
+              <div className="text-[11px] font-bold text-on-surface leading-none">
                 15 questions generated
               </div>
             </div>
@@ -525,13 +525,13 @@ export default function Page() {
             {/* Floating badge — bottom right */}
             <div className="absolute -right-2 sm:-right-4 bottom-6 z-20 badge-slide-right bg-primary-gradient rounded-full px-3 py-1.5 shadow-xl shadow-indigo-500/20 flex items-center gap-2 text-white">
               <span
-                className="material-symbols-outlined text-sm"
+                className="material-symbols-outlined text-base"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 check_circle
               </span>
-              <div className="text-[10px] font-bold leading-none">
-                AI Draft · Reviewed by instructor
+              <div className="text-[11px] font-bold leading-none">
+                AI Draft · Reviewed
               </div>
             </div>
 
@@ -543,7 +543,7 @@ export default function Page() {
                 <div className="w-3 h-3 rounded-full bg-yellow-400/70" />
                 <div className="w-3 h-3 rounded-full bg-green-400/70" />
                 <div className="flex-1 mx-4">
-                  <div className="bg-white/60 rounded-md px-3 py-1 text-[10px] text-on-surface-variant text-center font-mono">
+                  <div className="bg-white/60 rounded-md px-3 py-1 text-[11px] text-on-surface-variant text-center font-mono">
                     tadris.ai / assess / cs-101
                   </div>
                 </div>
@@ -555,26 +555,26 @@ export default function Page() {
                   {/* Top Row */}
                   <div className="px-5 py-3 flex items-center justify-between border-b border-outline-variant/10">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
+                      <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-bold">
                         SA
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-on-surface">Sara Al-Mutairi</span>
-                          <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold border border-indigo-100 uppercase tracking-tight">
+                          <span className="text-[13px] font-bold text-on-surface">Sara Al-Mutairi</span>
+                          <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold border border-indigo-100 uppercase tracking-tight">
                             AI DRAFT
                           </span>
                         </div>
-                        <div className="text-[10px] text-on-surface-variant">
+                        <div className="text-[11px] text-on-surface-variant">
                           CS 101 · Midterm · Chapter 4
                         </div>
                       </div>
                     </div>
                     <div className="text-right hero-score" style={{ animationDelay: "0.5s" }}>
-                      <div className="text-3xl font-extrabold font-headline text-transparent bg-clip-text bg-primary-gradient leading-none">
+                      <div className="text-[32px] font-extrabold font-headline text-transparent bg-clip-text bg-primary-gradient leading-none">
                         15
                       </div>
-                      <div className="text-[8px] font-bold text-indigo-500/50 uppercase tracking-widest mt-1">
+                      <div className="text-[9px] font-bold text-indigo-500/50 uppercase tracking-widest mt-1">
                         Questions
                       </div>
                     </div>
@@ -586,18 +586,18 @@ export default function Page() {
                     <div className="space-y-2 bg-[#fafafa] p-2 rounded-lg border border-slate-200/50">
                       <div className="flex items-center justify-between">
                         <div className="flex gap-2">
-                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold uppercase tracking-tight">
+                          <span className="text-[9px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold uppercase tracking-tight">
                             MCQ
                           </span>
-                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
+                          <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
                             Medium
                           </span>
                         </div>
-                        <span className="text-[9px] text-on-surface-variant font-medium">
+                        <span className="text-[10px] text-on-surface-variant font-medium">
                           Q1 of 15
                         </span>
                       </div>
-                      <div className="text-[11px] font-bold text-on-surface leading-snug">
+                      <div className="text-xs font-bold text-on-surface leading-snug">
                         Which data structure follows Last In, First Out (LIFO) ordering?
                       </div>
                       <div className="grid grid-cols-1 gap-1">
@@ -616,7 +616,7 @@ export default function Page() {
                               }`}
                             />
                             <span
-                              className={`text-[9px] ${
+                              className={`text-[10px] ${
                                 opt === "Stack"
                                   ? "text-indigo-900 font-bold"
                                   : "text-on-surface-variant font-medium"
@@ -633,22 +633,22 @@ export default function Page() {
                     <div className="space-y-2 bg-[#fafafa] p-2 rounded-lg border border-slate-200/50">
                       <div className="flex items-center justify-between">
                         <div className="flex gap-2">
-                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-bold uppercase tracking-tight">
+                          <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-bold uppercase tracking-tight">
                             SHORT ANSWER
                           </span>
-                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
+                          <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
                             Hard
                           </span>
                         </div>
-                        <span className="text-[9px] text-on-surface-variant font-medium">
+                        <span className="text-[10px] text-on-surface-variant font-medium">
                           Q2 of 15
                         </span>
                       </div>
-                      <div className="text-[11px] font-bold text-on-surface leading-snug">
+                      <div className="text-xs font-bold text-on-surface leading-snug">
                         Compare the time complexity of Bubble Sort and Merge Sort. When would you
                         choose one over the other?
                       </div>
-                      <div className="px-3 py-2 rounded-md border border-dashed border-outline-variant/90 text-[10px] text-on-surface-variant italic">
+                      <div className="px-3 py-2 rounded-md border border-dashed border-outline-variant/90 text-[11px] text-on-surface-variant italic">
                         Student answer field
                       </div>
                     </div>
@@ -656,10 +656,10 @@ export default function Page() {
 
                   {/* Actions */}
                   <div className="px-5 pb-5 pt-1 flex gap-3">
-                    <button className="flex-1 bg-primary-gradient text-white text-[10px] font-bold py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 hover:scale-[1.02] transition-all">
+                    <button className="flex-1 bg-primary-gradient text-white text-[11px] font-bold py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 hover:scale-[1.02] transition-all">
                       Approve & Export
                     </button>
-                    <button className="px-4 py-2.5 rounded-xl border border-indigo-100 text-[10px] font-bold text-indigo-600 hover:bg-indigo-50/50 transition-all">
+                    <button className="px-4 py-2.5 rounded-xl border border-indigo-100 text-[11px] font-bold text-indigo-600 hover:bg-indigo-50/50 transition-all">
                       Edit
                     </button>
                   </div>
