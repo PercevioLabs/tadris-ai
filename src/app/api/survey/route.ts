@@ -155,7 +155,7 @@ export async function POST(req: Request) {
       toStars(data.comfortLevels?.["Teaching preparation (lesson plans, slides, activities)"]),
       toStars(data.comfortLevels?.["Grading and providing feedback to students"]),
       toStars(data.comfortLevels?.["Responding to student queries (email, office hours)"]),
-      toStars(data.comfortLevels?.["Converting notes into study materials"]),
+      toStars(data.comfortLevels?.["Converting lecture notes or recordings into study materials"]),
       toStars(data.comfortLevels?.["Course documentation and institutional reporting"]),
 
       data.aiRolePreference?.["Creating assessments (quizzes, exams, assignments)"] || "-",

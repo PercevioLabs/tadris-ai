@@ -1,9 +1,11 @@
 "use client";
 
 import { useDictionary } from "./DictionaryProvider";
+import { useParams } from "next/navigation";
 
 export function Footer() {
   const t = useDictionary();
+  const params = useParams();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -21,7 +23,7 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs tracking-wide font-medium text-on-surface-variant">
-          <a className="hover:text-indigo-600 transition-all font-bold text-indigo-600" href="/survey">
+          <a className="hover:text-indigo-600 transition-all font-bold text-indigo-600" href={`/${params.locale}/survey`}>
             {t.footer.survey}
           </a>
           <a className="hover:text-indigo-600 transition-all" href="#">

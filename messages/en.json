@@ -202,6 +202,175 @@
     "errorAlreadyExists": "You are already on the waitlist",
     "trustFooter": "Enterprise-grade security. GDPR compliant. Data stays in Saudi Arabia."
   },
+  "survey": {
+    "headerBadge": "Faculty Experience Survey",
+    "title1": "AI Teacher Companion",
+    "title2": "Shape the Future.",
+    "duration": "Estimated duration: 5–7 minutes",
+    "copyright": "Tadris AI · Empowering Educators",
+    "description": "This survey aims to understand the challenges faculty members face regarding workload and administrative tasks, and to gather feedback on the potential of AI to streamline these processes. Your insights will directly shape the development of Tadris AI, an intelligent tool designed to adapt to your unique teaching methodology.",
+    "anonymityBadge": "Anonymous submission supported.",
+    "anonymityPrefix": "Anonymity:",
+    "anonymityNote": "Your responses can be submitted anonymously. If you are willing to be contacted for a follow-up interview, you may provide your details below — otherwise leave blank and proceed.",
+    
+    "sectionOf": "Section {step} of 5",
+    "back": "Back",
+    "continue": "Continue to Section",
+    "yes": "Yes",
+    "no": "No",
+    "other": "Other",
+    "notSure": "Not sure",
+    
+    "basicInfo": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "email@institution.edu",
+      "institutionLabel": "Institution",
+      "institutionPlaceholder": "University name"
+    },
+    
+    "sections": {
+      "s1": "About You",
+      "s2": "Your Workload",
+      "s3": "Tools & AI Usage",
+      "s4": "Perspectives on AI",
+      "s5": "Follow-Up"
+    },
+    
+    "questions": {
+      "q1": "Q1. Are you currently teaching or lecturing students at a university?",
+      "q2": "Q2. What is your primary teaching subject?",
+      "q2Placeholder": "Please specify your subject",
+      "q3": "Q3. How many courses do you typically teach per semester?",
+      "q4": "Q4. What is your average class size?",
+      "q5": "Q5. How many years of experience do you have lecturing at university level?",
+      
+      "q6": "Q6. Approximately how many hours per week do you spend on each of the following activities?",
+      "roughEstimates": "Rough estimates are fine.",
+      "hrsWk": "Hrs/Wk",
+      "q7": "Q7. Which of the above activities do you find MOST time-consuming or burdensome?",
+      "selectUpTo3": "Select up to 3.",
+      "q8": "Q8. When during the semester does your workload feel heaviest?",
+      
+      "q9": "Q9. Which general tools do you currently use for teaching and course management?",
+      "selectAll": "Select all that apply.",
+      "toolsPlaceholder": "Specify other tools",
+      "q10": "Q10. Which AI tools have you tried or currently use for teaching purposes?",
+      "aiToolsPlaceholder": "Specify other AI tools",
+      "q11": "Q11. How often do you use AI tools for teaching-related work?",
+      "q12": "Q12. What do you mainly use AI tools for?",
+      "aiUsePlaceholder": "Specify other uses",
+      
+      "q13": "Q13. How comfortable are you with the idea of an AI assistant handling or drafting the following tasks?",
+      "notComfortable": "Not comfortable",
+      "veryComfortable": "Very comfortable",
+      "q14": "Q14. If you had a highly secure, university-approved AI assistant, what role would you want it to play in these areas?",
+      "q15": "Q15. What are your biggest concerns or reservations about using AI for teaching?",
+      "concernsPlaceholder": "Specify other concerns",
+      "q16": "Q16. What would you need to feel confident relying on an AI Teaching Assistant for your courses?",
+      "reqsPlaceholder": "Specify other requirements",
+      
+      "q17": "Q17. Would you be willing to participate in a brief (15-min) follow-up interview about your experience?",
+      "q18": "Q18. If yes, please provide the best way to contact you (Email or Phone number)."
+    },
+
+    "tableHeaders": {
+      "task": "Task"
+    },
+    
+    "options": {
+      "subj1": "Arabic Language & Literature",
+      "subj2": "Computer Science / IT",
+      "subj3": "Engineering",
+      "subj4": "English Language",
+      "subj5": "Natural Sciences (Biology, Chemistry, Physics)",
+      "subj6": "Business / Management",
+      
+      "courses1": "1",
+      "courses2": "2",
+      "courses3": "3",
+      "courses4": "4",
+      "courses5": "5 or more",
+      
+      "size1": "Fewer than 20 students",
+      "size2": "20–40 students",
+      "size3": "41–80 students",
+      "size4": "More than 80 students",
+      
+      "exp1": "Less than 2 years",
+      "exp2": "2–5 years",
+      "exp3": "6–10 years",
+      "exp4": "More than 10 years",
+      
+      "task_prep": "Teaching preparation (lesson plans, slides, activities)",
+      "task_assess": "Creating assessments (quizzes, exams, assignments)",
+      "task_grade": "Grading and providing feedback to students",
+      "task_query": "Responding to student queries (email, office hours)",
+      "task_doc": "Course documentation and institutional reporting",
+      "task_notes": "Converting notes into study materials",
+      "task_notes_long": "Converting lecture notes or recordings into study materials",
+
+      "wl1": "Start of semester (setup, planning, registration)",
+      "wl2": "Mid-semester (exams, assignments)",
+      "wl3": "End of semester (final exams, reports, grade submission)",
+      "wl4": "Consistently throughout the semester",
+      
+      "tool1": "LMS (Blackboard, Moodle, Canvas, etc.)",
+      "tool2": "Microsoft Word / Google Docs",
+      "tool3": "Microsoft PowerPoint / Google Slides",
+      "tool4": "Microsoft Excel / Google Sheets",
+      "tool5": "Email only",
+      
+      "aiTool1": "ChatGPT",
+      "aiTool2": "Google Gemini",
+      "aiTool3": "Microsoft Copilot",
+      "aiTool4": "Grammarly or similar AI writing tools",
+      "aiTool_other": "Other AI tool",
+      "aiTool_none": "I do not use any AI tools",
+      
+      "aiFreq1": "I have never tried AI tools",
+      "aiFreq2": "I tried once or twice but stopped",
+      "aiFreq3": "Occasionally (a few times a month)",
+      "aiFreq4": "Regularly (weekly)",
+      "aiFreq5": "Daily",
+      
+      "aiUse1": "Summarizing or simplifying material",
+      "aiUse2": "Writing or editing documents",
+      
+      "aiRole1": "Do not use AI",
+      "aiRole2": "AI provides ideas, I write",
+      "aiRole3": "AI writes draft, I edit",
+      "aiRole4": "AI handles entirely",
+      
+      "concern1": "Output quality may not be accurate enough",
+      "concern2": "Poor support for non-english language",
+      "concern3": "Privacy and data security concerns",
+      "concern4": "I don't trust AI-generated output for official use",
+      "concern5": "Reviewing and correcting AI output takes too much time",
+      "concern6": "Outputs may not align with academic standards",
+      "concern7": "I have no specific concerns",
+      
+      "req1": "I must be able to review and edit all outputs",
+      "req2": "The final academic decision must always remain with me",
+      "req3": "My data must be kept private",
+      "req4": "I need to understand how the AI reached its output",
+      "req5": "Outputs must follow official academic standards",
+      "req6": "The tool must support more languages other than English"
+    },
+    
+    "submit": "Submit Survey",
+    "submitting": "Submitting...",
+    
+    "completion": {
+      "readyToSubmit": "Ready to submit?",
+      "title": "Thank You!",
+      "msgNotTeaching": "Thank you for letting us know! Currently, this research is tailored specifically for active university faculty members. We appreciate your interest in Tadris AI.",
+      "msgFollowUp": "Your feedback is very helpful to us! Since you've expressed interest in a follow-up, our team will reach out to you soon regarding the interview. We appreciate your time.",
+      "msgStandard": "Your feedback is very helpful to us. We appreciate you taking the time to share your academic experience.",
+      "returnHome": "Return to Homepage"
+    }
+  },
   "footer": {
     "brand": "Tadris AI",
     "tagline": "Empathetic AI for Educators",
