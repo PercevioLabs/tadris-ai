@@ -54,6 +54,14 @@
   --font-label: var(--font-inter), sans-serif;
 }
 
+:root:lang(ar) {
+  --font-headline: var(--font-ibm-plex-arabic), sans-serif;
+  --font-body: var(--font-ibm-plex-arabic), sans-serif;
+  --font-label: var(--font-ibm-plex-arabic), sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
 @layer utilities {
   .material-symbols-outlined {
     font-variation-settings:
@@ -118,6 +126,26 @@
   0% {
     opacity: 0;
     transform: translateX(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-start-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(calc(-16px * var(--tw-direction, 1)));
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-end-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(calc(16px * var(--tw-direction, 1)));
   }
   100% {
     opacity: 1;
@@ -323,10 +351,14 @@
 
 /* Floating badge entrances — slide in from sides */
 .badge-slide-left {
-  animation: slide-right-fade 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+  animation: slide-start-fade 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
 }
 .badge-slide-right {
-  animation: slide-left-fade 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+  animation: slide-end-fade 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+}
+
+[dir="rtl"] {
+  --tw-direction: -1;
 }
 .hero-score {
   animation: score-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;

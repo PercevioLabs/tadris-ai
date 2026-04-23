@@ -6,94 +6,86 @@ const CapabilityExplorer = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const t = useDictionary();
 
   const capabilities = [
     {
       id: "lecture",
-      navTitle: "Session Processing",
-      outcome: "Upload last week's lecture",
-      description:
-        "Get a study guide, flashcards, a quiz, and a mind map — ready to share with students.",
+      navTitle: t.capabilities.lecture.navTitle,
+      outcome: t.capabilities.lecture.outcome,
+      description: t.capabilities.lecture.description,
       icon: "auto_mode",
       color: "blue",
     },
     {
       id: "exams",
-      navTitle: "Assessment Builder",
-      outcome: "Build a full exam from your course material",
-      description:
-        "Every question mapped to your CLOs, across every format you need — automatically.",
+      navTitle: t.capabilities.exams.navTitle,
+      outcome: t.capabilities.exams.outcome,
+      description: t.capabilities.exams.description,
       icon: "fact_check",
       color: "emerald",
     },
     {
       id: "grading",
-      navTitle: "Essay Grading",
-      outcome: "Grade 80 essays in 2 hours instead of 20",
-      description:
-        "The AI drafts the feedback; you review and send. Reclaim your weekends with automated rubric mapping.",
+      navTitle: t.capabilities.grading.navTitle,
+      outcome: t.capabilities.grading.outcome,
+      description: t.capabilities.grading.description,
       icon: "reviews",
       color: "indigo",
     },
     {
       id: "assistant",
-      navTitle: "AI Teaching Assistant",
-      outcome: "24/7 Support for Every Student",
-      description:
-        "Students get answers at any hour. You see what they're struggling with in your dashboard.",
+      navTitle: t.capabilities.assistant.navTitle,
+      outcome: t.capabilities.assistant.outcome,
+      description: t.capabilities.assistant.description,
       icon: "support_agent",
       color: "amber",
     },
     {
       id: "planner",
-      navTitle: "Lesson Planner",
-      outcome: "Type your topic and learning objective",
-      description:
-        "Get a complete lesson plan in seconds, built on what actually works for similar courses.",
+      navTitle: t.capabilities.planner.navTitle,
+      outcome: t.capabilities.planner.outcome,
+      description: t.capabilities.planner.description,
       icon: "architecture",
       color: "rose",
     },
     {
       id: "slides",
-      navTitle: "Slide Deck Generator",
-      outcome: "Turn any document into a presentation",
-      description: "Choose your tone, set your language, add speaker notes — done in seconds.",
+      navTitle: t.capabilities.slides.navTitle,
+      outcome: t.capabilities.slides.outcome,
+      description: t.capabilities.slides.description,
       icon: "present_to_all",
       color: "cyan",
     },
     {
       id: "collaborative",
-      navTitle: "Collaborative Intelligence",
-      outcome: "See what top instructors are doing",
-      description:
-        "Observe best practices in your subject area and adapt proven strategies for your own class.",
+      navTitle: t.capabilities.collaborative.navTitle,
+      outcome: t.capabilities.collaborative.outcome,
+      description: t.capabilities.collaborative.description,
       icon: "hub",
       color: "violet",
     },
     {
       id: "labs",
-      navTitle: "Lab Builder",
-      outcome: "Create a fully structured lab exercise",
-      description:
-        "Problem statements, instructions, hints, solution guides, and rubrics — in minutes.",
+      navTitle: t.capabilities.labs.navTitle,
+      outcome: t.capabilities.labs.outcome,
+      description: t.capabilities.labs.description,
       icon: "science",
       color: "orange",
     },
     {
       id: "pedagogy",
-      navTitle: "Pedagogy Recommender",
-      outcome: "Not sure how to teach a complex topic?",
-      description:
-        "Get evidence-based delivery suggestions based on how similar instructors approached it.",
+      navTitle: t.capabilities.pedagogy.navTitle,
+      outcome: t.capabilities.pedagogy.outcome,
+      description: t.capabilities.pedagogy.description,
       icon: "tips_and_updates",
       color: "fuchsia",
     },
     {
       id: "ncaaa",
-      navTitle: "NCAAA Report Assistant",
-      outcome: "TP-153 & TP-154 drafts in 5 minutes",
-      description:
-        "Upload your grades and get a complete accreditation report draft — including the action plan.",
+      navTitle: t.capabilities.ncaaa.navTitle,
+      outcome: t.capabilities.ncaaa.outcome,
+      description: t.capabilities.ncaaa.description,
       icon: "assignment_turned_in",
       color: "purple",
     },
@@ -145,7 +137,7 @@ const CapabilityExplorer = () => {
             <button
               key={cap.id}
               onClick={() => handleSwitch(idx)}
-              className={`flex-shrink-0 group relative w-full text-left px-5 py-4 rounded-xl transition-all duration-300 flex items-center gap-4 ${
+              className={`flex-shrink-0 group relative w-full text-start px-5 py-4 rounded-xl transition-all duration-300 flex items-center gap-4 ${
                 activeIdx === idx
                   ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
                   : "text-on-surface-variant hover:bg-indigo-50 hover:text-indigo-600"
@@ -163,7 +155,7 @@ const CapabilityExplorer = () => {
                 {cap.navTitle}
               </span>
               {activeIdx === idx && (
-                <div className="absolute right-4 w-1.5 h-1.5 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]" />
+                <div className="absolute end-4 w-1.5 h-1.5 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]" />
               )}
             </button>
           ))}
@@ -182,12 +174,6 @@ const CapabilityExplorer = () => {
           }`}
         >
           <div className="relative z-10">
-            {/* Pause indicator (subtle) */}
-            {/* {isPaused && (
-              <div className="absolute -top-4 -right-4 bg-indigo-600 text-white text-[8px] font-bold px-2 py-1 rounded-full animate-pulse shadow-lg z-50">
-                AUTOPLAY PAUSED
-              </div>
-            )} */}
             <div className="flex items-start justify-between mb-10">
               <div
                 className={`w-16 h-16 rounded-2xl bg-${current.color}-50 flex items-center justify-center text-${current.color}-600 transition-transform group-hover:scale-110 duration-500 shadow-sm`}
@@ -204,26 +190,26 @@ const CapabilityExplorer = () => {
               <div className="hidden lg:flex items-center gap-2">
                 <button
                   onClick={() => handleSwitch(prevIdx)}
-                  className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
+                  className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95 flip-rtl"
                   aria-label="Previous Outcome"
                 >
-                  <span className="material-symbols-outlined text-lg">chevron_left</span>
+                  <span className="material-symbols-outlined text-lg rtl:rotate-180">chevron_left</span>
                 </button>
                 <button
                   onClick={() => handleSwitch(nextIdx)}
-                  className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
+                  className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95 flip-rtl"
                   aria-label="Next Outcome"
                 >
-                  <span className="material-symbols-outlined text-lg">chevron_right</span>
+                  <span className="material-symbols-outlined text-lg rtl:rotate-180">chevron_right</span>
                 </button>
               </div>
             </div>
 
-            <div className="mb-8">
+            <div className={`mb-8 text-start`}>
               <span
                 className={`text-[10px] font-bold uppercase tracking-widest text-${current.color}-600/60 mb-4 block`}
               >
-                Capability: {current.navTitle}
+                {t.capabilities.label}: {current.navTitle}
               </span>
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline text-on-surface leading-[1.1] tracking-tight mb-8">
                 {current.outcome}
@@ -241,11 +227,11 @@ const CapabilityExplorer = () => {
                   href="#waitlist"
                   className="bg-primary-gradient text-white px-8 py-4 rounded-full font-bold text-sm shadow-xl shadow-indigo-600/20 hover:scale-105 transition-all"
                 >
-                  Join the Waitlist
+                  {t.nav.joinWaitlist}
                 </a>
                 <div className="flex items-center gap-2 text-on-surface-variant font-medium text-sm">
                   <span className="material-symbols-outlined text-[18px]">verified_user</span>
-                  Verified for Saudi Higher Ed
+                  {t.features.badgeSaudi}
                 </div>
               </div>
 
@@ -260,14 +246,14 @@ const CapabilityExplorer = () => {
                     className="w-12 h-12 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
                     aria-label="Previous Outcome"
                   >
-                    <span className="material-symbols-outlined text-xl">chevron_left</span>
+                    <span className="material-symbols-outlined text-xl rtl:rotate-180">chevron_left</span>
                   </button>
                   <button
                     onClick={() => handleSwitch(nextIdx)}
                     className="w-12 h-12 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
                     aria-label="Next Outcome"
                   >
-                    <span className="material-symbols-outlined text-xl">chevron_right</span>
+                    <span className="material-symbols-outlined text-xl rtl:rotate-180">chevron_right</span>
                   </button>
                 </div>
               </div>
@@ -276,7 +262,7 @@ const CapabilityExplorer = () => {
 
           {/* Background Decorative Shape */}
           <div
-            className={`absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-${current.color}-50/30 to-transparent pointer-events-none -z-10 rounded-r-[2.5rem]`}
+            className={`absolute top-0 end-0 w-1/2 h-full bg-gradient-to-l rtl:bg-gradient-to-r from-${current.color}-50/30 to-transparent pointer-events-none -z-10 rounded-e-[2.5rem]`}
           />
         </div>
       </div>
@@ -284,32 +270,16 @@ const CapabilityExplorer = () => {
   );
 };
 
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
+import { useDictionary } from "./DictionaryProvider";
+
 export default function Page() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const openMenu = () => {
-    setMenuOpen(true);
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-    document.body.style.overflow = "";
-  };
-
-  // Close drawer when resized to desktop
-  useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 768) closeMenu();
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const t = useDictionary();
 
   // Waitlist Form State
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("Professor (Full / Associate / Assistant)");
+  const [role, setRole] = useState(t.waitlist.role1);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -330,16 +300,16 @@ export default function Page() {
 
       if (res.ok && data.success) {
         setStatus("success");
-        setMessage(data.message);
+        setMessage(t.waitlist.successDefault);
         setEmail("");
       } else {
         setStatus("error");
-        setMessage(data.message || "Failed to join waitlist");
+        setMessage(data.message || t.waitlist.errorDefault);
       }
     } catch (err) {
       console.error("Waitlist Error:", err);
       setStatus("error");
-      setMessage("An unexpected error occurred. Please try again later.");
+      setMessage(t.waitlist.errorDefault);
     }
   };
 
@@ -360,118 +330,14 @@ export default function Page() {
     return <span>{displayedText}</span>;
   }
 
-  const navLinks = [
-    { label: "How it Works", href: "#how-it-works" },
-    { label: "Features", href: "#features" },
-    { label: "The Impact", href: "#the-impact" },
-    { label: "Compare", href: "#compare" },
-  ];
-
   return (
     <div className="bg-surface text-on-surface font-body hero-glow min-h-screen">
-      {/* ── TopNavBar ── */}
-      <nav className="fixed top-0 w-full z-50 bg-glass transition-all border-b border-outline-variant/30">
-        <div className="flex justify-between items-center px-4 sm:px-8 py-4 max-w-7xl mx-auto">
-          {/* Logo */}
-          <a
-            href="#"
-            className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-headline tracking-tight hover:opacity-80 transition-opacity"
-          >
-            Tadris AI
-          </a>
-
-          {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-8 font-medium text-sm">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                className="text-on-surface-variant hover:text-indigo-600 transition-colors"
-                href={l.href}
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-
-          {/* Desktop CTA */}
-          <a
-            href="#waitlist"
-            className="hidden md:inline-flex bg-primary-gradient text-white px-6 py-2.5 rounded-full font-medium text-sm hover:opacity-90 transition-all shadow-lg shadow-indigo-500/10"
-          >
-            Join the Waitlist
-          </a>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={openMenu}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-xl text-on-surface-variant hover:bg-indigo-50 transition-colors"
-            aria-label="Open menu"
-          >
-            <span className="material-symbols-outlined">menu</span>
-          </button>
-        </div>
-      </nav>
-
-      {/* ── Mobile Drawer (always mounted, CSS transition) ── */}
-      {/* Backdrop */}
-      <div
-        onClick={closeMenu}
-        className={`fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out md:hidden ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      />
-      {/* Sidebar panel */}
-      <div
-        className={`fixed top-0 right-0 z-[70] h-full w-72 bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out md:hidden ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-indigo-50">
-          <a
-            href="#"
-            onClick={closeMenu}
-            className="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-headline hover:opacity-80 transition-opacity"
-          >
-            Tadris AI
-          </a>
-          <button
-            onClick={closeMenu}
-            className="flex items-center justify-center w-9 h-9 rounded-xl text-on-surface-variant hover:bg-indigo-50 transition-colors"
-            aria-label="Close menu"
-          >
-            <span className="material-symbols-outlined">close</span>
-          </button>
-        </div>
-        {/* Links */}
-        <nav className="flex-1 px-4 py-6 space-y-1">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={closeMenu}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-indigo-600 hover:bg-indigo-50/70 font-medium transition-all"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-        {/* CTA */}
-        <div className="px-4 pb-8">
-          <a
-            href="#waitlist"
-            onClick={closeMenu}
-            className="block bg-primary-gradient text-white text-center py-3 rounded-2xl font-bold text-sm shadow-xl shadow-indigo-500/20 hover:opacity-90 transition-opacity"
-          >
-            Join the Waitlist
-          </a>
-        </div>
-      </div>
+      <Navbar />
 
       <main className="pt-20">
         {/* ── Hero Section ── */}
         <section className="max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-16 lg:py-24 flex flex-col lg:flex-row gap-10 lg:gap-16 items-center relative">
-          <div className="lg:w-1/2 space-y-6 lg:space-y-8 z-10 text-center lg:text-left">
+          <div className="lg:w-1/2 space-y-6 lg:space-y-8 z-10 text-center lg:text-start">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-xs font-semibold tracking-wide uppercase border border-indigo-100">
               <span
                 className="material-symbols-outlined text-sm"
@@ -479,23 +345,22 @@ export default function Page() {
               >
                 auto_awesome
               </span>
-              The AI Co-Pilot Built for Saudi Higher Education
+              {t.hero.badge}
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline leading-[1.1] tracking-tight text-on-surface">
-              Give Your Faculty{" "}
-              <span className="text-transparent bg-clip-text bg-primary-gradient">10+ Hours</span>{" "}
-              Back Every Week
+              {t.hero.titlePart1}{" "}
+              <span className="text-transparent bg-clip-text bg-primary-gradient">{t.hero.titleHighlight}</span>{" "}
+              {t.hero.titlePart2}
             </h1>
-            <p className="text-base sm:text-lg text-on-surface-variant max-w-xl leading-relaxed mx-auto lg:mx-0">
-              Upload your course material. Get quizzes, slide decks, lesson plans, lab exercises,
-              NCAAA reports, and more — reviewed and approved by you, always.
+            <p className="text-base sm:text-lg text-on-surface-variant max-w-xl leading-relaxed mx-auto lg:mx-0 lg:text-start">
+              {t.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1">
               <a
                 href="#waitlist"
                 className="bg-primary-gradient text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base shadow-2xl shadow-indigo-600/30 hover:scale-[1.02] hover:shadow-indigo-600/40 transition-all text-center flex items-center justify-center"
               >
-                Join the Waitlist
+                {t.hero.cta}
               </a>
               {/* <a
                 href="#the-impact"
@@ -518,7 +383,7 @@ export default function Page() {
             <div className="absolute -left-2 sm:-left-4 top-4 z-20 badge-slide-left bg-white border border-emerald-100 rounded-full px-3 py-1.5 shadow-xl shadow-emerald-500/10 flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
               <div className="text-[11px] font-bold text-on-surface leading-none">
-                15 questions generated
+                {t.hero.floatingBadgeLeft}
               </div>
             </div>
 
@@ -530,7 +395,7 @@ export default function Page() {
               >
                 check_circle
               </span>
-              <div className="text-[11px] font-bold leading-none">AI Draft · Reviewed</div>
+              <div className="text-[11px] font-bold leading-none">{t.hero.floatingBadgeRight}</div>
             </div>
 
             {/* Main app window card */}
@@ -542,7 +407,7 @@ export default function Page() {
                 <div className="w-3 h-3 rounded-full bg-green-400/70" />
                 <div className="flex-1 mx-4">
                   <div className="bg-white/60 rounded-md px-3 py-1 text-[11px] text-on-surface-variant text-center font-mono">
-                    tadris.ai / assess / cs-101
+                    {t.hero.mockup.url}
                   </div>
                 </div>
               </div>
@@ -559,23 +424,23 @@ export default function Page() {
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="text-[13px] font-bold text-on-surface">
-                            Sara Al-Mutairi
+                            {t.hero.mockup.studentName}
                           </span>
                           <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold border border-indigo-100 uppercase tracking-tight">
-                            AI DRAFT
+                            {t.hero.mockup.aiDraft}
                           </span>
                         </div>
                         <div className="text-[11px] text-on-surface-variant">
-                          CS 101 · Midterm · Chapter 4
+                          {t.hero.mockup.courseInfo}
                         </div>
                       </div>
                     </div>
-                    <div className="text-right hero-score" style={{ animationDelay: "0.5s" }}>
+                    <div className="text-end hero-score" style={{ animationDelay: "0.5s" }}>
                       <div className="text-[32px] font-extrabold font-headline text-transparent bg-clip-text bg-primary-gradient leading-none">
                         15
                       </div>
                       <div className="text-[9px] font-bold text-indigo-500/50 uppercase tracking-widest mt-1">
-                        Questions
+                        {t.hero.mockup.questionsLabel}
                       </div>
                     </div>
                   </div>
@@ -587,37 +452,37 @@ export default function Page() {
                       <div className="flex items-center justify-between">
                         <div className="flex gap-2">
                           <span className="text-[9px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold uppercase tracking-tight">
-                            MCQ
+                            {t.hero.mockup.mcqLabel}
                           </span>
                           <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
-                            Medium
+                            {t.hero.mockup.mediumLabel}
                           </span>
                         </div>
                         <span className="text-[10px] text-on-surface-variant font-medium">
-                          Q1 of 15
+                          {t.hero.mockup.qPrefix}1 {t.hero.mockup.of} 15
                         </span>
                       </div>
                       <div className="text-xs font-bold text-on-surface leading-snug">
-                        Which data structure follows Last In, First Out (LIFO) ordering?
+                        {t.hero.mockup.q1Question}
                       </div>
                       <div className="grid grid-cols-1 gap-1">
-                        {["Queue", "Stack", "Linked List", "Binary Tree"].map((opt) => (
+                        {t.hero.mockup.q1Options.map((opt) => (
                           <div
                             key={opt}
                             className={`flex items-center gap-2 px-3 ${
-                              opt === "Stack" ? "border-indigo-200" : "border-outline-variant/30"
+                              opt === t.hero.mockup.q1Options[1] ? "border-indigo-200" : "border-outline-variant/30"
                             }`}
                           >
                             <div
                               className={`w-3 h-3 rounded-full flex items-center justify-center ${
-                                opt === "Stack"
+                                opt === t.hero.mockup.q1Options[1]
                                   ? "bg-indigo-600 shadow-[0_0_8px_rgba(79,70,229,0.4)]"
                                   : "border border-outline-variant"
                               }`}
                             />
                             <span
                               className={`text-[10px] ${
-                                opt === "Stack"
+                                opt === t.hero.mockup.q1Options[1]
                                   ? "text-indigo-900 font-bold"
                                   : "text-on-surface-variant font-medium"
                               }`}
@@ -634,22 +499,21 @@ export default function Page() {
                       <div className="flex items-center justify-between">
                         <div className="flex gap-2">
                           <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-bold uppercase tracking-tight">
-                            SHORT ANSWER
+                            {t.hero.mockup.shortAnswerLabel}
                           </span>
                           <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold uppercase tracking-tight">
-                            Hard
+                            {t.hero.mockup.hardLabel}
                           </span>
                         </div>
                         <span className="text-[10px] text-on-surface-variant font-medium">
-                          Q2 of 15
+                          {t.hero.mockup.qPrefix}2 {t.hero.mockup.of} 15
                         </span>
                       </div>
                       <div className="text-xs font-bold text-on-surface leading-snug">
-                        Compare the time complexity of Bubble Sort and Merge Sort. When would you
-                        choose one over the other?
+                        {t.hero.mockup.q2Question}
                       </div>
                       <div className="px-3 py-2 rounded-md border border-dashed border-outline-variant/90 text-[11px] text-on-surface-variant italic">
-                        Student answer field
+                        {t.hero.mockup.studentAnswerPlaceholder}
                       </div>
                     </div>
                   </div>
@@ -657,10 +521,10 @@ export default function Page() {
                   {/* Actions */}
                   <div className="px-5 pb-5 pt-1 flex gap-3">
                     <button className="flex-1 bg-primary-gradient text-white text-[11px] font-bold py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 hover:scale-[1.02] transition-all">
-                      Approve & Export
+                      {t.nav.joinWaitlist}
                     </button>
                     <button className="px-4 py-2.5 rounded-xl border border-indigo-100 text-[11px] font-bold text-indigo-600 hover:bg-indigo-50/50 transition-all">
-                      Edit
+                      {t.hero.mockup.editLabel}
                     </button>
                   </div>
                 </div>
@@ -678,7 +542,7 @@ export default function Page() {
                 school
               </span>
               <span className="font-headline font-bold text-base sm:text-xl tracking-tight text-on-surface">
-                Built for Higher Education
+                {t.socialProof.badge1}
               </span>
             </div>
 
@@ -691,7 +555,7 @@ export default function Page() {
                 translate
               </span>
               <span className="font-headline font-bold text-base sm:text-xl tracking-tight text-on-surface">
-                Arabic & English Support
+                {t.socialProof.badge2}
               </span>
             </div>
           </div>
@@ -708,14 +572,13 @@ export default function Page() {
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-16 lg:mb-24">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold tracking-widest uppercase border border-indigo-100 mb-4">
-                The Reality
+                {t.problem.sectionLabel}
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-6 tracking-tight text-on-surface">
-                The Administrative Burden is Real
+                {t.problem.title}
               </h2>
               <p className="text-on-surface-variant text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                Academic excellence is often buried under hours of manual documentation and routine
-                grading. Reclaim your time for what matters most: your students.
+                {t.problem.subtitle}
               </p>
             </div>
 
@@ -733,11 +596,10 @@ export default function Page() {
                     </span>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
-                    The Sunday Night <br />
-                    Grading Mountain
+                    {t.problem.scenario1Title}
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    It&apos;s Sunday night. You have 80 essays to grade by morning.
+                    {t.problem.scenario1Text}
                   </p>
                 </div>
               </div>
@@ -755,11 +617,10 @@ export default function Page() {
                     </span>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
-                    Delayed <br />
-                    Report Submission
+                    {t.problem.scenario2Title}
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    The semester ended two weeks ago. You&apos;re still writing the NCAAA report.
+                    {t.problem.scenario2Text}
                   </p>
                 </div>
               </div>
@@ -777,11 +638,10 @@ export default function Page() {
                     </span>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold font-headline mb-4 text-on-surface leading-tight">
-                    The Feedback <br />
-                    Black Hole
+                    {t.problem.scenario3Title}
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    Your students submitted last week. You still haven&apos;t had time to respond.
+                    {t.problem.scenario3Text}
                   </p>
                 </div>
               </div>
@@ -824,11 +684,10 @@ export default function Page() {
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-16 sm:mb-24">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-6 tracking-tight">
-                A Simple 3-Step Workflow
+                {t.howItWorks.title}
               </h2>
               <p className="text-on-surface-variant text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                Tadris AI fits seamlessly into your teaching routine. No complex training, no
-                reformatting—just results.
+                {t.howItWorks.subtitle}
               </p>
             </div>
 
@@ -840,8 +699,8 @@ export default function Page() {
                 {/* Step 1 */}
                 <div className="group text-center">
                   <div className="relative mx-auto mb-10 w-24 h-24 rounded-3xl bg-white border border-indigo-100 flex items-center justify-center shadow-xl shadow-indigo-500/5 group-hover:scale-105 transition-all duration-500">
-                    <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-primary-gradient text-white flex items-center justify-center font-bold text-lg shadow-lg">
-                      1
+                    <div className="absolute -top-3 -start-3 w-10 h-10 rounded-xl bg-primary-gradient text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      {t.howItWorks.step1Num}
                     </div>
                     <span
                       className="material-symbols-outlined text-indigo-600 text-4xl"
@@ -851,19 +710,18 @@ export default function Page() {
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold font-headline mb-4 text-on-surface tracking-tight">
-                    1. Upload
+                    {t.howItWorks.step1Title}
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base px-2">
-                    Upload your existing course material. PDF, Word, PowerPoint, or just paste text.
-                    No reformatting needed.
+                    {t.howItWorks.step1Text}
                   </p>
                 </div>
 
                 {/* Step 2 */}
                 <div className="group text-center">
                   <div className="relative mx-auto mb-10 w-24 h-24 rounded-3xl bg-white border border-indigo-100 flex items-center justify-center shadow-xl shadow-indigo-500/5 group-hover:scale-105 transition-all duration-500">
-                    <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
-                      2
+                    <div className="absolute -top-3 -start-3 w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      {t.howItWorks.step2Num}
                     </div>
                     <span
                       className="material-symbols-outlined text-purple-600 text-4xl"
@@ -873,19 +731,18 @@ export default function Page() {
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold font-headline mb-4 text-on-surface tracking-tight">
-                    2. Choose What You Need
+                    {t.howItWorks.step2Title}
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base px-2">
-                    Select your output — quiz, slides, lesson plan, NCAAA report, lab exercise,
-                    grading, and more.
+                    {t.howItWorks.step2Text}
                   </p>
                 </div>
 
                 {/* Step 3 */}
                 <div className="group text-center">
                   <div className="relative mx-auto mb-10 w-24 h-24 rounded-3xl bg-indigo-50 border border-indigo-200 flex items-center justify-center shadow-xl shadow-indigo-600/10 group-hover:scale-105 transition-all duration-500 ring-4 ring-indigo-500/5">
-                    <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
-                      3
+                    <div className="absolute -top-3 -start-3 w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      {t.howItWorks.step3Num}
                     </div>
                     <span
                       className="material-symbols-outlined text-indigo-700 text-4xl"
@@ -895,10 +752,10 @@ export default function Page() {
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold font-headline mb-4 text-on-surface tracking-tight">
-                    3. Review and Use
+                    {t.howItWorks.step3Title}
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base px-2">
-                    The AI generates a draft. You review it, edit anything you want, and use it.
+                    {t.howItWorks.step3Text}
                   </p>
                 </div>
               </div>
@@ -912,7 +769,7 @@ export default function Page() {
                   >
                     verified_user
                   </span>
-                  Nothing goes anywhere without your approval.
+                  {t.howItWorks.trustMarker}
                 </div>
               </div>
             </div>
@@ -931,16 +788,15 @@ export default function Page() {
           </div>
 
           <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-            <div className="mb-20 sm:mb-28 text-center lg:text-left">
+            <div className="mb-20 sm:mb-28 text-center lg:text-start">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50/80 text-indigo-600 text-[10px] font-bold tracking-widest uppercase border border-indigo-100/50 mb-6 font-mono">
-                System Capabilities v2.0
+                {t.features.sectionLabel}
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline tracking-tighter text-on-surface leading-[0.95] mb-8">
-                Outcomes Over Features.
+                {t.features.title}
               </h2>
               <p className="text-on-surface-variant text-lg sm:text-xl max-w-2xl leading-relaxed">
-                Interact with our core workflows to see how we transform the academic burden into
-                teaching momentum.
+                {t.features.subtitle}
               </p>
             </div>
 
@@ -953,58 +809,51 @@ export default function Page() {
           <div className="flex flex-col md:flex-row gap-10 lg:gap-16">
             <div className="md:w-1/3">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline tracking-tight leading-tight">
-                Why Choose Tadris AI?
+                {t.differentiators.title}
               </h2>
               <p className="mt-4 sm:mt-6 text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                Unlike generic AI tools, Tadris is purpose-built for the strict ethical, privacy,
-                and accreditation standards of Saudi higher education.
+                {t.differentiators.subtitle}
               </p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-10 lg:gap-y-16">
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">person_check</span> Teacher in control
+                  <span className="material-symbols-outlined">person_check</span> {t.differentiators.teacherControlTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  The AI drafts, but the Professor confirms. No autonomous grades are ever finalized
-                  without manual override.
+                  {t.differentiators.teacherControlText}
                 </p>
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">visibility</span> Transparent outputs
+                  <span className="material-symbols-outlined">visibility</span> {t.differentiators.transparentOutputsTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Every AI-generated statement is cited back to your course materials or provided
-                  student submissions.
+                  {t.differentiators.transparentOutputsText}
                 </p>
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">security</span> Stays grounded in your
-                  material
+                  <span className="material-symbols-outlined">security</span> {t.differentiators.groundedTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Tadris only generates content based on what you have uploaded. It will not invent
-                  facts, add unsourced claims, or go off-script from your course content.
+                  {t.differentiators.groundedText}
                 </p>
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">lock</span> Data privacy
+                  <span className="material-symbols-outlined">lock</span> {t.differentiators.dataPrivacyTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Enterprise-grade encryption. Student data is never used to train global models.
-                  GDPR and NCAAA aligned.
+                  {t.differentiators.dataPrivacyText}
                 </p>
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">edit_note</span> Easy to customize
+                  <span className="material-symbols-outlined">edit_note</span> {t.differentiators.customizableTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Every AI generation is fully editable. Refine feedback, adjust rubric weights, and
-                  tailor lesson plans before they go live.
+                  {t.differentiators.customizableText}
                 </p>
               </div>
             </div>
@@ -1019,17 +868,17 @@ export default function Page() {
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-4 tracking-tight">
-                What Changes When You Use Tadris
+                {t.impact.title}
               </h2>
-              <p className="text-on-surface-variant text-sm sm:text-base">Essay Grading</p>
+              <p className="text-on-surface-variant text-sm sm:text-base">{t.impact.subtitle}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-indigo-100 shadow-2xl">
               <div className="bg-white p-7 sm:p-12">
                 <div className="text-on-surface-variant font-bold text-xs uppercase tracking-widest mb-4 sm:mb-6">
-                  The Old Way
+                  {t.impact.oldWay}
                 </div>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-headline mb-6 sm:mb-8">
-                  20 Hours of Manual Grading
+                  {t.impact.oldTitle}
                 </h3>
                 <ul className="space-y-4 sm:space-y-6">
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1037,7 +886,7 @@ export default function Page() {
                       close
                     </span>
                     <span className="text-on-surface-variant text-sm sm:text-base">
-                      Reading 80 student essays one by one
+                      {t.impact.old1}
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1045,7 +894,7 @@ export default function Page() {
                       close
                     </span>
                     <span className="text-on-surface-variant text-sm sm:text-base">
-                      Writing individual feedback from scratch for each student
+                      {t.impact.old2}
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1053,7 +902,7 @@ export default function Page() {
                       close
                     </span>
                     <span className="text-on-surface-variant text-sm sm:text-base">
-                      No visibility into what the whole class struggled with
+                      {t.impact.old3}
                     </span>
                   </li>
                 </ul>
@@ -1063,10 +912,10 @@ export default function Page() {
                   <span className="material-symbols-outlined text-[200px]">bolt</span>
                 </div>
                 <div className="text-indigo-100 font-bold text-xs uppercase tracking-widest mb-4 sm:mb-6">
-                  The Tadris Way
+                  {t.impact.newWay}
                 </div>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-headline mb-6 sm:mb-8">
-                  Done in 2 Hours
+                  {t.impact.newTitle}
                 </h3>
                 <ul className="space-y-4 sm:space-y-6">
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1074,7 +923,7 @@ export default function Page() {
                       check_circle
                     </span>
                     <span className="text-white text-sm sm:text-base">
-                      AI drafts rubric-aligned feedback for every student
+                      {t.impact.new1}
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1082,7 +931,7 @@ export default function Page() {
                       check_circle
                     </span>
                     <span className="text-white text-sm sm:text-base">
-                      You review, adjust anything you want, approve and send
+                      {t.impact.new2}
                     </span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
@@ -1090,7 +939,7 @@ export default function Page() {
                       check_circle
                     </span>
                     <span className="text-white text-sm sm:text-base">
-                      Dashboard shows exactly which topics the whole class struggled with
+                      {t.impact.new3}
                     </span>
                   </li>
                 </ul>
@@ -1106,11 +955,10 @@ export default function Page() {
 
           <div className="max-w-3xl mx-auto mb-16 sm:mb-24">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline leading-[1.1] tracking-tight text-on-surface mb-6">
-              Elevate Your Academic Impact
+              {t.benefits.title}
             </h2>
             <p className="text-on-surface-variant text-lg sm:text-xl leading-relaxed">
-              Tadris AI handles the administrative heavy lifting, so you can focus on the core of
-              teaching: thinking, mentoring, and inspiring.
+              {t.benefits.subtitle}
             </p>
           </div>
 
@@ -1121,11 +969,10 @@ export default function Page() {
                 <span className="material-symbols-outlined text-indigo-600 text-3xl">schedule</span>
               </div>
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
-                6-7 Hours of Admin. Every Week. Gone
+                {t.benefits.b1Title}
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
-                That&apos;s the average time Saudi faculty lose to admin tasks Tadris handles. Time you
-                get back for research, mentoring, and actually teaching.
+                {t.benefits.b1Text}
               </p>
             </div>
 
@@ -1135,11 +982,10 @@ export default function Page() {
                 <span className="material-symbols-outlined text-purple-600 text-3xl">bolt</span>
               </div>
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
-                Grade 80 Essays in 2 Hours, Not 20
+                {t.benefits.b2Title}
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
-                The AI drafts rubric-aligned feedback for every student. You review, adjust if
-                needed, and send. Your students hear back before the next class.
+                {t.benefits.b2Text}
               </p>
             </div>
 
@@ -1151,11 +997,10 @@ export default function Page() {
                 </span>
               </div>
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
-                One Tool. No More Juggling
+                {t.benefits.b3Title}
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
-                Stop switching between Excel, Word, your LMS, and your notes just to write one NCAAA
-                report. Tadris pulls everything together in one place.
+                {t.benefits.b3Text}
               </p>
             </div>
           </div>
@@ -1169,37 +1014,37 @@ export default function Page() {
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline tracking-tight">
-                How We Compare
+                {t.comparison.title}
               </h2>
               <p className="text-on-surface-variant mt-3 sm:mt-4 text-sm sm:text-base">
-                See how Tadris AI stacks up against the tools you may already know.
+                {t.comparison.subtitle}
               </p>
             </div>
             {/* Horizontally scrollable on mobile */}
             <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
               <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-indigo-100 min-w-[560px]">
-                <table className="w-full text-left">
+                <table className="w-full text-start">
                   <thead>
                     <tr className="bg-indigo-50 border-b border-indigo-100">
-                      <th className="p-4 sm:p-6 font-headline font-bold text-on-surface text-sm sm:text-base">
-                        Feature
+                      <th className="p-4 sm:p-6 font-headline font-bold text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.headerFeature}
                       </th>
                       <th className="p-4 sm:p-6 font-headline font-bold text-indigo-600 text-sm sm:text-base">
-                        Tadris AI
+                        {t.comparison.headerTadris}
                       </th>
                       <th className="p-4 sm:p-6 font-headline font-medium text-on-surface-variant text-sm sm:text-base">
-                        NotebookLLM
+                        {t.comparison.headerNotebook}
                       </th>
                       <th className="p-4 sm:p-6 font-headline font-medium text-on-surface-variant text-sm sm:text-base">
-                        Google Classroom
+                        {t.comparison.headerClassroom}
                       </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-indigo-50">
                     {/* Row 1: NCAAA */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        NCAAA Report Generation (TP-153/154)
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f1}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1215,8 +1060,8 @@ export default function Page() {
                     </tr>
                     {/* Row 2: Arabic */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Arabic language outputs with I’rab accuracy
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f2}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1232,8 +1077,8 @@ export default function Page() {
                     </tr>
                     {/* Row 3: CLO/PLO */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        CLO/PLO mapped assessments
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f3}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1249,8 +1094,8 @@ export default function Page() {
                     </tr>
                     {/* Row 4: Essay grading */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Essay grading with rubric alignment
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f4}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1266,8 +1111,8 @@ export default function Page() {
                     </tr>
                     {/* Row 5: Session recordings */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Session recordings → study materials
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f5}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1285,8 +1130,8 @@ export default function Page() {
                     </tr>
                     {/* Row 6: PDPL */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Data stays in Saudi Arabia (PDPL)
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f6}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1302,8 +1147,8 @@ export default function Page() {
                     </tr>
                     {/* Row 7: Human in the loop */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Instructor approves every AI output
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f7}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1321,8 +1166,8 @@ export default function Page() {
                     </tr>
                     {/* Row 8: Peer benchmarking */}
                     <tr>
-                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base">
-                        Peer benchmarking across instructors
+                      <td className="p-4 sm:p-6 font-medium text-on-surface text-sm sm:text-base text-start">
+                        {t.comparison.f8}
                       </td>
                       <td className="p-4 sm:p-6">
                         <span className="material-symbols-outlined text-indigo-600">
@@ -1345,8 +1190,8 @@ export default function Page() {
                 href="#waitlist"
                 className="bg-primary-gradient text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-xl shadow-indigo-500/10 hover:opacity-90 transition-all inline-flex items-center gap-2 min-h-[48px]"
               >
-                Join the Waitlist{" "}
-                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                {t.nav.joinWaitlist}{" "}
+                <span className="material-symbols-outlined text-sm rtl:-scale-x-100">arrow_forward</span>
               </a>
             </div>
           </div>
@@ -1358,25 +1203,24 @@ export default function Page() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="bg-primary-gradient rounded-2xl sm:rounded-3xl p-7 sm:p-12 text-white flex flex-col lg:flex-row gap-8 sm:gap-12 items-center shadow-2xl shadow-indigo-500/30">
-              <div className="lg:w-1/2 text-center lg:text-left">
+              <div className="lg:w-1/2 text-center lg:text-start">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline mb-6 leading-tight tracking-tight">
-                  Ready to Focus on What Matters?
+                  {t.waitlist.title}
                 </h2>
                 <p className="text-indigo-100 text-sm sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-                  Currently in private beta with faculty at Saudi universities. Early access spots
-                  are limited.
+                  {t.waitlist.subtitle}
                 </p>
               </div>
               <div className="lg:w-1/2 w-full bg-glass p-6 sm:p-8 rounded-xl sm:rounded-2xl text-on-surface border border-white/40">
                 <form onSubmit={handleWaitlistSubmit} className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-sm font-semibold text-indigo-950 mb-2">
-                      University Email
+                       {t.waitlist.emailLabel}
                     </label>
                     <input
                       required
                       className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]"
-                      placeholder="dr.smith@university.edu"
+                      placeholder={t.waitlist.emailPlaceholder}
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -1385,7 +1229,7 @@ export default function Page() {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-indigo-950 mb-2">
-                      Primary Role
+                      {t.waitlist.roleLabel}
                     </label>
                     <select
                       className="w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-sm sm:text-base min-h-[48px]"
@@ -1393,11 +1237,11 @@ export default function Page() {
                       onChange={(e) => setRole(e.target.value)}
                       disabled={status === "loading"}
                     >
-                      <option>Professor (Full / Associate / Assistant)</option>
-                      <option>Lecturer</option>
-                      <option>Course Coordinator</option>
-                      <option>Department Head</option>
-                      <option>Dean / Vice Dean of Academic Affairs</option>
+                      <option>{t.waitlist.role1}</option>
+                      <option>{t.waitlist.role2}</option>
+                      <option>{t.waitlist.role3}</option>
+                      <option>{t.waitlist.role4}</option>
+                      <option>{t.waitlist.role5}</option>
                     </select>
                   </div>
                   <button
@@ -1412,10 +1256,10 @@ export default function Page() {
                     {status === "loading" ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Joining...
+                        {t.waitlist.submitting}
                       </>
                     ) : (
-                      "Join the Waitlist"
+                      t.waitlist.submitButton
                     )}
                   </button>
 
@@ -1432,7 +1276,7 @@ export default function Page() {
                   )}
                 </form>
                 <p className="text-center text-xs text-on-surface-variant mt-4 sm:mt-6">
-                  Enterprise-grade security. GDPR compliant. Data stays in Saudi Arabia.
+                  {t.waitlist.trustFooter}
                 </p>
               </div>
             </div>
@@ -1440,39 +1284,7 @@ export default function Page() {
         </section>
       </main>
 
-      {/* ── Footer ── */}
-      <footer className="bg-white border-t border-indigo-100">
-        <div className="flex flex-col items-center md:flex-row md:justify-between max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-8 gap-6 sm:gap-8 text-center md:text-left">
-          <div>
-            <a
-              href="#"
-              className="inline-block text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-headline mb-1 sm:mb-2 hover:opacity-80 transition-opacity"
-            >
-              Tadris AI
-            </a>
-            <div className="text-xs tracking-wide text-on-surface-variant">
-              &copy; 2026 Tadris AI. Empathetic AI for Educators.
-            </div>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs tracking-wide font-medium text-on-surface-variant">
-            <a className="hover:text-indigo-600 transition-all font-bold text-indigo-600" href="/survey">
-              Research Survey
-            </a>
-            <a className="hover:text-indigo-600 transition-all" href="#">
-              Privacy Policy
-            </a>
-            <a className="hover:text-indigo-600 transition-all" href="#">
-              Terms of Service
-            </a>
-            <a className="hover:text-indigo-600 transition-all" href="#">
-              Cookie Policy
-            </a>
-            <a className="hover:text-indigo-600 transition-all" href="#">
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

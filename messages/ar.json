@@ -1,65 +1,214 @@
 {
   "meta": {
-    "title": "Tadris AI – Teacher's AI Companion",
-    "description": "Save 10+ Hours a Week on Teaching Tasks. The Future of Academic Productivity."
+    "title": "تدريس AI – رفيقك الذكي في رحلتك الأكاديمية",
+    "description": "وفر أكثر من 10 ساعات أسبوعياً من المهام التدريسية. مستقبل الإنتاجية الأكاديمية يبدأ هنا."
   },
   "nav": {
-    "brand": "Tadris AI",
-    "howItWorks": "How it Works",
-    "features": "Features",
-    "theImpact": "The Impact",
-    "compare": "Compare",
-    "joinWaitlist": "Join the Waitlist"
+    "brand": "تدريس AI",
+    "howItWorks": "آلية العمل",
+    "features": "المميزات",
+    "theImpact": "الأثر",
+    "compare": "المقارنة العامة",
+    "joinWaitlist": "انضم إلى قائمة الانتظار"
   },
   "hero": {
-    "badge": "The AI Co-Pilot Built for Saudi Higher Education",
-    "titlePart1": "Give Your Faculty",
-    "titleHighlight": "10+ Hours",
-    "titlePart2": "Back Every Week",
-    "subtitle": "Upload your course material. Get quizzes, slide decks, lesson plans, lab exercises, NCAAA reports, and more — reviewed and approved by you, always.",
-    "floatingBadgeLeft": "15 questions generated",
-    "floatingBadgeRight": "AI Draft · Reviewed"
+    "badge": "المساعد الذكي المصمم خصيصاً لمنظومة التعليم العالي في السعودية",
+    "titlePart1": "امنح أعضاء هيئة التدريس",
+    "titleHighlight": "أكثر من 10 ساعات",
+    "titlePart2": "إضافية كل أسبوع",
+    "subtitle": "ارفع موادك الدراسية، واحصل فوراً على اختبارات، عروض تقديمية، خطط دروس، تمارين معملية، وتقارير NCAAA — كل ذلك تحت مراجعتك واعتمادك الشخصي دائماً.",
+    "floatingBadgeLeft": "تم إنشاء 15 سؤالاً",
+    "floatingBadgeRight": "مسودة AI · تمت المراجعة",
+    "cta": "انضم إلى قائمة الانتظار",
+    "mockup": {
+      "url": "tadris.ai / assess / cs-101",
+      "studentName": "سارة المطيري",
+      "aiDraft": "مسودة AI",
+      "courseInfo": "CS 101 · اختبار شهري · الفصل 4",
+      "questionsLabel": "سؤالاً",
+      "mcqLabel": "اختيار من متعدد",
+      "shortAnswerLabel": "إجابة قصيرة",
+      "mediumLabel": "متوسط",
+      "hardLabel": "صعب",
+      "qPrefix": "س",
+      "of": "من",
+      "q1Question": "أي هيكل بيانات يتبع ترتيب الأخير دخولاً، الأول خروجاً (LIFO)؟",
+      "q1Options": ["طابور (Queue)", "مكدس (Stack)", "قائمة مرتبطة", "شجرة ثنائية"],
+      "q2Question": "قارن بين التعقيد الزمني للفرز الفقاعي (Bubble Sort) والفرز بالدمج (Merge Sort). متى تختار أحدهما على الآخر؟",
+      "studentAnswerPlaceholder": "حقل إجابة الطالب",
+      "editLabel": "تعديل"
+    }
   },
   "socialProof": {
-    "badge1": "Built for Higher Education",
-    "badge2": "Arabic & English Support"
+    "badge1": "مصمم للتعليم العالي",
+    "badge2": "دعم كامل للغتين العربية والإنجليزية"
   },
   "problem": {
-    "sectionLabel": "The Reality",
-    "title": "The Administrative Burden is Real",
-    "subtitle": "Academic excellence is often buried under hours of manual documentation and routine grading. Reclaim your time for what matters most: your students."
+    "sectionLabel": "الواقع الأكاديمي",
+    "title": "العبء الإداري يستنزف وقتك",
+    "subtitle": "غالباً ما يختفي التميز الأكاديمي تحت جبل من المهام الروتينية والتوثيق اليدوي. استعد وقتك للتركيز على ما يهم حقاً: طلابك وتطويرهم.",
+    "scenario1Title": "تراكم التصحيح في نهاية الأسبوع",
+    "scenario1Text": "ليلة الأحد.. وأمامك 80 مقالة تحتاج لتصحيح دقيق قبل صباح الغد.",
+    "scenario2Title": "تأخر تسليم تقارير المقررات",
+    "scenario2Text": "انتهى الفصل الدراسي منذ أسبوعين، ولا زلت تعمل على إعداد تقارير NCAAA.",
+    "scenario3Title": "فجوة التواصل والتغذية الراجعة",
+    "scenario3Text": "سلم الطلاب تكليفاتهم الأسبوع الماضي، ولم تجد الوقت الكافي للرد عليهم بعد.",
+    "vaultTitle": "الكنوز الأكاديمية المهملة",
+    "vaultText": "سجلت محاضرة متميزة الأسبوع الماضي، لكنها لا تزال حبيسة المجلدات دون استفادة حقيقية."
   },
   "howItWorks": {
-    "sectionLabel": "How It Works",
-    "title": "Three Steps to Reclaim Your Time"
+    "sectionLabel": "آلية العمل",
+    "title": "3 خطوات بسيطة لاستعادة وقتك",
+    "subtitle": "يندمج تدريس AI بسلاسة مع روتينك التدريسي الحالي. لا حاجة لتدريب معقد أو إعادة تنسيق ملفاتك.",
+    "step1Num": "١",
+    "step2Num": "٢",
+    "step3Num": "٣",
+    "step1Title": "١. الرفع",
+    "step1Text": "ارفع موادك الدراسية الحالية (PDF، Word، PowerPoint) أو ببساطة الصق النص. لا حاجة لإعادة التنسيق.",
+    "step2Title": "٢. اختر ما تحتاجه",
+    "step2Text": "اختر ما ترغب في إنشائه — اختبار، عروض تقديمية، خطة درس، تقرير NCAAA، تمارين معملية، والمزيد.",
+    "step3Title": "٣. المراجعة والاستخدام",
+    "step3Text": "ينشئ الذكاء الاصطناعي مسودة أولية. يمكنك مراجعتها، تعديلها، ثم استخدامها فوراً.",
+    "trustMarker": "لا يتم إرسال أو استخدام أي شيء دون موافقتك الصريحة."
   },
   "features": {
-    "sectionLabel": "Features",
-    "title": "Everything You Need, Nothing You Don't"
+    "sectionLabel": "إمكانيات النظام v2.0",
+    "title": "نتائج ملموسة لا مجرد ميزات.",
+    "subtitle": "استكشف مسارات العمل الأساسية لترى كيف نحول العبء الأكاديمي إلى انطلاقة تدريسية.",
+    "badgeSaudi": "موثق لمنظومة التعليم العالي السعودي"
+  },
+  "capabilities": {
+    "label": "الميزة",
+    "lecture": {
+      "navTitle": "معالجة المحاضرات",
+      "outcome": "ارفع محاضرة الأسبوع الماضي",
+      "description": "احصل فوراً على دليل دراسي، بطاقات استذكار، اختبار قصير، وخريطة ذهنية — جاهزة للمشاركة مع طلابك."
+    },
+    "exams": {
+      "navTitle": "بناء التقييمات",
+      "outcome": "صمم اختباراً شاملاً من محتوى مقررك",
+      "description": "كل سؤال يتم ربطه تلقائياً بنواتج تعلم المقرر (CLOs)، وبالصيغ التي تحتاجها لضمان الدقة."
+    },
+    "grading": {
+      "navTitle": "تصحيح المقالات",
+      "outcome": "صحح 80 مقالة في ساعتين بدلاً من 20",
+      "description": "يقترح النظام التغذية الراجعة بناءً على معاييرك؛ راجعها ثم أرسلها. استمتع بإجازة نهاية الأسبوع مجدداً."
+    },
+    "assistant": {
+      "navTitle": "مساعد التدريس الذكي",
+      "outcome": "دعم على مدار الساعة لطلابك",
+      "description": "يحصل الطلاب على إجابات فورية في أي وقت، بينما تتابع أنت مواطن القوة والضعف لديهم عبر لوحة التحكم."
+    },
+    "planner": {
+      "navTitle": "مخطط الدروس",
+      "outcome": "أدخل موضوعك وأهدافك التعليمية",
+      "description": "احصل على خطة درس متكاملة في ثوانٍ، مبنية على أفضل الممارسات الأكاديمية المتبعة عالمياً."
+    },
+    "slides": {
+      "navTitle": "منشئ العروض التقديمية",
+      "outcome": "حول أي وثيقة إلى عرض تقديمي",
+      "description": "اختر أسلوبك، حدد اللغة، وأضف ملاحظات مقدم العرض — كل ذلك بضغطة زر واحدة."
+    },
+    "collaborative": {
+      "navTitle": "ذكاء تعاوني",
+      "outcome": "استفد من خبرات كبار الأكاديميين",
+      "description": "اطلع على أفضل الممارسات في تخصصك واقتبس الاستراتيجيات الناجحة لتطبيقها في قاعتك الدراسية."
+    },
+    "labs": {
+      "navTitle": "بناء التمارين المعملية",
+      "outcome": "صمم تجربة معملية متكاملة",
+      "description": "وصف المشكلة، التعليمات، التلميحات، أدلة الحلول، ومعايير التقييم — جاهزة في دقائق."
+    },
+    "pedagogy": {
+      "navTitle": "موصي طرق التدريس",
+      "outcome": "محتار في طريقة شرح موضوع معقد؟",
+      "description": "احصل على اقتراحات تدريسية قائمة على الأدلة، بناءً على كيفية شرح أكاديميين آخرين لنفس المفهوم."
+    },
+    "ncaaa": {
+      "navTitle": "مساعد تقارير NCAAA",
+      "outcome": "مسودات تقارير (TP-153 & 154) في 5 دقائق",
+      "description": "ارفع درجاتك واحصل على مسودة كاملة لتقرير الاعتماد الأكاديمي — متضمنة خطة العمل المقترحة."
+    }
+  },
+  "differentiators": {
+    "title": "لماذا تختار تدريس AI؟",
+    "subtitle": "بخلاف أدوات الذكاء الاصطناعي العامة، تم بناء \"تدريس\" ليتوافق مع معايير الأخلاقيات والخصوصية والاعتماد الأكاديمي الصارمة في السعودية.",
+    "teacherControlTitle": "المعلم هو القائد",
+    "teacherControlText": "النظام يقترح والبروفيسور يعتمد. لا يتم ترصيد أي درجات بشكل آلي دون مراجعة وتأكيد يدوي.",
+    "transparentOutputsTitle": "مخرجات شفافة",
+    "transparentOutputsText": "كل جملة يولدها النظام موثقة ومربوطة بمصادرها من موادك الدراسية أو تكليفات طلابك.",
+    "groundedTitle": "مرتبط بمحتواك فقط",
+    "groundedText": "يعتمد \"تدريس\" حصرياً على المواد التي ترفعها، ولا يختلق حقائق أو يضيف معلومات خارج سياق منهجك الدراسي.",
+    "dataPrivacyTitle": "خصوصية البيانات",
+    "dataPrivacyText": "تشفير بمواصفات عالمية. لا تُستخدم بيانات الطلاب لتدريب نماذج عامة، ومتوافق تماماً مع متطلبات NCAAA.",
+    "customizableTitle": "سهولة التخصيص",
+    "customizableText": "كل محتوى يتم إنشاؤه قابل للتعديل بالكامل؛ من التغذية الراجعة إلى أوزان التصحيح وخطط الدروس."
   },
   "impact": {
-    "sectionLabel": "The Impact",
-    "title": "Experience the Velocity"
+    "title": "التغيير الحقيقي مع \"تدريس\"",
+    "subtitle": "تصحيح المقالات",
+    "oldWay": "الطريقة التقليدية",
+    "oldTitle": "20 ساعة من التصحيح اليدوي",
+    "old1": "قراءة 80 مقالة طلابية واحدة تلو الأخرى",
+    "old2": "كتابة تغذية راجعة فردية لكل طالب من الصفر",
+    "old3": "غياب الرؤية حول التحديات الجماعية التي واجهت الدفعة",
+    "newWay": "طريقة \"تدريس\"",
+    "newTitle": "الإنجاز في ساعتين فقط",
+    "new1": "النظام يسودة تغذية راجعة متوائمة مع المعايير لكل طالب",
+    "new2": "تراجع وتعدل ما تراه مناسباً، ثم تعتمد وترسل فوراً",
+    "new3": "لوحة تحكم توضح بالضبط المفاهيم التي استصعبها الطلاب ككل"
   },
-  "compare": {
-    "sectionLabel": "Compare",
-    "title": "Why Choose Tadris AI"
+  "benefits": {
+    "title": "ارتقِ بأثرك الأكاديمي",
+    "subtitle": "يتولى تدريس AI الأعباء الإدارية الثقيلة، لتتفرغ أنت لجوهر التعليم: التفكير، الإرشاد، والإلهام.",
+    "b1Title": "6-7 ساعات إدارية أسبوعياً.. تلاشت",
+    "b1Text": "هذا هو متوسط الوقت الذي يفقده الأكاديمي السعودي في مهام روتينية. استعد هذا الوقت للأبحاث والإرشاد التدريسي.",
+    "b2Title": "صحح 80 مقالة في ساعتين لا 20",
+    "b2Text": "يقوم النظام بصياغة التغذية الراجعة؛ راجعها ثم أرسلها، ليصل الرد لطلابك قبل موعد المحاضرة القادمة.",
+    "b3Title": "أداة واحدة.. لا مزيد من التشتت",
+    "b3Text": "توقف عن التنقل بين Excel وWord ونظام البلاك بورد لكتابة تقرير واحد؛ \"تدريس\" يجمع كل شيء في مكان واحد."
+  },
+  "comparison": {
+    "title": "كيف نقارن بغيرنا؟",
+    "subtitle": "اكتشف لماذا يتفوق تدريس AI على الأدوات الأخرى التي قد تعرفها.",
+    "headerFeature": "الميزة",
+    "headerTadris": "تدريس AI",
+    "headerNotebook": "NotebookLLM",
+    "headerClassroom": "Google Classroom",
+    "f1": "إنشاء تقارير NCAAA (TP-153/154)",
+    "f2": "مخرجات عربية دقيقة (نحواً وإعراباً)",
+    "f3": "ربط التقييمات بنواتج التعلم (CLO/PLO)",
+    "f4": "تصحيح المقالات وفق معايير (Rubrics)",
+    "f5": "تحويل تسجيلات المحاضرات إلى مواد دراسية",
+    "f6": "استضافة البيانات داخل السعودية (PDPL)",
+    "f7": "اعتماد الأستاذ لكل مخرج ذكاء اصطناعي",
+    "f8": "مقارنة الأداء بين المحاضرين (Benchmarking)"
   },
   "waitlist": {
-    "title": "Ready to Reclaim Your Time?",
-    "subtitle": "Join the waitlist for early access.",
-    "emailPlaceholder": "Your institutional email",
-    "roleLabel": "Your role",
-    "submitButton": "Join the Waitlist",
-    "submitting": "Joining...",
-    "successDefault": "You're on the list!"
+    "title": "هل أنت مستعد للتركيز على ما يهم؟",
+    "subtitle": "نحن الآن في المرحلة التجريبية الخاصة مع أعضاء هيئة التدريس في الجامعات السعودية. المقاعد محدودة.",
+    "emailLabel": "البريد الإلكتروني الجامعي",
+    "emailPlaceholder": "dr.smith@university.edu",
+    "roleLabel": "الدور الأكاديمي الأساسي",
+    "role1": "أستاذ (بروفيسور / مشارك / مساعد)",
+    "role2": "محاضر",
+    "role3": "منسق مقرر",
+    "role4": "رئيس قسم",
+    "role5": "عميد / وكيل كلية للشؤون الأكاديمية",
+    "submitButton": "انضم إلى قائمة الانتظار",
+    "submitting": "جاري الانضمام...",
+    "successDefault": "تم بنجاح! أنت الآن في القائمة.",
+    "errorDefault": "عذراً، حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقاً.",
+    "trustFooter": "أمن بمستوى المؤسسات. متوافق مع GDPR. بياناتك تبقى داخل المملكة العربية السعودية."
   },
   "footer": {
-    "brand": "Tadris AI",
-    "tagline": "Empathetic AI for Educators",
-    "copyright": "© 2025 Tadris AI. All rights reserved.",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "contact": "Contact Us"
+    "brand": "تدريس AI",
+    "tagline": "ذكاء اصطناعي بروح تعليمية",
+    "copyright": "© 2026 تدريس AI. جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "contact": "اتصل بنا",
+    "survey": "استبيان تجربة أعضاء هيئة التدريس",
+    "cookies": "سياسة ملفات الارتباط"
   }
 }

@@ -18,7 +18,26 @@
     "titlePart2": "Back Every Week",
     "subtitle": "Upload your course material. Get quizzes, slide decks, lesson plans, lab exercises, NCAAA reports, and more — reviewed and approved by you, always.",
     "floatingBadgeLeft": "15 questions generated",
-    "floatingBadgeRight": "AI Draft · Reviewed"
+    "floatingBadgeRight": "AI Draft · Reviewed",
+    "cta": "Join the Waitlist",
+    "mockup": {
+      "url": "tadris.ai / assess / cs-101",
+      "studentName": "Sara Al-Mutairi",
+      "aiDraft": "AI DRAFT",
+      "courseInfo": "CS 101 · Midterm · Chapter 4",
+      "questionsLabel": "Questions",
+      "mcqLabel": "MCQ",
+      "shortAnswerLabel": "SHORT ANSWER",
+      "mediumLabel": "Medium",
+      "hardLabel": "Hard",
+      "qPrefix": "Q",
+      "of": "of",
+      "q1Question": "Which data structure follows Last In, First Out (LIFO) ordering?",
+      "q1Options": ["Queue", "Stack", "Linked List", "Binary Tree"],
+      "q2Question": "Compare the time complexity of Bubble Sort and Merge Sort. When would you choose one over the other?",
+      "studentAnswerPlaceholder": "Student answer field",
+      "editLabel": "Edit"
+    }
   },
   "socialProof": {
     "badge1": "Built for Higher Education",
@@ -27,39 +46,169 @@
   "problem": {
     "sectionLabel": "The Reality",
     "title": "The Administrative Burden is Real",
-    "subtitle": "Academic excellence is often buried under hours of manual documentation and routine grading. Reclaim your time for what matters most: your students."
+    "subtitle": "Academic excellence is often buried under hours of manual documentation and routine grading. Reclaim your time for what matters most: your students.",
+    "scenario1Title": "The Sunday Night Grading Mountain",
+    "scenario1Text": "It's Sunday night. You have 80 essays to grade by morning.",
+    "scenario2Title": "Delayed Report Submission",
+    "scenario2Text": "The semester ended two weeks ago. You're still writing the NCAAA report.",
+    "scenario3Title": "The Feedback Black Hole",
+    "scenario3Text": "Your students submitted last week. You still haven't had time to respond.",
+    "vaultTitle": "The Hidden Academic Vault",
+    "vaultText": "You recorded a great lecture last week. It's sitting in a folder, doing nothing."
   },
   "howItWorks": {
-    "sectionLabel": "How It Works",
-    "title": "Three Steps to Reclaim Your Time"
+    "sectionLabel": "Process",
+    "title": "A Simple 3-Step Workflow",
+    "subtitle": "Tadris AI fits seamlessly into your teaching routine. No complex training, no reformatting—just results.",
+    "step1Num": "1",
+    "step2Num": "2",
+    "step3Num": "3",
+    "step1Title": "1. Upload",
+    "step1Text": "Upload your existing course material. PDF, Word, PowerPoint, or just paste text. No reformatting needed.",
+    "step2Title": "2. Choose What You Need",
+    "step2Text": "Select your output — quiz, slides, lesson plan, NCAAA report, lab exercise, grading, and more.",
+    "step3Title": "3. Review and Use",
+    "step3Text": "The AI generates a draft. You review it, edit anything you want, and use it.",
+    "trustMarker": "Nothing goes anywhere without your approval."
   },
   "features": {
-    "sectionLabel": "Features",
-    "title": "Everything You Need, Nothing You Don't"
+    "sectionLabel": "System Capabilities v2.0",
+    "title": "Outcomes Over Features.",
+    "subtitle": "Interact with our core workflows to see how we transform the academic burden into teaching momentum.",
+    "badgeSaudi": "Verified for Saudi Higher Ed"
+  },
+  "capabilities": {
+    "label": "Capability",
+    "lecture": {
+      "navTitle": "Session Processing",
+      "outcome": "Upload last week's lecture",
+      "description": "Get a study guide, flashcards, a quiz, and a mind map — ready to share with students."
+    },
+    "exams": {
+      "navTitle": "Assessment Builder",
+      "outcome": "Build a full exam from your course material",
+      "description": "Every question mapped to your CLOs, across every format you need — automatically."
+    },
+    "grading": {
+      "navTitle": "Essay Grading",
+      "outcome": "Grade 80 essays in 2 hours instead of 20",
+      "description": "The AI drafts the feedback; you review and send. Reclaim your weekends with automated rubric mapping."
+    },
+    "assistant": {
+      "navTitle": "AI Teaching Assistant",
+      "outcome": "24/7 Support for Every Student",
+      "description": "Students get answers at any hour. You see what they're struggling with in your dashboard."
+    },
+    "planner": {
+      "navTitle": "Lesson Planner",
+      "outcome": "Type your topic and learning objective",
+      "description": "Get a complete lesson plan in seconds, built on what actually works for similar courses."
+    },
+    "slides": {
+      "navTitle": "Slide Deck Generator",
+      "outcome": "Turn any document into a presentation",
+      "description": "Choose your tone, set your language, add speaker notes — done in seconds."
+    },
+    "collaborative": {
+      "navTitle": "Collaborative Intelligence",
+      "outcome": "See what top instructors are doing",
+      "description": "Observe best practices in your subject area and adapt proven strategies for your own class."
+    },
+    "labs": {
+      "navTitle": "Lab Builder",
+      "outcome": "Create a fully structured lab exercise",
+      "description": "Problem statements, instructions, hints, solution guides, and rubrics — in minutes."
+    },
+    "pedagogy": {
+      "navTitle": "Pedagogy Recommender",
+      "outcome": "Not sure how to teach a complex topic?",
+      "description": "Get evidence-based delivery suggestions based on how similar instructors approached it."
+    },
+    "ncaaa": {
+      "navTitle": "NCAAA Report Assistant",
+      "outcome": "TP-153 & TP-154 drafts in 5 minutes",
+      "description": "Upload your grades and get a complete accreditation report draft — including the action plan."
+    }
+  },
+  "differentiators": {
+    "title": "Why Choose Tadris AI?",
+    "subtitle": "Unlike generic AI tools, Tadris is purpose-built for the strict ethical, privacy, and accreditation standards of Saudi higher education.",
+    "teacherControlTitle": "Teacher in control",
+    "teacherControlText": "The AI drafts, but the Professor confirms. No autonomous grades are ever finalized without manual override.",
+    "transparentOutputsTitle": "Transparent outputs",
+    "transparentOutputsText": "Every AI-generated statement is cited back to your course materials or provided student submissions.",
+    "groundedTitle": "Stays grounded in your material",
+    "groundedText": "Tadris only generates content based on what you have uploaded. It will not invent facts, add unsourced claims, or go off-script from your course content.",
+    "dataPrivacyTitle": "Data privacy",
+    "dataPrivacyText": "Enterprise-grade encryption. Student data is never used to train global models. GDPR and NCAAA aligned.",
+    "customizableTitle": "Easy to customize",
+    "customizableText": "Every AI generation is fully editable. Refine feedback, adjust rubric weights, and tailor lesson plans before they go live."
   },
   "impact": {
-    "sectionLabel": "The Impact",
-    "title": "Experience the Velocity"
+    "title": "What Changes When You Use Tadris",
+    "subtitle": "Essay Grading",
+    "oldWay": "The Old Way",
+    "oldTitle": "20 Hours of Manual Grading",
+    "old1": "Reading 80 student essays one by one",
+    "old2": "Writing individual feedback from scratch for each student",
+    "old3": "No visibility into what the whole class struggled with",
+    "newWay": "The Tadris Way",
+    "newTitle": "Done in 2 Hours",
+    "new1": "AI drafts rubric-aligned feedback for every student",
+    "new2": "You review, adjust anything you want, approve and send",
+    "new3": "Dashboard shows exactly which topics the whole class struggled with"
   },
-  "compare": {
-    "sectionLabel": "Compare",
-    "title": "Why Choose Tadris AI"
+  "benefits": {
+    "title": "Elevate Your Academic Impact",
+    "subtitle": "Tadris AI handles the administrative heavy lifting, so you can focus on the core of teaching: thinking, mentoring, and inspiring.",
+    "b1Title": "6-7 Hours of Admin. Every Week. Gone",
+    "b1Text": "That's the average time Saudi faculty lose to admin tasks Tadris handles. Time you get back for research, mentoring, and actually teaching.",
+    "b2Title": "Grade 80 Essays in 2 Hours, Not 20",
+    "b2Text": "The AI drafts rubric-aligned feedback for every student. You review, adjust if needed, and send. Your students hear back before the next class.",
+    "b3Title": "One Tool. No More Juggling",
+    "b3Text": "Stop switching between Excel, Word, your LMS, and your notes just to write one NCAAA report. Tadris pulls everything together in one place."
+  },
+  "comparison": {
+    "title": "How We Compare",
+    "subtitle": "See how Tadris AI stacks up against the tools you may already know.",
+    "headerFeature": "Feature",
+    "headerTadris": "Tadris AI",
+    "headerNotebook": "NotebookLLM",
+    "headerClassroom": "Google Classroom",
+    "f1": "NCAAA Report Generation (TP-153/154)",
+    "f2": "Arabic language outputs with I’rab accuracy",
+    "f3": "CLO/PLO mapped assessments",
+    "f4": "Essay grading with rubric alignment",
+    "f5": "Session recordings → study materials",
+    "f6": "Data stays in Saudi Arabia (PDPL)",
+    "f7": "Instructor approves every AI output",
+    "f8": "Peer benchmarking across instructors"
   },
   "waitlist": {
-    "title": "Ready to Reclaim Your Time?",
-    "subtitle": "Join the waitlist for early access.",
-    "emailPlaceholder": "Your institutional email",
-    "roleLabel": "Your role",
+    "title": "Ready to Focus on What Matters?",
+    "subtitle": "Currently in private beta with faculty at Saudi universities. Early access spots are limited.",
+    "emailLabel": "University Email",
+    "emailPlaceholder": "dr.smith@university.edu",
+    "roleLabel": "Primary Role",
+    "role1": "Professor (Full / Associate / Assistant)",
+    "role2": "Lecturer",
+    "role3": "Course Coordinator",
+    "role4": "Department Head",
+    "role5": "Dean / Vice Dean of Academic Affairs",
     "submitButton": "Join the Waitlist",
     "submitting": "Joining...",
-    "successDefault": "You're on the list!"
+    "successDefault": "You're on the list!",
+    "errorDefault": "An error occurred. Please try again later.",
+    "trustFooter": "Enterprise-grade security. GDPR compliant. Data stays in Saudi Arabia."
   },
   "footer": {
     "brand": "Tadris AI",
     "tagline": "Empathetic AI for Educators",
-    "copyright": "© 2025 Tadris AI. All rights reserved.",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "contact": "Contact Us"
+    "copyright": "© 2026 Tadris AI. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us",
+    "survey": "Research Survey",
+    "cookies": "Cookie Policy"
   }
 }
