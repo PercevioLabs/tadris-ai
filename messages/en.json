@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title": "Tadris AI – Teacher's AI Companion",
+    "description": "Save 10+ Hours a Week on Teaching Tasks. The Future of Academic Productivity."
+  },
+  "nav": {
+    "brand": "Tadris AI",
+    "howItWorks": "How it Works",
+    "features": "Features",
+    "theImpact": "The Impact",
+    "compare": "Compare",
+    "joinWaitlist": "Join the Waitlist"
+  },
+  "hero": {
+    "badge": "The AI Co-Pilot Built for Saudi Higher Education",
+    "titlePart1": "Give Your Faculty",
+    "titleHighlight": "10+ Hours",
+    "titlePart2": "Back Every Week",
+    "subtitle": "Upload your course material. Get quizzes, slide decks, lesson plans, lab exercises, NCAAA reports, and more — reviewed and approved by you, always.",
+    "floatingBadgeLeft": "15 questions generated",
+    "floatingBadgeRight": "AI Draft · Reviewed"
+  },
+  "socialProof": {
+    "badge1": "Built for Higher Education",
+    "badge2": "Arabic & English Support"
+  },
+  "problem": {
+    "sectionLabel": "The Reality",
+    "title": "The Administrative Burden is Real",
+    "subtitle": "Academic excellence is often buried under hours of manual documentation and routine grading. Reclaim your time for what matters most: your students."
+  },
+  "howItWorks": {
+    "sectionLabel": "How It Works",
+    "title": "Three Steps to Reclaim Your Time"
+  },
+  "features": {
+    "sectionLabel": "Features",
+    "title": "Everything You Need, Nothing You Don't"
+  },
+  "impact": {
+    "sectionLabel": "The Impact",
+    "title": "Experience the Velocity"
+  },
+  "compare": {
+    "sectionLabel": "Compare",
+    "title": "Why Choose Tadris AI"
+  },
+  "waitlist": {
+    "title": "Ready to Reclaim Your Time?",
+    "subtitle": "Join the waitlist for early access.",
+    "emailPlaceholder": "Your institutional email",
+    "roleLabel": "Your role",
+    "submitButton": "Join the Waitlist",
+    "submitting": "Joining...",
+    "successDefault": "You're on the list!"
+  },
+  "footer": {
+    "brand": "Tadris AI",
+    "tagline": "Empathetic AI for Educators",
+    "copyright": "© 2025 Tadris AI. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact Us"
+  }
+}
