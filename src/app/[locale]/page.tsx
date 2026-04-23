@@ -288,9 +288,17 @@ export default function Page() {
   const t = useDictionary();
   const fn = useFormatNumber();
 
+  const roleOptions = [
+    { value: "Professor (Full / Associate / Assistant)", label: t.waitlist.role1 },
+    { value: "Lecturer", label: t.waitlist.role2 },
+    { value: "Course Coordinator", label: t.waitlist.role3 },
+    { value: "Department Head", label: t.waitlist.role4 },
+    { value: "Dean / Vice Dean of Academic Affairs", label: t.waitlist.role5 },
+  ];
+
   // Waitlist Form State
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState(t.waitlist.role1);
+  const [role, setRole] = useState(roleOptions[0].value);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -315,7 +323,11 @@ export default function Page() {
         setEmail("");
       } else {
         setStatus("error");
-        setMessage(data.message || t.waitlist.errorDefault);
+        if (res.status === 409) {
+          setMessage(t.waitlist.errorAlreadyExists);
+        } else {
+          setMessage(data.message || t.waitlist.errorDefault);
+        }
       }
     } catch (err) {
       console.error("Waitlist Error:", err);
@@ -1250,11 +1262,11 @@ export default function Page() {
                       onChange={(e) => setRole(e.target.value)}
                       disabled={status === "loading"}
                     >
-                      <option>{t.waitlist.role1}</option>
-                      <option>{t.waitlist.role2}</option>
-                      <option>{t.waitlist.role3}</option>
-                      <option>{t.waitlist.role4}</option>
-                      <option>{t.waitlist.role5}</option>
+                      {roleOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <button

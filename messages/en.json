@@ -199,6 +199,7 @@
     "submitting": "Joining...",
     "successDefault": "You're on the list!",
     "errorDefault": "An error occurred. Please try again later.",
+    "errorAlreadyExists": "You are already on the waitlist",
     "trustFooter": "Enterprise-grade security. GDPR compliant. Data stays in Saudi Arabia."
   },
   "footer": {
