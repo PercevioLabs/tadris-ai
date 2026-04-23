@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useDictionary } from "./DictionaryProvider";
+import { useFormatNumber } from "./formatters";
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
 
 const CapabilityExplorer = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const t = useDictionary();
+  const fn = useFormatNumber();
 
   const capabilities = [
     {
@@ -129,7 +134,7 @@ const CapabilityExplorer = () => {
             Outcome Index
           </span>
           <span className="text-[10px] font-mono text-indigo-400">
-            {activeIdx + 1} / {capabilities.length}
+            {fn(activeIdx + 1)} / {fn(capabilities.length)}
           </span>
         </div>
         <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-1 scrollbar-hide no-scrollbar">
@@ -193,14 +198,18 @@ const CapabilityExplorer = () => {
                   className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95 flip-rtl"
                   aria-label="Previous Outcome"
                 >
-                  <span className="material-symbols-outlined text-lg rtl:rotate-180">chevron_left</span>
+                  <span className="material-symbols-outlined text-lg rtl:rotate-180">
+                    chevron_left
+                  </span>
                 </button>
                 <button
                   onClick={() => handleSwitch(nextIdx)}
                   className="w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95 flip-rtl"
                   aria-label="Next Outcome"
                 >
-                  <span className="material-symbols-outlined text-lg rtl:rotate-180">chevron_right</span>
+                  <span className="material-symbols-outlined text-lg rtl:rotate-180">
+                    chevron_right
+                  </span>
                 </button>
               </div>
             </div>
@@ -238,7 +247,7 @@ const CapabilityExplorer = () => {
               {/* Navigation Chevrons (Mobile Only) */}
               <div className="lg:hidden flex items-center justify-between w-full sm:w-auto pt-6 border-t border-indigo-50 sm:border-t-0 sm:pt-0">
                 <div className="text-xs font-mono text-indigo-400">
-                  {activeIdx + 1} / {capabilities.length}
+                  {fn(activeIdx + 1)} / {fn(capabilities.length)}
                 </div>
                 <div className="flex items-center gap-4">
                   <button
@@ -246,14 +255,18 @@ const CapabilityExplorer = () => {
                     className="w-12 h-12 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
                     aria-label="Previous Outcome"
                   >
-                    <span className="material-symbols-outlined text-xl rtl:rotate-180">chevron_left</span>
+                    <span className="material-symbols-outlined text-xl rtl:rotate-180">
+                      chevron_left
+                    </span>
                   </button>
                   <button
                     onClick={() => handleSwitch(nextIdx)}
                     className="w-12 h-12 rounded-full border border-indigo-100 flex items-center justify-center text-indigo-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all active:scale-95"
                     aria-label="Next Outcome"
                   >
-                    <span className="material-symbols-outlined text-xl rtl:rotate-180">chevron_right</span>
+                    <span className="material-symbols-outlined text-xl rtl:rotate-180">
+                      chevron_right
+                    </span>
                   </button>
                 </div>
               </div>
@@ -270,12 +283,10 @@ const CapabilityExplorer = () => {
   );
 };
 
-import { Navbar } from "./Navbar";
-import { Footer } from "./Footer";
-import { useDictionary } from "./DictionaryProvider";
 
 export default function Page() {
   const t = useDictionary();
+  const fn = useFormatNumber();
 
   // Waitlist Form State
   const [email, setEmail] = useState("");
@@ -349,7 +360,9 @@ export default function Page() {
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline leading-[1.1] tracking-tight text-on-surface">
               {t.hero.titlePart1}{" "}
-              <span className="text-transparent bg-clip-text bg-primary-gradient">{t.hero.titleHighlight}</span>{" "}
+              <span className="text-transparent bg-clip-text bg-primary-gradient">
+                {t.hero.titleHighlight}
+              </span>{" "}
               {t.hero.titlePart2}
             </h1>
             <p className="text-base sm:text-lg text-on-surface-variant max-w-xl leading-relaxed mx-auto lg:mx-0 lg:text-start">
@@ -437,7 +450,7 @@ export default function Page() {
                     </div>
                     <div className="text-end hero-score" style={{ animationDelay: "0.5s" }}>
                       <div className="text-[32px] font-extrabold font-headline text-transparent bg-clip-text bg-primary-gradient leading-none">
-                        15
+                        {fn(15)}
                       </div>
                       <div className="text-[9px] font-bold text-indigo-500/50 uppercase tracking-widest mt-1">
                         {t.hero.mockup.questionsLabel}
@@ -459,7 +472,8 @@ export default function Page() {
                           </span>
                         </div>
                         <span className="text-[10px] text-on-surface-variant font-medium">
-                          {t.hero.mockup.qPrefix}1 {t.hero.mockup.of} 15
+                          {t.hero.mockup.qPrefix}
+                          {fn(1)} {t.hero.mockup.of} {fn(15)}
                         </span>
                       </div>
                       <div className="text-xs font-bold text-on-surface leading-snug">
@@ -470,7 +484,9 @@ export default function Page() {
                           <div
                             key={opt}
                             className={`flex items-center gap-2 px-3 ${
-                              opt === t.hero.mockup.q1Options[1] ? "border-indigo-200" : "border-outline-variant/30"
+                              opt === t.hero.mockup.q1Options[1]
+                                ? "border-indigo-200"
+                                : "border-outline-variant/30"
                             }`}
                           >
                             <div
@@ -506,7 +522,8 @@ export default function Page() {
                           </span>
                         </div>
                         <span className="text-[10px] text-on-surface-variant font-medium">
-                          {t.hero.mockup.qPrefix}2 {t.hero.mockup.of} 15
+                          {t.hero.mockup.qPrefix}
+                          {fn(2)} {t.hero.mockup.of} {fn(15)}
                         </span>
                       </div>
                       <div className="text-xs font-bold text-on-surface leading-snug">
@@ -663,7 +680,8 @@ export default function Page() {
                     Academic Vault
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    You recorded a great lecture last week. It&apos;s sitting in a folder, doing nothing.
+                    You recorded a great lecture last week. It&apos;s sitting in a folder, doing
+                    nothing.
                   </p>
                 </div>
               </div>
@@ -818,7 +836,8 @@ export default function Page() {
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-10 lg:gap-y-16">
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">person_check</span> {t.differentiators.teacherControlTitle}
+                  <span className="material-symbols-outlined">person_check</span>{" "}
+                  {t.differentiators.teacherControlTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   {t.differentiators.teacherControlText}
@@ -826,7 +845,8 @@ export default function Page() {
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">visibility</span> {t.differentiators.transparentOutputsTitle}
+                  <span className="material-symbols-outlined">visibility</span>{" "}
+                  {t.differentiators.transparentOutputsTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   {t.differentiators.transparentOutputsText}
@@ -834,7 +854,8 @@ export default function Page() {
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">security</span> {t.differentiators.groundedTitle}
+                  <span className="material-symbols-outlined">security</span>{" "}
+                  {t.differentiators.groundedTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   {t.differentiators.groundedText}
@@ -842,7 +863,8 @@ export default function Page() {
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">lock</span> {t.differentiators.dataPrivacyTitle}
+                  <span className="material-symbols-outlined">lock</span>{" "}
+                  {t.differentiators.dataPrivacyTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   {t.differentiators.dataPrivacyText}
@@ -850,7 +872,8 @@ export default function Page() {
               </div>
               <div>
                 <h4 className="font-bold font-headline text-base sm:text-lg mb-2 text-indigo-600 flex items-center gap-2">
-                  <span className="material-symbols-outlined">edit_note</span> {t.differentiators.customizableTitle}
+                  <span className="material-symbols-outlined">edit_note</span>{" "}
+                  {t.differentiators.customizableTitle}
                 </h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   {t.differentiators.customizableText}
@@ -922,25 +945,19 @@ export default function Page() {
                     <span className="material-symbols-outlined text-indigo-200 flex-shrink-0">
                       check_circle
                     </span>
-                    <span className="text-white text-sm sm:text-base">
-                      {t.impact.new1}
-                    </span>
+                    <span className="text-white text-sm sm:text-base">{t.impact.new1}</span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
                     <span className="material-symbols-outlined text-indigo-200 flex-shrink-0">
                       check_circle
                     </span>
-                    <span className="text-white text-sm sm:text-base">
-                      {t.impact.new2}
-                    </span>
+                    <span className="text-white text-sm sm:text-base">{t.impact.new2}</span>
                   </li>
                   <li className="flex items-start gap-3 sm:gap-4">
                     <span className="material-symbols-outlined text-indigo-200 flex-shrink-0">
                       check_circle
                     </span>
-                    <span className="text-white text-sm sm:text-base">
-                      {t.impact.new3}
-                    </span>
+                    <span className="text-white text-sm sm:text-base">{t.impact.new3}</span>
                   </li>
                 </ul>
               </div>
@@ -971,9 +988,7 @@ export default function Page() {
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
                 {t.benefits.b1Title}
               </h4>
-              <p className="text-on-surface-variant leading-relaxed">
-                {t.benefits.b1Text}
-              </p>
+              <p className="text-on-surface-variant leading-relaxed">{t.benefits.b1Text}</p>
             </div>
 
             {/* Benefit Card 2 */}
@@ -984,9 +999,7 @@ export default function Page() {
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
                 {t.benefits.b2Title}
               </h4>
-              <p className="text-on-surface-variant leading-relaxed">
-                {t.benefits.b2Text}
-              </p>
+              <p className="text-on-surface-variant leading-relaxed">{t.benefits.b2Text}</p>
             </div>
 
             {/* Benefit Card 3 */}
@@ -999,9 +1012,7 @@ export default function Page() {
               <h4 className="font-bold font-headline text-2xl mb-4 text-on-surface">
                 {t.benefits.b3Title}
               </h4>
-              <p className="text-on-surface-variant leading-relaxed">
-                {t.benefits.b3Text}
-              </p>
+              <p className="text-on-surface-variant leading-relaxed">{t.benefits.b3Text}</p>
             </div>
           </div>
         </section>
@@ -1191,7 +1202,9 @@ export default function Page() {
                 className="bg-primary-gradient text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-xl shadow-indigo-500/10 hover:opacity-90 transition-all inline-flex items-center gap-2 min-h-[48px]"
               >
                 {t.nav.joinWaitlist}{" "}
-                <span className="material-symbols-outlined text-sm rtl:-scale-x-100">arrow_forward</span>
+                <span className="material-symbols-outlined text-sm rtl:-scale-x-100">
+                  arrow_forward
+                </span>
               </a>
             </div>
           </div>
@@ -1215,7 +1228,7 @@ export default function Page() {
                 <form onSubmit={handleWaitlistSubmit} className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-sm font-semibold text-indigo-950 mb-2">
-                       {t.waitlist.emailLabel}
+                      {t.waitlist.emailLabel}
                     </label>
                     <input
                       required
