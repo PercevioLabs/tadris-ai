@@ -272,7 +272,8 @@
       "reqsPlaceholder": "Specify other requirements",
       
       "q17": "Q17. Would you be willing to participate in a brief (15-min) follow-up interview about your experience?",
-      "q18": "Q18. If yes, please provide the best way to contact you (Email or Phone number)."
+      "q18": "Q18. If yes, please provide the best way to contact you (Email or Phone number).",
+      "contactPlaceholder": "Email or Phone number"
     },
 
     "tableHeaders": {

@@ -905,7 +905,7 @@ export default function SurveyPage() {
 
           <QuestionWrapper
             title={t.survey.questions.q13}
-            subtitle={`1 = ${t.survey.notComfortable} · 5 = ${t.survey.veryComfortable}`}
+            subtitle={`1 = ${t.survey.questions.notComfortable} · 5 = ${t.survey.questions.veryComfortable}`}
           >
             <div className="space-y-6">
               {Object.keys(formData.comfortLevels).map((task) => (
@@ -920,8 +920,8 @@ export default function SurveyPage() {
                     task === "Course documentation and institutional reporting" ? t.survey.options.task_doc : task
                   }
                   value={formData.comfortLevels[task]}
-                  leftLabel={t.survey.notComfortable}
-                  rightLabel={t.survey.veryComfortable}
+                  leftLabel={t.survey.questions.notComfortable}
+                  rightLabel={t.survey.questions.veryComfortable}
                   formatNumber={formatNumber}
                   onChange={(val) => updateComfort(task, val)}
                 />
