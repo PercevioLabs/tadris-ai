@@ -530,13 +530,11 @@ export default function Page() {
               >
                 check_circle
               </span>
-              <div className="text-[11px] font-bold leading-none">
-                AI Draft · Reviewed
-              </div>
+              <div className="text-[11px] font-bold leading-none">AI Draft · Reviewed</div>
             </div>
 
             {/* Main app window card */}
-            <div className="relative w-full max-w-[440px] lg:max-w-[500px] z-10 animate-float border border-outline-variant/80 rounded-2xl">
+            <div className="relative w-full max-w-[440px] lg:max-w-[500px] 2xl:max-w-[580px] z-10 animate-float border border-outline-variant/80 rounded-2xl">
               {/* macOS chrome */}
               <div className="bg-surface-container-highest rounded-t-2xl px-4 py-3 flex items-center gap-2 border border-outline-variant/20 border-b-0">
                 <div className="w-3 h-3 rounded-full bg-red-400/70" />
@@ -560,7 +558,9 @@ export default function Page() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-[13px] font-bold text-on-surface">Sara Al-Mutairi</span>
+                          <span className="text-[13px] font-bold text-on-surface">
+                            Sara Al-Mutairi
+                          </span>
                           <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-bold border border-indigo-100 uppercase tracking-tight">
                             AI DRAFT
                           </span>
@@ -737,7 +737,7 @@ export default function Page() {
                     Grading Mountain
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    It's Sunday night. You have 80 essays to grade by morning.
+                    It&apos;s Sunday night. You have 80 essays to grade by morning.
                   </p>
                 </div>
               </div>
@@ -759,7 +759,7 @@ export default function Page() {
                     Report Submission
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    The semester ended two weeks ago. You're still writing the NCAAA report.
+                    The semester ended two weeks ago. You&apos;re still writing the NCAAA report.
                   </p>
                 </div>
               </div>
@@ -781,7 +781,7 @@ export default function Page() {
                     Black Hole
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    Your students submitted last week. You still haven't had time to respond.
+                    Your students submitted last week. You still haven&apos;t had time to respond.
                   </p>
                 </div>
               </div>
@@ -803,7 +803,7 @@ export default function Page() {
                     Academic Vault
                   </h3>
                   <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-                    You recorded a great lecture last week. It's sitting in a folder, doing nothing.
+                    You recorded a great lecture last week. It&apos;s sitting in a folder, doing nothing.
                   </p>
                 </div>
               </div>
@@ -1124,7 +1124,7 @@ export default function Page() {
                 6-7 Hours of Admin. Every Week. Gone
               </h4>
               <p className="text-on-surface-variant leading-relaxed">
-                That's the average time Saudi faculty lose to admin tasks Tadris handles. Time you
+                That&apos;s the average time Saudi faculty lose to admin tasks Tadris handles. Time you
                 get back for research, mentoring, and actually teaching.
               </p>
             </div>
@@ -1455,6 +1455,9 @@ export default function Page() {
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs tracking-wide font-medium text-on-surface-variant">
+            <a className="hover:text-indigo-600 transition-all font-bold text-indigo-600" href="/survey">
+              Research Survey
+            </a>
             <a className="hover:text-indigo-600 transition-all" href="#">
               Privacy Policy
             </a>
