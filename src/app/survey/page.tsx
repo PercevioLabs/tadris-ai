@@ -338,8 +338,8 @@ export default function SurveyPage() {
               Thank You!
             </h1>
             <p className="text-on-surface-variant leading-relaxed">
-              Your feedback is very helpful to us. We appreciate you taking the time to share your academic
-              experience.
+              Your feedback is very helpful to us. We appreciate you taking the time to share your
+              academic experience.
             </p>
           </div>
           <Link
@@ -385,7 +385,7 @@ export default function SurveyPage() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold tracking-widest uppercase border border-indigo-100">
             Faculty Experience Survey
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-headline leading-tight tracking-tight text-on-surface">
+          <h1 className="text-5xl sm:text-6xl font-extrabold font-headline leading-tight tracking-tight text-on-surface">
             AI Teacher Companion <br />
             <span className="text-transparent bg-clip-text bg-primary-gradient">
               Shape the Future.
@@ -408,9 +408,13 @@ export default function SurveyPage() {
           </div>
         </header>
 
-        {/* --- Identity Form (Optional) --- */}
         <section className="animate-slide-up-fade">
           <div className="bg-white/40 backdrop-blur-md border border-outline-variant/30 rounded-[2rem] p-8 space-y-6">
+            <p className="text-on-surface-variant text-[13px] leading-relaxed italic bg-indigo-50/30 p-4 rounded-2xl border border-indigo-100/50">
+              <span className="font-bold text-indigo-600 not-italic">Anonymity:</span> Your responses
+              can be submitted anonymously. If you are willing to be contacted for a follow-up
+              interview, you may provide your details below — otherwise leave blank and proceed.
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">
