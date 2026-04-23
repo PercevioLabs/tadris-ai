@@ -290,9 +290,37 @@ export default function SurveyPage() {
 
     // Section 5
     followUp: "",
+    followUpContact: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleSubmit = async (currentData = formData) => {
+    setSubmitError(null);
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/survey", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(currentData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(result.message || "We encountered an issue saving your response. Please try again.");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setSubmitError("Something went wrong on our end. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const updateField = <K extends keyof typeof formData>(field: K, value: (typeof formData)[K]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -338,8 +366,9 @@ export default function SurveyPage() {
               Thank You!
             </h1>
             <p className="text-on-surface-variant leading-relaxed">
-              Your feedback is very helpful to us. We appreciate you taking the time to share your
-              academic experience.
+              {formData.isTeaching === "No"
+                ? "Thank you for letting us know! Currently, this research is tailored specifically for active university faculty members. We appreciate your interest in Tadris AI."
+                : "Your feedback is very helpful to us. We appreciate you taking the time to share your academic experience."}
             </p>
           </div>
           <Link
@@ -478,7 +507,12 @@ export default function SurveyPage() {
               value={formData.isTeaching}
               onChange={(v) => {
                 updateField("isTeaching", v);
-                if (v === "No") setSubmitted(true);
+                if (v === "No") {
+                  // For "No", show successful submission screen immediately (optimistic)
+                  // while recording the data in the background
+                  setSubmitted(true);
+                  handleSubmit({ ...formData, isTeaching: v });
+                }
               }}
             />
           </QuestionWrapper>
@@ -920,6 +954,8 @@ export default function SurveyPage() {
                   type="text"
                   placeholder="Email or Phone number"
                   className="w-full bg-white border border-indigo-200 rounded-xl px-4 py-3 text-sm outline-none shadow-sm focus:border-indigo-500"
+                  value={formData.followUpContact}
+                  onChange={(e) => updateField("followUpContact", e.target.value)}
                 />
               </div>
             )}
@@ -932,12 +968,24 @@ export default function SurveyPage() {
             )}
           </QuestionWrapper>
 
-          <div className="p-8 bg-slate-900 rounded-[2.5rem] text-white space-y-4 shadow-2xl shadow-indigo-200">
+          <div className="p-8 bg-slate-900 rounded-[2.5rem] text-white space-y-4 shadow-2xl shadow-indigo-200 overflow-hidden relative">
             <h3 className="text-xl font-bold font-headline">Ready to submit?</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
               By clicking submit, your responses will be used to help us build tools that truly
               support educators. Thank you for your contribution to the future of teaching.
             </p>
+
+            {submitError && (
+              <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl flex items-start gap-3 animate-slide-up-fade">
+                <span className="material-symbols-outlined text-red-400 text-[20px]">
+                  error
+                </span>
+                <p className="text-red-200 text-xs font-medium leading-relaxed">
+                  {submitError}
+                </p>
+              </div>
+            )}
+
             <div className="flex gap-4 pt-4">
               <button
                 onClick={() => setStep(4)}
@@ -947,11 +995,18 @@ export default function SurveyPage() {
                 Review
               </button>
               <button
-                onClick={() => setSubmitted(true)}
-                className="flex-[2] bg-primary-gradient text-white py-4 rounded-full font-bold shadow-xl shadow-indigo-600/40 hover:scale-[1.05] transition-all flex items-center justify-center gap-2"
+                onClick={() => handleSubmit()}
+                disabled={isSubmitting}
+                className="flex-[2] bg-primary-gradient text-white py-4 rounded-full font-bold shadow-xl shadow-indigo-600/40 hover:scale-[1.05] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:scale-100"
               >
-                Submit Survey
-                <span className="material-symbols-outlined">send</span>
+                {isSubmitting ? (
+                  <span className="animate-pulse">Submitting...</span>
+                ) : (
+                  <>
+                    Submit Survey
+                    <span className="material-symbols-outlined">send</span>
+                  </>
+                )}
               </button>
             </div>
           </div>
