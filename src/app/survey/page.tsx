@@ -145,7 +145,7 @@ const ScaleSelect = ({
   onChange: (val: number) => void;
 }) => (
   <div className="space-y-3 pb-4 last:pb-0 border-b last:border-0 border-outline-variant/20">
-    <div className="text-sm font-bold text-on-surface">{label}</div>
+    <div className="text-sm font-medium text-on-surface-variant">{label}</div>
     <div className="flex justify-between items-center gap-2 max-w-sm">
       {[1, 2, 3, 4, 5].map((num) => (
         <button
@@ -187,13 +187,13 @@ const LikertGrid = ({
     <table className="w-full min-w-[500px]">
       <thead>
         <tr>
-          <th className="text-left py-4 text-[11px] font-bold text-indigo-900/40 uppercase tracking-widest bg-slate-50/50 px-4 rounded-l-xl">
+          <th className="text-start py-4 text-[11px] font-semibold text-indigo-900/60 uppercase tracking-widest bg-slate-50/50 px-4 rounded-l-xl">
             Task
           </th>
           {options.map((opt) => (
             <th
               key={opt}
-              className="text-center py-4 text-[11px] font-bold text-indigo-900/40 uppercase tracking-widest bg-slate-50/50 px-2 last:rounded-r-xl"
+              className="text-center py-4 text-[11px] font-semibold text-indigo-900/60 uppercase tracking-widest bg-slate-50/50 px-2 last:rounded-r-xl"
             >
               {opt}
             </th>
@@ -206,7 +206,7 @@ const LikertGrid = ({
             key={task}
             className="border-b border-outline-variant/20 last:border-0 hover:bg-slate-50/30 transition-colors"
           >
-            <td className="py-4 px-4 text-sm font-bold text-on-surface">{task}</td>
+            <td className="py-4 px-4 text-sm font-medium text-on-surface-variant">{task}</td>
             {options.map((opt) => (
               <td key={opt} className="py-4 text-center">
                 <button
