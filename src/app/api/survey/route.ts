@@ -13,10 +13,10 @@ export async function POST(req: Request) {
       },
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
-
     const sheets = google.sheets({ version: "v4", auth });
+
     const spreadsheetId = process.env.GOOGLE_SURVEY_SHEET_ID;
-    const range = "Sheet1!A:AP";
+    const range = "Sheet1!A:AJ"; // 36 columns after consolidation
 
     // 1. Check if the sheet is empty to add headers
     const getResponse = await sheets.spreadsheets.values.get({
@@ -32,7 +32,6 @@ export async function POST(req: Request) {
         "Institution",
         "Q1: Currently Teaching",
         "Q2: Primary Subject",
-        "Q2: Subject (Other)",
         "Q3: Courses per Semester",
         "Q4: Average Class Size",
         "Q5: Years of Experience",
@@ -44,12 +43,9 @@ export async function POST(req: Request) {
         "Q7: Burdensome Activities",
         "Q8: Heaviest Workload Period",
         "Q9: General Tools Used",
-        "Q9: Tools (Other)",
         "Q10: AI Tools Tried",
-        "Q10: AI Tools (Other)",
         "Q11: AI Usage Frequency",
         "Q12: AI Use Cases",
-        "Q12: AI Use Cases (Other)",
         "Q13: Comfort - Assessments",
         "Q13: Comfort - Prep",
         "Q13: Comfort - Grading",
@@ -63,9 +59,7 @@ export async function POST(req: Request) {
         "Q14: AI Role - Notes",
         "Q14: AI Role - Reporting",
         "Q15: Biggest Concerns",
-        "Q15: Concerns (Other)",
         "Q16: Requirements for Confidence",
-        "Q16: Requirements (Other)",
         "Q17: Follow-up Interest",
         "Q18: Follow-up Contact",
       ];
@@ -84,13 +78,13 @@ export async function POST(req: Request) {
     if (checkEmail || checkContact) {
       const existingData = await sheets.spreadsheets.values.get({
         spreadsheetId,
-        range: "Sheet1!C:AP", // Identity Email (C) to Follow-up Contact (AP)
+        range: "Sheet1!C:AJ", // Identity Email (C) to Follow-up Contact (AJ)
       });
 
       const rows = existingData.data.values || [];
       const isDuplicate = rows.some((row) => {
         const rowEmail = row[0]?.toLowerCase().trim(); // Column C
-        const rowContact = row[39]?.toLowerCase().trim(); // Column AP (offset from C is 39)
+        const rowContact = row[33]?.toLowerCase().trim(); // Column AJ (offset from C is 33)
         
         const emailMatch = checkEmail && checkEmail !== "-" && rowEmail === checkEmail;
         const contactMatch = checkContact && checkContact !== "-" && rowContact === checkContact;
@@ -109,7 +103,25 @@ export async function POST(req: Request) {
     // 3. Prepare the row data
     const timestamp = new Date().toISOString();
     
-    // Flatten the data into an array
+    // Helper to combine options + "other"
+    const combine = (main: any, other: string) => {
+      const parts = [];
+      if (Array.isArray(main)) {
+        parts.push(...main.filter(m => m !== "Other"));
+      } else if (main && main !== "Other" && main !== "-") {
+        parts.push(main);
+      }
+      if (other && other.trim()) {
+        parts.push(other.trim());
+      }
+      return parts.length > 0 ? parts.join(", ") : "-";
+    };
+
+    const toStars = (num: any) => {
+      const n = Number(num);
+      return n > 0 ? "⭐".repeat(n) : "-";
+    };
+
     const row = [
       timestamp,
       data.name || "Anonymous",
@@ -118,8 +130,7 @@ export async function POST(req: Request) {
       
       // Section 1
       data.isTeaching || "-",
-      data.subject || "-",
-      data.subjectOther || "-",
+      data.subject === "Other" ? (data.subjectOther || "Other") : (data.subject || "-"),
       data.coursesPerSemester || "-",
       data.classSize || "-",
       data.experience || "-",
@@ -134,21 +145,18 @@ export async function POST(req: Request) {
       data.heaviestWorkload || "-",
 
       // Section 3
-      data.currentTools?.join(", ") || "-",
-      data.toolsOther || "-",
-      data.aiTools?.join(", ") || "-",
-      data.aiToolsOther || "-",
+      combine(data.currentTools, data.toolsOther),
+      combine(data.aiTools, data.aiToolsOther),
       data.aiFrequency || "-",
-      data.aiUseCases?.join(", ") || "-",
-      data.aiUseCasesOther || "-",
+      combine(data.aiUseCases, data.aiUseCasesOther),
 
       // Section 4
-      data.comfortLevels?.["Creating assessments (quizzes, exams, assignments)"] || "0",
-      data.comfortLevels?.["Teaching preparation (lesson plans, slides, activities)"] || "0",
-      data.comfortLevels?.["Grading and providing feedback to students"] || "0",
-      data.comfortLevels?.["Responding to student queries (email, office hours)"] || "0",
-      data.comfortLevels?.["Converting notes into study materials"] || "0",
-      data.comfortLevels?.["Course documentation and institutional reporting"] || "0",
+      toStars(data.comfortLevels?.["Creating assessments (quizzes, exams, assignments)"]),
+      toStars(data.comfortLevels?.["Teaching preparation (lesson plans, slides, activities)"]),
+      toStars(data.comfortLevels?.["Grading and providing feedback to students"]),
+      toStars(data.comfortLevels?.["Responding to student queries (email, office hours)"]),
+      toStars(data.comfortLevels?.["Converting notes into study materials"]),
+      toStars(data.comfortLevels?.["Course documentation and institutional reporting"]),
 
       data.aiRolePreference?.["Creating assessments (quizzes, exams, assignments)"] || "-",
       data.aiRolePreference?.["Teaching preparation (lesson plans, slides, activities)"] || "-",
@@ -157,17 +165,15 @@ export async function POST(req: Request) {
       data.aiRolePreference?.["Converting lecture notes or recordings into study materials"] || "-",
       data.aiRolePreference?.["Course documentation and institutional reporting"] || "-",
 
-      data.aiConcerns?.join(", ") || "-",
-      data.aiConcernsOther || "-",
-      data.aiRequirements?.join(", ") || "-",
-      data.aiRequirementsOther || "-",
+      combine(data.aiConcerns, data.aiConcernsOther),
+      combine(data.aiRequirements, data.aiRequirementsOther),
 
       // Section 5
       data.followUp || "-",
       data.followUpContact || "-"
     ];
 
-    // 3. Append row
+    // 4. Append row
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range,

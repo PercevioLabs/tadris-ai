@@ -228,6 +228,40 @@ const LikertGrid = ({
   </div>
 );
 
+const WorkloadRangeSelector = ({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (val: string) => void;
+}) => {
+  const ranges = ["0", "1-2", "3-5", "6-10", "11-15", "16-20", "20+"];
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {ranges.map((range) => {
+        const isActive = value === range;
+        return (
+          <button
+            key={range}
+            onClick={() => onChange(range)}
+            className={`
+              flex-1 min-w-[50px] px-3 py-2 rounded-xl text-xs font-bold transition-all border
+              ${
+                isActive
+                  ? "bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-200 scale-[1.05]"
+                  : "bg-white text-on-surface-variant border-outline-variant/30 hover:border-indigo-200 hover:bg-slate-50"
+              }
+            `}
+          >
+            {range}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
+
 // --- Main Page Component ---
 
 export default function SurveyPage() {
@@ -312,7 +346,9 @@ export default function SurveyPage() {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        setSubmitError(result.message || "We encountered an issue saving your response. Please try again.");
+        setSubmitError(
+          result.message || "We encountered an issue saving your response. Please try again.",
+        );
       }
     } catch (err) {
       console.error("Submission error:", err);
@@ -368,7 +404,9 @@ export default function SurveyPage() {
             <p className="text-on-surface-variant leading-relaxed">
               {formData.isTeaching === "No"
                 ? "Thank you for letting us know! Currently, this research is tailored specifically for active university faculty members. We appreciate your interest in Tadris AI."
-                : "Your feedback is very helpful to us. We appreciate you taking the time to share your academic experience."}
+                : formData.followUp === "Yes"
+                  ? "Your feedback is very helpful to us! Since you've expressed interest in a follow-up, our team will reach out to you soon regarding the interview. We appreciate your time."
+                  : "Your feedback is very helpful to us. We appreciate you taking the time to share your academic experience."}
             </p>
           </div>
           <Link
@@ -440,9 +478,10 @@ export default function SurveyPage() {
         <section className="animate-slide-up-fade">
           <div className="bg-white/40 backdrop-blur-md border border-outline-variant/30 rounded-[2rem] p-8 space-y-6">
             <p className="text-on-surface-variant text-[13px] leading-relaxed italic bg-indigo-50/30 p-4 rounded-2xl border border-indigo-100/50">
-              <span className="font-bold text-indigo-600 not-italic">Anonymity:</span> Your responses
-              can be submitted anonymously. If you are willing to be contacted for a follow-up
-              interview, you may provide your details below — otherwise leave blank and proceed.
+              <span className="font-bold text-indigo-600 not-italic">Anonymity:</span> Your
+              responses can be submitted anonymously. If you are willing to be contacted for a
+              follow-up interview, you may provide your details below — otherwise leave blank and
+              proceed.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -599,27 +638,24 @@ export default function SurveyPage() {
             title="Q6. Approximately how many hours per week do you spend on each of the following activities?"
             subtitle="Rough estimates are fine."
           >
-            <div className="space-y-4">
+            <div className="space-y-2">
               {Object.keys(formData.workloadHours).map((activity) => (
                 <div
                   key={activity}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl border border-outline-variant/30 bg-slate-50/50"
+                  className="space-y-3 p-4 rounded-2xl border border-outline-variant/20 bg-transparent"
                 >
-                  <span className="text-sm font-bold text-on-surface">{activity}</span>
-                  <div className="relative flex items-center">
-                    <input
-                      type="number"
-                      placeholder="0"
-                      className="w-24 bg-white border border-outline-variant rounded-lg px-3 py-2 text-sm text-right pr-14 focus:border-indigo-500 outline-none transition-all"
-                      value={
-                        formData.workloadHours[activity as keyof typeof formData.workloadHours]
-                      }
-                      onChange={(e) => updateWorkloadHours(activity, e.target.value)}
-                    />
-                    <span className="absolute right-3 text-[10px] font-bold text-on-surface-variant/40 uppercase">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium text-on-surface-variant leading-tight">
+                      {activity}
+                    </span>
+                    <span className="text-[10px] font-bold text-indigo-600/50 uppercase tracking-widest bg-indigo-50 px-2 py-1 rounded-md">
                       Hrs/Wk
                     </span>
                   </div>
+                  <WorkloadRangeSelector
+                    value={formData.workloadHours[activity as keyof typeof formData.workloadHours]}
+                    onChange={(v) => updateWorkloadHours(activity, v)}
+                  />
                 </div>
               ))}
             </div>
@@ -977,12 +1013,8 @@ export default function SurveyPage() {
 
             {submitError && (
               <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl flex items-start gap-3 animate-slide-up-fade">
-                <span className="material-symbols-outlined text-red-400 text-[20px]">
-                  error
-                </span>
-                <p className="text-red-200 text-xs font-medium leading-relaxed">
-                  {submitError}
-                </p>
+                <span className="material-symbols-outlined text-red-400 text-[20px]">error</span>
+                <p className="text-red-200 text-xs font-medium leading-relaxed">{submitError}</p>
               </div>
             )}
 
